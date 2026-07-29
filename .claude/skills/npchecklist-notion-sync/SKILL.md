@@ -13,7 +13,7 @@ user explicitly asks** — it is not part of the routine edit loop (`npchecklist
 
 ## The working file
 
-`/home/tgsung/Desktop/Side_Project/New_Parent_Checklist/npchecklist.html` — specifically
+`npchecklist.html` (project root) — specifically
 the `DATA.supplies.groups[].items[]` array and the `BRAND_INFO` map.
 
 ## Source
@@ -42,14 +42,16 @@ ones this skill owns. Matched `notion-*` items get updated, Notion rows with no
 existing `notion-*` match get added (new `notion-*` id), and existing `notion-*` items
 with no corresponding Notion row anymore get removed.
 
-**Never touch items whose id does not start with `notion-`.** As of 2026-07-29 there
-is one such item: `link-baggage-tab` (待產包) in the 懷孕生產 group — a static shortcut
-card that jumps to the 待產包 (bag) tab via `linkToTab: "bag"`, not a real purchasable
-item, and not present in Notion at all. There will also eventually be `custom-*` items
-(visitor-added, or promoted orphans — see the orphan-preservation section below).
-Leave any `link-*`/`custom-*`/other-prefixed item exactly where it is, whatever group
-it's currently in, on every sync — full-mirror logic applies only within the `notion-*`
-id space.
+**Never touch items whose id does not start with `notion-`** (e.g. `custom-*` items,
+visitor-added or promoted orphans — see the orphan-preservation section below). Leave
+them exactly where they are on every sync.
+
+**One `notion-*` item is permanently exempt from sync:** `notion-2f7fce7797218022870adda06b2ed7ea`
+(待產包) in the 懷孕生產 group. Although its ID is derived from the Notion row
+(`2f7fce77-9721-8022-870a-dda06b2ed7ea`), it is a static shortcut card that uses
+`linkToTab: "bag"` to jump to the 待產包 tab — not a real purchasable item. Never
+overwrite its `name`, `note`, `phase`, or any other field from Notion, and never remove
+it even if the Notion row disappears. Treat it as read-only on every sync.
 
 ## Field mapping
 
@@ -60,8 +62,8 @@ id space.
 | `時間標籤` | `phase` | 懷孕前期→`pregnancy-early`, 懷孕後期→`pregnancy-late`, 生產期間→`during-birth`, 寶寶回家前→`before-home`, 寶寶滿月後→`after-full-month`. If non-empty, set/update `phase` accordingly. If empty: for a **brand-new** item being added, omit `phase` entirely — the existing fallback (`... || "unassessed"` in the phase lookup) already buckets it under the pre-existing "待評估" phase, no code change needed. For an **already-matched existing item**, an empty `時間標籤` means Notion has nothing to say about phase — leave that item's current `phase` value untouched rather than deleting it (deleting it would wrongly dump every already-categorized item into "待評估"). |
 | `Status` | — | **ignored completely.** The webpage's own 已準備/未準備 checkbox state (localStorage) is the only source of truth for that; never overwritten. |
 | `Price` / `Cost` | — | **not synced.** `estCost` is a locally-authored placeholder value (shown as the cost-input's placeholder), independent of the user's personal Notion price/spend data. Existing items keep their current `estCost`. Brand-new items get a reasonable Taiwan market-average estimate, written in the same style as existing values — do not derive it from `Price`/`Cost`. |
-| `簡短說明` (page body) | `note` | Overwrite the existing note only when this section is **non-empty**. When empty (the common case today): keep the existing hand-written note for already-matched items; for brand-new items with no note either, write a short one-line note in the same style, from general knowledge. |
-| `經驗分享` (page body) | `BRAND_INFO[id].notionNote` | Fully mirrored each sync (array of short plain-text lines, checklist/markdown syntax stripped, link URLs dropped keeping only the visible text) — added/updated/removed to match Notion verbatim. `BRAND_INFO[id].brandSuggestions` (Claude-authored generic fallback) is untouched by sync. Note: despite the comment above `BRAND_INFO` suggesting `brandSuggestions` is only a fallback for when `notionNote` is absent, the actual render code (`npchecklist.html` around `buildExperienceHtml`/`openItemModal`) shows both independently and simultaneously when both are present — `notionNote` renders as inline text in the experience block, `brandSuggestions` renders as a separate clickable brand-carousel block. Don't remove `brandSuggestions` just because `notionNote` gained content. |
+| `簡短說明` (page body) | `note` | If non-empty in Notion, overwrite the existing `note` verbatim. If empty, auto-generate a concise one-line description in Traditional Chinese in the same style as existing notes (e.g. "建議產前先了解及準備,方便產後追奶儲奶。") — applies to both already-matched items and brand-new items. |
+| `經驗分享` (page body) | `BRAND_INFO[id].notionNote` | If non-empty in Notion: clear any existing `notionNote` and replace it with exactly the Notion content — an array of plain-text strings, one per line (checklist/markdown syntax stripped, bold removed, link URLs dropped keeping only the visible text, leading/trailing whitespace trimmed per line). Do not add any prefix, suffix, or extra text. If empty in Notion: remove `notionNote` from the BRAND_INFO entry (or leave absent). `BRAND_INFO[id].brandSuggestions` is never touched by sync — keep existing entries, do not add for new items. `BRAND_INFO[id].note` does not exist and must never be written. |
 | — | `month` | No Notion equivalent (used only for some `after-full-month` items). Leave unset for anything sync touches. |
 
 ## Stable IDs

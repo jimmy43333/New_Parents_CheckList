@@ -12,7 +12,7 @@ e.g. via Teams/Notion) to reliably see the latest content. So: publish only on r
 
 ## The working file
 
-`/home/tgsung/Desktop/Side_Project/New_Parent_Checklist/npchecklist.html`
+`npchecklist.html` (project root)
 
 This file's contents are exactly what gets published — it starts at `<title>` and has
 no `<!doctype>`, `<html>`, `<head>`, or `<body>` tags (the Artifact platform wraps those

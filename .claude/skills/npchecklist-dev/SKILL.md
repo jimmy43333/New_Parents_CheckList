@@ -13,7 +13,7 @@ Publishing and Notion sync are separate skills, loaded only when actually needed
 
 ## The working file
 
-`/home/tgsung/Desktop/Side_Project/New_Parent_Checklist/npchecklist.html`
+`npchecklist.html` (project root)
 
 This file's contents are exactly what gets published to the Claude Artifact — it
 starts at `<title>` and has no `<!doctype>`, `<html>`, `<head>`, or `<body>` tags
@@ -30,7 +30,7 @@ starts at `<title>` and has no `<!doctype>`, `<html>`, `<head>`, or `<body>` tag
    - Check first: `ps aux | grep dev_server.py | grep -v grep` (don't start a
      duplicate if one's already up).
    - If none is running, start it in the background:
-     `cd "/home/tgsung/Desktop/Side_Project/New_Parent_Checklist" && nohup python3 dev_server.py 5555 > /tmp/dev_server.log 2>&1 & disown`
+     `nohup python3 dev_server.py 5555 > /tmp/dev_server.log 2>&1 & disown` (run from project root)
    - This is `dev_server.py` in the project root — a small dependency-free
      Python `http.server` wrapper (no npm/network needed; `npx live-server` was
      tried first but hit a network/port hiccup in this environment, so this

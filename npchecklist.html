@@ -978,10 +978,8 @@
 
   var BRAND_INFO = {
     "notion-30ffce7797218012a4adff18c2ac5650": { brandSuggestions: ["媽咪小站 Mammy Shop", "Bravado", "Uniqlo 哺乳系列", "麗嬰房"] },
-    "notion-2f0fce779721805b9936e9a13d407f55": { note: "屬於人力服務,建議透過月子中心、月嫂仲介或親友推薦實際比較,而非單一品牌採購。" },
-    "notion-2f0fce7797218097bdf2f6d870a3121f": { note: "建議依居住地區、房型與服務內容實際比較評估,選擇適合的月子中心。" },
-    "notion-301fce77972180ae9e9aed225b192917": { note: "屬於孕期疫苗接種評估,請與婦產科或家醫科醫師討論適合的施打時機與廠牌,非一般採購項目。", notionNote: ["百日咳/2人 $1750*2", "RSV $7680"] },
-    "notion-2f0fce77972180249558cc4da1c21da3": { note: "為產檢例行項目,由醫療院所安排執行,無須自行採購。", notionNote: ["80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
+    "notion-301fce77972180ae9e9aed225b192917": { notionNote: ["百日咳/2人 $1750*2", "RSV $7680"] },
+    "notion-2f0fce77972180249558cc4da1c21da3": { notionNote: ["80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
     "notion-2f0fce779721800cb290d9a4fb815f3d": { notionNote: ["升降圍欄/床板-DIDI", "Swado", "Derma", "CANI", "AGAPEBABY"] },
     "notion-2f0fce77972180d28ff6df44619945ae": { notionNote: ["孟君☑️", "哥哥傳承 ６個月up戰車"], brandSuggestions: ["Combi", "Aprica", "Cybex", "Maxi-Cosi"] },
     "notion-33bfce77972180c69bc2dae8d7c8d782": { brandSuggestions: ["Combi", "Aprica", "Cybex", "Britax", "Joie", "Maxi-Cosi"] },
@@ -1001,7 +999,7 @@
     "notion-2f0fce77972180beb939df986c143c7d": { brandSuggestions: ["象印 ZOJIRUSHI", "UNIMOM", "一般嬰童用品店分裝罐"] },
     "notion-2f0fce7797218082870ddc49306815b1": { notionNote: ["珈樂堤洗奶瓶機/celinda"] },
     "notion-2f0fce7797218084ada8fb846be10fe5": { notionNote: ["nac nac 智能多用調乳器 NN2046 文☑️😍"] },
-    "notion-30ffce779721806b96eec673982b4288": { note: "配方奶廠牌選擇建議與兒科醫師或月子中心衛教師討論,依寶寶體質調整,非單純市場比較項目。", notionNote: ["試用罐*2", "s26金兒樂", "美強生 水解"] },
+    "notion-30ffce779721806b96eec673982b4288": { notionNote: ["試用罐*2", "s26金兒樂", "美強生 水解"] },
     "notion-2f0fce7797218080a47efccfa03f7237": { brandSuggestions: ["Carter's", "麗嬰房", "Combi", "GAP Baby"], notionNote: ["6 件"] },
     "notion-2f0fce77972180f2a64eecd3e8b5f096": { brandSuggestions: ["aden+anais", "Miniklein", "Summer Infant"], notionNote: ["3 條"] },
     "notion-2f0fce77972180ad914bef5d14e3f5a5": { brandSuggestions: ["麗嬰房", "奇哥 Chicco", "Baby City 娃娃城"], notionNote: ["口水巾 * ８"] },
@@ -1161,7 +1159,7 @@
             { id: "notion-2f0fce7797218097bdf2f6d870a3121f", name: "月子中心- 拾玥集", phase: "pregnancy-early", estCost: 150000, note: "建議懷孕中期就開始比較及預約,熱門機構常一位難求。" },
             { id: "notion-301fce77972180ae9e9aed225b192917", name: "百日咳+RSV", phase: "pregnancy-late", estCost: 5000, note: "建議與醫師討論孕期接種時機,降低寶寶出生後感染風險。" },
             { id: "notion-2f0fce77972180249558cc4da1c21da3", name: "第一次抽血檢測", phase: "pregnancy-early", estCost: 1000, note: "產檢例行項目,依醫囑安排時間進行。" },
-            { id: "link-baggage-tab", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁,查看住院與月中的完整打包清單。準備狀態會自動依「待產包」分頁的打包進度同步,無法在此手動更改。" }
+            { id: "notion-2f7fce7797218022870adda06b2ed7ea", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁,查看住院與月中的完整打包清單。準備狀態會自動依「待產包」分頁的打包進度同步,無法在此手動更改。" }
           ]
         },
         {
@@ -1413,14 +1411,10 @@
   var modalSavedTimer = null;
 
   function buildExperienceHtml(item, info) {
-    var parts = [];
-    if (item.note) parts.push(item.note);
-    if (info && info.note) parts.push(info.note);
     if (info && info.notionNote && info.notionNote.length) {
-      parts.push("個人筆記:" + info.notionNote.join("、"));
+      return '<div class="modal-note-text">' + info.notionNote.map(escapeHtml).join("<br>") + "</div>";
     }
-    if (!parts.length) return '<p class="modal-note-text">目前沒有相關經驗分享。</p>';
-    return '<div class="modal-note-text">' + parts.map(escapeHtml).join("<br><br>") + "</div>";
+    return '<p class="modal-note-text">目前沒有相關經驗分享。</p>';
   }
 
   function buildBrandListHtml(info) {
