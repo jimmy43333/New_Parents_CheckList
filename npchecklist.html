@@ -1,0 +1,1965 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新手爸媽準備清單</title>
+<style>
+  :root {
+    --bg: #F5DDC7;
+    --surface: #FFF7EC;
+    --surface-alt: #FCEEDD;
+    --ink: #3E2C22;
+    --ink-soft: #8C7160;
+    --ink-faint: #B7A090;
+    --border: rgba(62,44,34,0.10);
+    --border-strong: rgba(62,44,34,0.18);
+    --accent-coral: #E1734F;
+    --accent-coral-soft: #FBDECF;
+    --accent-sage: #6B9270;
+    --accent-sage-soft: #E1EDDF;
+    --accent-honey: #DE9C2F;
+    --accent-honey-soft: #FBEAC9;
+    --accent-lavender: #8A7FB0;
+    --accent-lavender-soft: #EAE6F4;
+    --neutral-soft: #F2E2D6;
+    --neutral-ink: #8C7160;
+    --phase-mauve: #A98FC7;
+    --phase-mauve-soft: #EFE5F5;
+    --phase-dustyrose: #E0A3A0;
+    --phase-dustyrose-soft: #FBE9E7;
+    --phase-clay: #D9986F;
+    --phase-clay-soft: #F8E5D3;
+    --phase-slate: #7FAFC2;
+    --phase-slate-soft: #E1F0F5;
+    --phase-taupe: #C7B48F;
+    --phase-taupe-soft: #F5EDDC;
+    --shadow: 0 1px 2px rgba(62,44,34,0.06), 0 8px 20px -12px rgba(62,44,34,0.18);
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1C201B;
+    --surface: #262B24;
+    --surface-alt: #2C3129;
+    --ink: #EEEBE0;
+    --ink-soft: #ABA994;
+    --ink-faint: #7C7A66;
+    --border: rgba(238,235,224,0.10);
+    --border-strong: rgba(238,235,224,0.18);
+    --accent-coral: #F0916D;
+    --accent-coral-soft: #4A342A;
+    --accent-sage: #93C296;
+    --accent-sage-soft: #33402F;
+    --accent-honey: #F0BE5D;
+    --accent-honey-soft: #453A22;
+    --accent-lavender: #B6ACDA;
+    --accent-lavender-soft: #363150;
+    --neutral-soft: #33352C;
+    --neutral-ink: #ABA994;
+    --phase-mauve: #CBA8E0;
+    --phase-mauve-soft: #453655;
+    --phase-dustyrose: #F0B7B0;
+    --phase-dustyrose-soft: #4A302E;
+    --phase-clay: #EAB68A;
+    --phase-clay-soft: #46331F;
+    --phase-slate: #96CBE0;
+    --phase-slate-soft: #223C46;
+    --phase-taupe: #DCC79A;
+    --phase-taupe-soft: #3E351F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #221712;
+      --surface: #2C1F19;
+      --surface-alt: #34261F;
+      --ink: #F4E8DE;
+      --ink-soft: #C6AC9A;
+      --ink-faint: #8F7768;
+      --border: rgba(244,232,222,0.10);
+      --border-strong: rgba(244,232,222,0.18);
+      --accent-coral: #F0916D;
+      --accent-coral-soft: #4A342A;
+      --accent-sage: #93C296;
+      --accent-sage-soft: #33402F;
+      --accent-honey: #F0BE5D;
+      --accent-honey-soft: #453A22;
+      --accent-lavender: #B6ACDA;
+      --accent-lavender-soft: #363150;
+      --neutral-soft: #3B2B22;
+      --neutral-ink: #C6AC9A;
+      --phase-mauve: #CBA8E0;
+      --phase-mauve-soft: #453655;
+      --phase-dustyrose: #F0B7B0;
+      --phase-dustyrose-soft: #4A302E;
+      --phase-clay: #EAB68A;
+      --phase-clay-soft: #46331F;
+      --phase-slate: #96CBE0;
+      --phase-slate-soft: #223C46;
+      --phase-taupe: #DCC79A;
+      --phase-taupe-soft: #3E351F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang TC", "Hiragino Sans TC", "Noto Sans TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  a { color: inherit; }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ---------- Header ---------- */
+  .hero {
+    padding: 44px 4px 20px;
+  }
+  h1 {
+    font-size: clamp(1.7rem, 4vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .hero-sub {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0;
+  }
+  .hero-updated {
+    font-size: 0.76rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-faint);
+    margin: 10px 0 0;
+  }
+
+  /* ---------- Tabs ---------- */
+  .tabbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 6px;
+    padding: 12px 4px;
+    margin-top: 8px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 10px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab-btn .tab-icon { font-size: 1.05rem; line-height: 1; }
+  .tab-btn:hover { background: var(--surface-alt); }
+  .tab-btn:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
+  .tab-btn[aria-selected="true"] {
+    background: var(--surface);
+    color: var(--ink);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow);
+  }
+  .tab-count {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+  }
+  .tab-btn[aria-selected="true"] .tab-count { color: var(--accent-coral); }
+
+  /* ---------- Progress ---------- */
+  .progress-block {
+    padding: 22px 4px 6px;
+  }
+  .progress-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 9px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .progress-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .progress-stat {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+  .progress-stat strong { color: var(--accent-sage); font-size: 0.95rem; }
+  .progress-track {
+    height: 9px;
+    border-radius: 999px;
+    background: var(--neutral-soft);
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent-honey), var(--accent-sage));
+    transition: width 0.35s cubic-bezier(.4,0,.2,1);
+  }
+  .reset-btn {
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .reset-btn:hover { color: var(--accent-coral); border-color: var(--accent-coral); }
+
+  /* ---------- Budget ---------- */
+  .budget-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 4px 0;
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: var(--accent-honey-soft);
+    border: 1px solid var(--border);
+  }
+  .budget-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .budget-value {
+    font-variant-numeric: tabular-nums;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent-honey);
+  }
+  .budget-hint {
+    flex-basis: 100%;
+    font-size: 0.74rem;
+    color: var(--ink-faint);
+  }
+
+  .cost-input-wrap { position: relative; }
+  .cost-prefix {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+  .cost-input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 8px 8px 8px 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+    color: var(--ink);
+  }
+  .cost-input::placeholder { color: var(--ink-faint); font-weight: 500; }
+  .cost-input:hover { border-color: var(--border-strong); }
+  .cost-input:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 1px; }
+
+  /* ---------- Phase filter chips ---------- */
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 4px 4px;
+  }
+  .chip {
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 13px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .chip:hover { border-color: var(--border-strong); }
+  .chip[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* ---------- Groups & Cards ---------- */
+  .group { padding: 26px 4px 6px; }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .group-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .group-phase-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--accent-lavender-soft);
+    color: var(--accent-lavender);
+    white-space: nowrap;
+  }
+  .group-count {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: minmax(130px, 220px) 1fr 150px;
+    align-items: center;
+    gap: 16px;
+    transition: border-color 0.15s ease;
+  }
+  .card.has-phase {
+    grid-template-columns: minmax(120px, 200px) 116px 1fr 150px;
+  }
+  .card.has-phase.has-cost {
+    grid-template-columns: minmax(120px, 190px) 116px 1fr 120px 150px;
+  }
+  .card[data-state="done"] {
+    border-color: color-mix(in srgb, var(--accent-sage) 45%, var(--border));
+    background: color-mix(in srgb, var(--accent-sage-soft) 45%, var(--surface));
+  }
+  .card-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .card[data-state="done"] .card-name { color: var(--accent-sage); }
+  .card-link {
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .card-link:hover, .card-link:focus-visible {
+    border-color: var(--accent-coral);
+    background: color-mix(in srgb, var(--accent-coral-soft) 40%, var(--surface));
+  }
+  .card-link:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
+  .card-link .card-note { margin: 0; }
+  .card-link-arrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .card-name-btn {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    cursor: pointer;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease, color 0.15s ease;
+  }
+  .card-name-btn:hover { text-decoration-color: currentColor; color: var(--accent-coral); }
+  .card-name-btn:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; border-radius: 3px; }
+  .phase-chip {
+    grid-area: phase;
+    justify-self: start;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    background: var(--neutral-soft);
+    color: var(--neutral-ink);
+  }
+  .phase-chip[data-phase="pregnancy-early"] { background: var(--phase-mauve-soft); color: var(--phase-mauve); }
+  .phase-chip[data-phase="pregnancy-late"] { background: var(--phase-dustyrose-soft); color: var(--phase-dustyrose); }
+  .phase-chip[data-phase="during-birth"] { background: var(--phase-clay-soft); color: var(--phase-clay); }
+  .phase-chip[data-phase="before-home"] { background: var(--phase-slate-soft); color: var(--phase-slate); }
+  .phase-chip[data-phase="after-full-month"] { background: var(--phase-taupe-soft); color: var(--phase-taupe); }
+
+  .phase-select-wrap {
+    position: relative;
+    justify-self: start;
+    width: 100%;
+  }
+  .phase-select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 20px 6px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    background: var(--neutral-soft);
+    color: var(--neutral-ink);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .phase-select:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 1px; }
+  .select-arrow-sm {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.6rem;
+    color: inherit;
+  }
+  .phase-select-wrap[data-phase="pregnancy-early"] .phase-select { background: var(--phase-mauve-soft); color: var(--phase-mauve); }
+  .phase-select-wrap[data-phase="pregnancy-late"] .phase-select { background: var(--phase-dustyrose-soft); color: var(--phase-dustyrose); }
+  .phase-select-wrap[data-phase="during-birth"] .phase-select { background: var(--phase-clay-soft); color: var(--phase-clay); }
+  .phase-select-wrap[data-phase="before-home"] .phase-select { background: var(--phase-slate-soft); color: var(--phase-slate); }
+  .phase-select-wrap[data-phase="after-full-month"] .phase-select { background: var(--phase-taupe-soft); color: var(--phase-taupe); }
+  .phase-select-wrap[data-phase="unassessed"] .phase-select { background: var(--neutral-soft); color: var(--neutral-ink); }
+
+  .card-note {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .card.has-cost .card-note {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+  }
+
+  @media (max-width: 700px) {
+    .card, .card.has-phase, .card.has-phase.has-cost {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 8px;
+    }
+    .card.has-cost .card-note {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+    }
+  }
+
+  /* ---------- Phone refinements ---------- */
+  @media (max-width: 700px) {
+    .page { padding: 0 14px 60px; }
+
+    .hero { padding: 26px 2px 16px; }
+    .hero-sub { font-size: 0.9rem; }
+
+    .theme-toggle { top: 10px; right: 10px; width: 38px; height: 38px; font-size: 1rem; }
+
+    /* tabs stacked top-to-bottom, each a full-width single-line row */
+    .tabbar {
+      flex-direction: column;
+      gap: 6px;
+      padding: 8px 2px;
+    }
+    .tab-btn {
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 9px;
+      padding: 11px 14px;
+      font-size: 0.88rem;
+    }
+    .tab-btn .tab-icon { font-size: 1.1rem; }
+    .tab-count { margin-left: auto; }
+
+    .progress-block { padding: 18px 2px 4px; }
+    .budget-block { margin: 14px 2px 0; padding: 12px 14px; }
+    .budget-value { font-size: 1rem; }
+
+    .filter-row { padding: 14px 2px 2px; }
+    .chip { padding: 8px 13px; min-height: 38px; }
+    .reset-btn { min-height: 36px; padding: 6px 11px; }
+
+    .group { padding: 22px 2px 6px; }
+
+    /* card: title + time tag on one row (time tag right-aligned), then budget/status, then note */
+    .card {
+      padding: 13px 14px;
+      display: grid;
+      grid-template-columns: 1fr 118px;
+      column-gap: 10px;
+      row-gap: 7px;
+      align-items: start;
+      grid-template-areas:
+        "name   status"
+        "note   note";
+    }
+    .card.has-phase,
+    .card.has-phase.has-cost {
+      padding: 13px 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 8px;
+      row-gap: 7px;
+      align-items: start;
+    }
+    .card.has-phase {
+      grid-template-areas:
+        "name   phase"
+        "status status"
+        "note   note";
+    }
+    .card.has-phase.has-cost {
+      grid-template-areas:
+        "name   phase"
+        "cost   status"
+        "note   note";
+    }
+    .card-name { grid-area: name; min-width: 0; }
+    .status-select-wrap { grid-area: status; width: 100%; }
+    .phase-select-wrap { grid-area: phase; width: 100%; }
+    .cost-input-wrap { grid-area: cost; width: 100%; }
+    .card-note { grid-area: note; }
+
+    /* bigger touch targets for form controls */
+    .status-select { padding: 10px 24px 10px 10px; min-height: 42px; font-size: 0.74rem; }
+    .phase-select { padding: 9px 18px 9px 10px; font-size: 0.7rem; }
+    .cost-input { padding: 10px 6px 10px 30px; min-height: 42px; font-size: 0.72rem; }
+    .cost-prefix { left: 8px; font-size: 0.66rem; }
+
+    /* cost/status row needs narrower controls to fit */
+    .card.has-phase .status-select,
+    .card.has-phase.has-cost .status-select {
+      padding: 9px 20px 9px 8px;
+      min-height: 40px;
+      font-size: 0.68rem;
+    }
+    .card.has-phase .phase-select-wrap {
+      width: auto;
+      max-width: 100%;
+      justify-self: end;
+    }
+    .card.has-phase .phase-chip { justify-self: end; }
+    .card.has-phase .phase-select {
+      width: auto;
+      padding: 8px 22px 8px 12px;
+      font-size: 0.64rem;
+      text-align: center;
+      text-align-last: center;
+    }
+    .card.has-phase.has-cost .cost-input {
+      padding: 9px 4px 9px 24px;
+      min-height: 40px;
+      font-size: 0.66rem;
+    }
+    .card.has-phase.has-cost .cost-prefix { left: 5px; font-size: 0.6rem; }
+    .card.has-phase .select-arrow,
+    .card.has-phase.has-cost .select-arrow { right: 7px; font-size: 0.6rem; }
+    .card.has-phase .select-arrow-sm,
+    .card.has-phase.has-cost .select-arrow-sm { right: 6px; }
+
+    .modal-title { font-size: 1.02rem; }
+    .modal-panel { max-height: 92vh; }
+  }
+
+  .status-select-wrap {
+    position: relative;
+  }
+  .status-select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 30px 8px 11px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+    color: var(--ink-faint);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .status-select:hover { border-color: var(--border-strong); }
+  .status-select:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 1px; }
+  .select-arrow {
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.65rem;
+    color: inherit;
+  }
+  .status-select-wrap[data-slot="0"] { color: var(--ink); }
+  .status-select-wrap[data-slot="0"] .status-select { background: var(--neutral-soft); border-color: var(--border-strong); color: var(--ink); }
+  .status-select-wrap[data-slot="1"] { color: var(--accent-honey); }
+  .status-select-wrap[data-slot="1"] .status-select { background: var(--accent-honey-soft); border-color: var(--accent-honey); color: var(--accent-honey); }
+  .status-select-wrap[data-slot="2"] { color: var(--accent-sage); }
+  .status-select-wrap[data-slot="2"] .status-select { background: var(--accent-sage-soft); border-color: var(--accent-sage); color: var(--accent-sage); }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    margin-top: 50px;
+    padding: 22px 18px;
+    border-radius: 14px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--ink-faint);
+  }
+  .footer strong { color: var(--ink-soft); }
+
+  [hidden] { display: none !important; }
+
+  .theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 20;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 1.1rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  }
+  .theme-toggle:hover { border-color: var(--border-strong); }
+  .theme-toggle:active { transform: scale(0.94); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
+
+  /* ---------- Item detail modal ---------- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(20, 12, 8, 0.5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media (min-width: 640px) {
+    .modal-overlay {
+      align-items: center;
+      padding: 24px;
+    }
+  }
+  .modal-panel {
+    width: 100%;
+    max-width: 480px;
+    max-height: 86vh;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px 18px 0 0;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(16px);
+    transition: transform 0.18s ease;
+    overflow: hidden;
+  }
+  .modal-overlay.open .modal-panel { transform: translateY(0); }
+  @media (min-width: 640px) {
+    .modal-panel { border-radius: 18px; }
+  }
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 18px 14px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .modal-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .modal-close {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .modal-close:hover { color: var(--ink); border-color: var(--border-strong); }
+  .modal-close:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
+  .modal-body {
+    padding: 16px 18px 20px;
+    overflow-y: auto;
+  }
+  .modal-section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin: 18px 0 8px;
+  }
+  .modal-section-label:first-child { margin-top: 0; }
+  .modal-brand-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .modal-brand-list li {
+    font-size: 0.88rem;
+    color: var(--ink);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 11px;
+  }
+  .modal-note-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 13px;
+    margin: 0;
+  }
+  .modal-disclaimer {
+    font-size: 0.74rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    margin: 10px 0 0;
+  }
+  .modal-brand-block {
+    margin-top: 18px;
+  }
+  .modal-brand-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 13px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .modal-brand-toggle:hover { border-color: var(--border-strong); color: var(--ink); }
+  .modal-brand-toggle:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 1px; }
+  .modal-brand-toggle-arrow {
+    transition: transform 0.15s ease;
+  }
+  .modal-brand-toggle[aria-expanded="true"] .modal-brand-toggle-arrow {
+    transform: rotate(180deg);
+  }
+  .modal-brand-panel {
+    padding-top: 10px;
+  }
+  .modal-notes-textarea {
+    width: 100%;
+    min-height: 88px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    resize: vertical;
+  }
+  .modal-notes-textarea::placeholder { color: var(--ink-faint); }
+  .modal-notes-textarea:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 1px; }
+  .modal-notes-saved {
+    font-size: 0.72rem;
+    color: var(--accent-sage);
+    margin: 6px 0 0;
+    min-height: 1em;
+  }
+</style>
+
+<button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="切換深色/淺色模式">🌙</button>
+
+<div class="modal-overlay" id="itemModalOverlay">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="itemModalTitle">
+    <div class="modal-header">
+      <h2 class="modal-title" id="itemModalTitle"></h2>
+      <button class="modal-close" id="itemModalClose" type="button" aria-label="關閉">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-section-label">📝 我的備註</p>
+      <textarea class="modal-notes-textarea" id="itemModalNotes" placeholder="可以記錄比價結果、想選的款式、朋友推薦等任何筆記…"></textarea>
+      <p class="modal-notes-saved" id="itemModalSaved" aria-live="polite"></p>
+
+      <p class="modal-section-label">💬 經驗分享</p>
+      <div id="itemModalExperience"></div>
+
+      <div class="modal-brand-block" id="itemModalBrandBlock" hidden>
+        <button type="button" class="modal-brand-toggle" id="itemModalBrandToggle" aria-expanded="false" aria-controls="itemModalBrandPanel">
+          <span>🔎 品牌清單(前三名)</span>
+          <span class="modal-brand-toggle-arrow" aria-hidden="true">▾</span>
+        </button>
+        <div class="modal-brand-panel" id="itemModalBrandPanel" hidden></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="hero">
+    <h1>新手爸媽準備清單</h1>
+    <p class="hero-sub">整理自一對真實爸媽的育兒準備筆記,依時間急迫度排序,涵蓋準備清單、待產包與照顧能力三大部分。選擇狀態即可記錄自己的準備進度,資料只存在你的瀏覽器裡,不會被其他人看到或互相覆蓋。</p>
+    <p class="hero-updated">製作日期:2026-07-29</p>
+  </header>
+
+  <nav class="tabbar" role="tablist" aria-label="清單分類" id="tabbar"></nav>
+
+  <main id="tabpanels"></main>
+
+  <p class="footer">
+    <strong>小提醒:</strong>清單中的「用途說明」與「什麼時候需要」為一般性參考整理,並非醫療或育兒專業建議;每個寶寶與家庭狀況不同,實際準備項目與時機請依自身需求,並在必要時諮詢醫師或專業人員調整。祝每一位新手爸媽都能順利度過育兒的第一哩路 💛
+  </p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------------- THEME TOGGLE ----------------
+
+  var THEME_KEY = "npchecklist_theme";
+
+  (function initTheme() {
+    try {
+      var saved = localStorage.getItem(THEME_KEY);
+      if (saved === "dark" || saved === "light") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    } catch (e) { /* ignore */ }
+  })();
+
+  function currentEffectiveTheme() {
+    var attr = document.documentElement.getAttribute("data-theme");
+    if (attr === "dark" || attr === "light") return attr;
+    return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  }
+
+  function updateThemeIcon() {
+    var btn = document.getElementById("themeToggleBtn");
+    if (!btn) return;
+    var eff = currentEffectiveTheme();
+    btn.textContent = eff === "dark" ? "☀️" : "🌙";
+    btn.setAttribute("aria-label", eff === "dark" ? "切換為淺色模式" : "切換為深色模式");
+  }
+
+  var themeBtn = document.getElementById("themeToggleBtn");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = currentEffectiveTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
+      updateThemeIcon();
+    });
+    updateThemeIcon();
+  }
+
+  var PHASE_LABEL = {
+    "pregnancy-early": "懷孕前期",
+    "pregnancy-late": "懷孕後期",
+    "during-birth": "生產期間",
+    "before-home": "寶寶回家前",
+    "after-full-month": "寶寶滿月後",
+    "unassessed": "待評估"
+  };
+
+  var PHASE_SORT_ORDER = ["pregnancy-early", "pregnancy-late", "during-birth", "before-home", "after-full-month", "unassessed"];
+
+  var PHASE_SELECT_OPTIONS = [
+    { key: "pregnancy-early", label: PHASE_LABEL["pregnancy-early"] },
+    { key: "pregnancy-late", label: PHASE_LABEL["pregnancy-late"] },
+    { key: "during-birth", label: PHASE_LABEL["during-birth"] },
+    { key: "before-home", label: PHASE_LABEL["before-home"] },
+    { key: "after-full-month", label: PHASE_LABEL["after-full-month"] },
+    { key: "unassessed", label: PHASE_LABEL.unassessed }
+  ];
+
+  // ---------------- BRAND / VENDOR REFERENCE ----------------
+  // notionNote: 你在 Notion 裡原本就寫下的品牌筆記(逐字保留)
+  // brandSuggestions: 沒有 Notion 筆記時,依市場常見品牌整理的參考選項(無連結)
+  // note: 服務類或醫療類項目,不適合列「品牌」時的說明文字
+
+  var BRAND_INFO = {
+    "notion-30ffce7797218012a4adff18c2ac5650": { brandSuggestions: ["媽咪小站 Mammy Shop", "Bravado", "Uniqlo 哺乳系列", "麗嬰房"] },
+    "notion-2f0fce779721805b9936e9a13d407f55": { note: "屬於人力服務,建議透過月子中心、月嫂仲介或親友推薦實際比較,而非單一品牌採購。" },
+    "notion-2f0fce7797218097bdf2f6d870a3121f": { note: "建議依居住地區、房型與服務內容實際比較評估,選擇適合的月子中心。" },
+    "notion-301fce77972180ae9e9aed225b192917": { note: "屬於孕期疫苗接種評估,請與婦產科或家醫科醫師討論適合的施打時機與廠牌,非一般採購項目。", notionNote: ["百日咳/2人 $1750*2", "RSV $7680"] },
+    "notion-2f0fce77972180249558cc4da1c21da3": { note: "為產檢例行項目,由醫療院所安排執行,無須自行採購。", notionNote: ["80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
+    "notion-2f0fce779721800cb290d9a4fb815f3d": { notionNote: ["升降圍欄/床板-DIDI", "Swado", "Derma", "CANI", "AGAPEBABY"] },
+    "notion-2f0fce77972180d28ff6df44619945ae": { notionNote: ["孟君☑️", "哥哥傳承 ６個月up戰車"], brandSuggestions: ["Combi", "Aprica", "Cybex", "Maxi-Cosi"] },
+    "notion-33bfce77972180c69bc2dae8d7c8d782": { brandSuggestions: ["Combi", "Aprica", "Cybex", "Britax", "Joie", "Maxi-Cosi"] },
+    "notion-33bfce77972180b6843ed371bff14f44": { brandSuggestions: ["Combi", "Aprica", "Cybex", "Joie", "Stokke", "Peg Perego"] },
+    "notion-2f0fce77972180459303d935f176b7bf": { brandSuggestions: ["Ingenuity", "Fisher-Price", "4moms", "Combi"], notionNote: ["可租"] },
+    "notion-2f0fce77972180169a9feae25aff76ef": { brandSuggestions: ["Owlet", "Cubo AI", "小米", "Motorola", "Miku"], notionNote: ["寶寶攝影機", "CuboAi 智慧寶寶攝影機 (第3代)"] },
+    "notion-2f0fce7797218005b399e66129563a7b": { brandSuggestions: ["IKEA", "Combi", "Stokke"], notionNote: ["設計師傳承*1☑️"] },
+    "notion-2f0fce7797218004b393c470832e423c": { brandSuggestions: ["Richell 利其爾", "Angelcare", "Skip Hop"] },
+    "notion-2f0fce779721804fb6e1e8ca5baeb64a": { brandSuggestions: ["Purflo", "Nuna", "babybay"], notionNote: ["Maylily", "vanibaby", "男子舍監Amber X LOVON Ruya床中床"] },
+    "notion-2f1fce779721809d9bdac590e828ad1c": { brandSuggestions: ["Stokke Tripp Trapp", "IKEA Antilop", "Combi"], notionNote: ["färska實木陪伴成長椅"] },
+    "notion-2f0fce7797218041bc7edc43599f3088": { brandSuggestions: ["IKEA", "宜得利 NITORI", "一般傢俱店客製"] },
+    "notion-33bfce7797218029b1efed528cee911f": { brandSuggestions: ["Combi", "GB", "Joie", "Aprica(輕便型)"], notionNote: ["孟君😍"] },
+    "notion-2f0fce779721806d8242d1d01c659a89": { brandSuggestions: ["Ingenuity", "Regalo", "IKEA", "KUB 可優比"] },
+    "notion-2f7fce7797218001a907e4181008f056": { brandSuggestions: ["Spectra 貝瑞克", "Medela 美德樂", "貝親 Pigeon", "Elvie"] },
+    "notion-2f0fce7797218099a9bfd85ba0d0d64a": { brandSuggestions: ["Avent", "貝親 Pigeon", "NUK"] },
+    "notion-2f0fce77972180498d97f67dc7002ad0": { brandSuggestions: ["貝親 Pigeon", "Dr. Betta", "NUK", "Avent"], notionNote: ["大奶瓶 270* 6", "小奶瓶 120 * 2", "奶瓶奶嘴* 10", "奶瓶刷 * 2"] },
+    "notion-2f0fce77972180beb939df986c143c7d": { brandSuggestions: ["象印 ZOJIRUSHI", "UNIMOM", "一般嬰童用品店分裝罐"] },
+    "notion-2f0fce7797218082870ddc49306815b1": { notionNote: ["珈樂堤洗奶瓶機/celinda"] },
+    "notion-2f0fce7797218084ada8fb846be10fe5": { notionNote: ["nac nac 智能多用調乳器 NN2046 文☑️😍"] },
+    "notion-30ffce779721806b96eec673982b4288": { note: "配方奶廠牌選擇建議與兒科醫師或月子中心衛教師討論,依寶寶體質調整,非單純市場比較項目。", notionNote: ["試用罐*2", "s26金兒樂", "美強生 水解"] },
+    "notion-2f0fce7797218080a47efccfa03f7237": { brandSuggestions: ["Carter's", "麗嬰房", "Combi", "GAP Baby"], notionNote: ["6 件"] },
+    "notion-2f0fce77972180f2a64eecd3e8b5f096": { brandSuggestions: ["aden+anais", "Miniklein", "Summer Infant"], notionNote: ["3 條"] },
+    "notion-2f0fce77972180ad914bef5d14e3f5a5": { brandSuggestions: ["麗嬰房", "奇哥 Chicco", "Baby City 娃娃城"], notionNote: ["口水巾 * ８"] },
+    "notion-2f0fce77972180e28b6fc8565e290bce": { brandSuggestions: ["奇哥 Chicco", "麗嬰房"], notionNote: ["3 條"] },
+    "notion-2f0fce77972180809a63c6e63aeee12c": { brandSuggestions: ["好奇 Huggies", "幫寶適 Pampers", "滿意寶寶 MamyPoko", "妙而舒 Merries", "大王 GOO.N"] },
+    "notion-2f0fce77972180d384e1ed9545951cd7": { brandSuggestions: ["奇哥 Chicco", "麗嬰房", "西松屋"], notionNote: ["3 條"] },
+    "notion-30ffce779721804483cdd029ffb7ac84": { brandSuggestions: ["奇哥 Chicco", "麗嬰房"], notionNote: ["8 件"] },
+    "notion-30ffce779721801e8d4bd536d7c800a1": { brandSuggestions: ["奇哥 Chicco", "麗嬰房", "Combi"], notionNote: ["6 件"] },
+    "notion-30ffce77972180fab4a8ef1a73196143": { brandSuggestions: ["麗嬰房", "奇哥 Chicco", "GAP Baby"], notionNote: ["2 雙"] },
+    "notion-2f0fce779721800e8f8ecb8e7fc86c9a": { brandSuggestions: ["Aveeno", "Cetaphil 舒特膚", "Mustela 慕之恬廊", "貝親 Pigeon"], notionNote: ["乳液", "洗髮精", "沐浴乳"] },
+    "notion-2f0fce77972180d39dadf37fa7c89cd6": { brandSuggestions: ["藍寶 Runbo", "白因子", "貝親 Pigeon", "Attack 嬰兒專用"] },
+    "notion-2f0fce779721807a87d7e50ca2a0c7cb": { notionNote: ["TRIXIE 有機玩偶"] },
+    "notion-2f0fce77972180a985f3f98298b80564": { brandSuggestions: ["奇哥 Chicco", "麗嬰房", "Skip Hop"], notionNote: ["2-3份"] },
+    "notion-2f0fce77972180e5a191df6f245b5876": { notionNote: ["Umee"] },
+    "notion-2f0fce779721803f8372c886ceddf808": { brandSuggestions: ["Bepanthen 屁屁膏", "Desitin", "Weleda 薇莉達"] },
+    "notion-2f0fce77972180b08898de798efb8e25": { brandSuggestions: ["貝恩 Baan", "幫寶適", "水潤肌"] },
+    "notion-2f0fce779721804fb56dc5c28b529005": { brandSuggestions: ["Braun 百靈", "OMRON 歐姆龍", "Microlife 百略"], notionNote: ["溫度計", "指甲刀-剪刀款", "指甲刀", "棉花棒", "牙刷", "洗牙巾"] },
+    "notion-2f0fce779721807f959cf56b14729ead": { brandSuggestions: ["Miniklein", "Combi", "Halo SleepSack"] },
+    "notion-2f0fce77972180efad6aeb76bd0c70b3": { notionNote: ["設計師傳承☑️", "布款＊２"], brandSuggestions: ["Ergobaby", "Boba", "Pognae", "Bobita"] }
+  };
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // ---------------- DATA ----------------
+
+  var DATA = {
+    skills: {
+      key: "skills",
+      label: "照顧能力表",
+      icon: "🍼",
+      states: [
+        { key: "not-started", label: "尚未開始" },
+        { key: "learning", label: "學習中" },
+        { key: "learned", label: "已學會" }
+      ],
+      doneKey: "learned",
+      hasPhase: false,
+      hasFilter: false,
+      groups: [
+        {
+          name: "新生兒日常照護",
+          items: [
+            { id: "sk-1", name: "臍帶護理", note: "保持臍帶根部乾燥清潔,可用棉花棒沾酒精消毒至自然脫落。" },
+            { id: "sk-2", name: "洗澡", note: "注意水溫約 37–38 度,並支撐好寶寶的頭頸部。" },
+            { id: "sk-3", name: "溫母奶", note: "隔水加熱退冰母奶,避免直接用微波爐加熱以免破壞營養。" },
+            { id: "sk-4", name: "泡配方奶", note: "依比例調配,先加水再加奶粉,注意調乳溫度。" },
+            { id: "sk-5", name: "餵奶", note: "觀察寶寶的飢餓訊號,熟悉親餵或瓶餵的姿勢。" },
+            { id: "sk-6", name: "消毒奶瓶", note: "每次使用後徹底清潔,並定期蒸煮或用消毒鍋消毒。" },
+            { id: "sk-7", name: "拍嗝", note: "餵奶後協助排出空氣,減少溢吐奶的機率。" },
+            { id: "sk-8", name: "哄睡 安撫", note: "建立固定的睡前儀式,協助寶寶穩定情緒入睡。" },
+            { id: "sk-9", name: "換尿布", note: "動作熟練並注意清潔方向,預防泌尿道感染。" },
+            { id: "sk-10", name: "穿衣服", note: "熟悉新生兒穿脫衣物的技巧,動作放輕柔。" },
+            { id: "sk-11", name: "按摩", note: "促進血液循環與親子互動,適合洗澡後進行。" }
+          ]
+        },
+        {
+          name: "副食品與進階照護",
+          items: [
+            { id: "sk-12", name: "製作副食品", note: "依月齡調整食物質地,從單一食材開始嘗試。" },
+            { id: "sk-13", name: "餵副食品", note: "觀察接受度及過敏反應,循序漸進增加種類。" },
+            { id: "sk-14", name: "口腔清潔", note: "使用紗布巾或指套牙刷清潔口腔,長牙後養成習慣。" },
+            { id: "sk-15", name: "使用背巾", note: "確認寶寶呈 M 型腿姿勢,且背巾支撐位置正確。" },
+            { id: "sk-16", name: "量體溫", note: "熟悉耳溫槍或額溫槍的量測方式及正常體溫範圍。" },
+            { id: "sk-17", name: "餵藥", note: "熟悉餵藥器使用方式,注意藥物劑量與時間。" }
+          ]
+        }
+      ]
+    },
+
+    bag: {
+      key: "bag",
+      label: "待產包",
+      icon: "🧳",
+      states: [
+        { key: "not-bought", label: "未準備" },
+        { key: "in-progress", label: "準備中" },
+        { key: "bought", label: "已準備" }
+      ],
+      doneKey: "bought",
+      hasPhase: false,
+      hasFilter: false,
+      groups: [
+        {
+          name: "去醫院",
+          items: [
+            { id: "bg-h-1", name: "證件", note: "健保卡、身分證、媽媽手冊放在一起,住院報到會用到。" },
+            { id: "bg-h-2", name: "孕婦手冊", note: "產檢及生產紀錄都在裡面,住院時醫院會需要。" },
+            { id: "bg-h-3", name: "盥洗用品", note: "牙刷、牙膏、洗面乳等個人清潔用品。" },
+            { id: "bg-h-4", name: "產褥墊 5片", note: "產後惡露量大,墊在床上或椅子上防止弄髒。" },
+            { id: "bg-h-5", name: "安睡褲 12件", note: "產後專用褲款,方便更換不需清洗。" },
+            { id: "bg-h-6", name: "防滑拖鞋", note: "病房內走動使用,選防滑材質較安全。" },
+            { id: "bg-h-7", name: "浴巾", note: "產後盥洗使用,建議帶 2 條方便替換。" },
+            { id: "bg-h-8", name: "清洗瓶", note: "產後會陰沖洗用,如廁後沖洗傷口。" },
+            { id: "bg-h-9", name: "溢乳墊", note: "產後脹奶容易溢乳,墊在內衣裡防止弄濕衣服。" },
+            { id: "bg-h-10", name: "口罩", note: "住院期間及訪客較多時配戴。" },
+            { id: "bg-h-11", name: "媽媽出院衣物 1套", note: "出院當天穿著,建議選寬鬆保暖款式。" },
+            { id: "bg-h-12", name: "帽子", note: "寶寶出院保暖使用,依季節調整厚度。" },
+            { id: "bg-h-13", name: "毯子", note: "包裹寶寶保暖,回家路上或病房內都用得到。" },
+            { id: "bg-h-14", name: "襪子", note: "保暖使用,依季節調整厚度。" },
+            { id: "bg-h-15", name: "環保餐具", note: "住院期間用餐方便攜帶。" },
+            { id: "bg-h-16", name: "杯子", note: "喝水、漱口使用。" },
+            { id: "bg-h-17", name: "保溫瓶", note: "裝溫水方便隨時補充水分。" },
+            { id: "bg-h-18", name: "羊脂膏", note: "產前產後皆可用於乳頭保養,預防龜裂。" },
+            { id: "bg-h-19", name: "保養品", note: "個人習慣使用的保濕保養用品。" },
+            { id: "bg-h-20", name: "保健食品:滴雞精 卵磷酯 維他命 3日份", note: "產後補充體力及營養,先準備約 3 天份即可,依個人習慣調整。" },
+            { id: "bg-h-21", name: "寶寶出院衣物 1 件", note: "準備新生兒尺寸衣物,出院當天穿著。" },
+            { id: "bg-h-22", name: "包巾 1 件", note: "出院及回家路上包裹寶寶保暖及安撫使用。" },
+            { id: "bg-h-23", name: "充電線", note: "住院天數較長,別忘記帶手機充電線。" },
+            { id: "bg-h-24", name: "行動電源", note: "病房插座有限,行動電源方便隨時充電。" }
+          ]
+        },
+        {
+          name: "去月中",
+          items: [
+            { id: "bg-c-1", name: "衛生棉", note: "產後惡露期間需要,建議準備不同吸收量。" },
+            { id: "bg-c-2", name: "安撫奶嘴 or 香草奶嘴 1個", note: "安撫寶寶情緒或協助練習吸吮,依寶寶接受度擇一準備。" },
+            { id: "bg-c-3", name: "免洗內褲", note: "產後方便更換,不需額外清洗。" },
+            { id: "bg-c-4", name: "配方奶", note: "若採混合或配方哺餵,先準備小包裝試用。" },
+            { id: "bg-c-5", name: "乳液", note: "產後皮膚保濕使用。" },
+            { id: "bg-c-6", name: "屁屁膏", note: "預防及舒緩寶寶尿布疹。" },
+            { id: "bg-c-7", name: "面膜", note: "個人保養用品,依習慣準備。" },
+            { id: "bg-c-8", name: "保冰袋 高麗菜", note: "退奶或緩解脹奶不適時使用。" },
+            { id: "bg-c-9", name: "鈣 益生菌", note: "產後營養補充,依個人需求準備。" },
+            { id: "bg-c-10", name: "緊緻霜", note: "產後身體保養用品。" },
+            { id: "bg-c-11", name: "施必麗乳膏", note: "常用於乳頭修護,如有不適建議諮詢醫護人員。" },
+            { id: "bg-c-12", name: "康撫膏", note: "常用於身體不適舒緩,依需求準備。" }
+          ]
+        }
+      ]
+    },
+
+    supplies: {
+      key: "supplies",
+      label: "準備清單",
+      icon: "🛍️",
+      states: [
+        { key: "not-bought", label: "未準備" },
+        { key: "in-progress", label: "處理中" },
+        { key: "bought", label: "已擁有" }
+      ],
+      doneKey: "bought",
+      hasPhase: true,
+      phaseSelectable: true,
+      hasFilter: true,
+      hasCost: true,
+      hasBrandInfo: true,
+      groups: [
+        {
+          name: "懷孕生產",
+          items: [
+            { id: "notion-30ffce7797218012a4adff18c2ac5650", name: "哺乳衣/哺乳內衣", phase: "pregnancy-late", estCost: 1500, note: "建議懷孕後期開始準備,方便產後哺乳穿脫。" },
+            { id: "notion-2f0fce779721805b9936e9a13d407f55", name: "月嫂", phase: "pregnancy-late", estCost: 60000, note: "建議懷孕中後期開始評估及預約,熱門檔期常需提前安排。" },
+            { id: "notion-2f0fce7797218097bdf2f6d870a3121f", name: "月子中心- 拾玥集", phase: "pregnancy-early", estCost: 150000, note: "建議懷孕中期就開始比較及預約,熱門機構常一位難求。" },
+            { id: "notion-301fce77972180ae9e9aed225b192917", name: "百日咳+RSV", phase: "pregnancy-late", estCost: 5000, note: "建議與醫師討論孕期接種時機,降低寶寶出生後感染風險。" },
+            { id: "notion-2f0fce77972180249558cc4da1c21da3", name: "第一次抽血檢測", phase: "pregnancy-early", estCost: 1000, note: "產檢例行項目,依醫囑安排時間進行。" },
+            { id: "link-baggage-tab", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁,查看住院與月中的完整打包清單。準備狀態會自動依「待產包」分頁的打包進度同步,無法在此手動更改。" }
+          ]
+        },
+        {
+          name: "嬰兒大型用品",
+          items: [
+            { id: "notion-2f0fce779721800cb290d9a4fb815f3d", name: "嬰兒床", phase: "pregnancy-late", estCost: 6000, note: "建議提早準備並確認組裝,搭配安全床墊。" },
+            { id: "notion-2f0fce77972180d28ff6df44619945ae", name: "提籃", phase: "during-birth", estCost: 3000, note: "出院及外出移動寶寶使用,部分可直接扣上推車。" },
+            { id: "notion-33bfce77972180c69bc2dae8d7c8d782", name: "汽座", phase: "during-birth", estCost: 5000, note: "開車載寶寶回家及外出時的法定必備品。" },
+            { id: "notion-33bfce77972180b6843ed371bff14f44", name: "大推車", phase: "before-home", estCost: 8000, note: "外出散步使用,依生活型態選擇單手收或雙向款。" },
+            { id: "notion-2f0fce77972180459303d935f176b7bf", name: "安撫搖椅", phase: "before-home", estCost: 4000, note: "新生兒安撫神器,可搖晃或震動助眠。" },
+            { id: "notion-2f0fce77972180169a9feae25aff76ef", name: "寶寶攝影機", phase: "before-home", estCost: 2000, note: "夜間或不同房間監看寶寶狀況使用。" },
+            { id: "notion-2f0fce7797218005b399e66129563a7b", name: "尿布檯", phase: "before-home", estCost: 2500, note: "換尿布及穿衣服使用,可省去彎腰負擔。" },
+            { id: "notion-2f0fce7797218004b393c470832e423c", name: "澡盆", phase: "before-home", estCost: 800, note: "新生兒洗澡使用,建議選附溫度計款式較安心。" },
+            { id: "notion-2f0fce779721804fb6e1e8ca5baeb64a", name: "睡窩/床中床", phase: "before-home", estCost: 1500, note: "新生兒睡眠空間,方便與大人同房不同床。" },
+            { id: "notion-2f1fce779721809d9bdac590e828ad1c", name: "嬰兒餐椅", phase: "after-full-month", month: 4, estCost: 2000, note: "寶寶開始坐穩後使用,建議選可調整角度款式。" },
+            { id: "notion-2f0fce7797218041bc7edc43599f3088", name: "嬰兒房單人床架", phase: "after-full-month", month: 6, estCost: 5000, note: "依家中空間規劃,通常寶寶較大後才需要。" },
+            { id: "notion-33bfce7797218029b1efed528cee911f", name: "小推車", phase: "after-full-month", month: 6, estCost: 3000, note: "寶寶較大後外出更輕便,依需求另外準備。" },
+            { id: "notion-2f0fce779721806d8242d1d01c659a89", name: "遊戲圍欄", phase: "after-full-month", month: 6, estCost: 2500, note: "寶寶開始活動後,用來規劃安全活動空間。" }
+          ]
+        },
+        {
+          name: "喝奶用品",
+          items: [
+            { id: "notion-2f7fce7797218001a907e4181008f056", name: "電動擠乳器 集乳袋", phase: "pregnancy-late", estCost: 6000, note: "建議產前先了解及準備,方便產後追奶儲奶。" },
+            { id: "notion-2f0fce7797218099a9bfd85ba0d0d64a", name: "奶嘴 奶嘴鍊", phase: "before-home", estCost: 300, note: "外出或日常安撫寶寶情緒時使用。" },
+            { id: "notion-2f0fce77972180498d97f67dc7002ad0", name: "奶瓶 奶瓶刷 奶瓶奶嘴", phase: "before-home", estCost: 1500, note: "依哺餵需求準備數量足夠的奶瓶組。" },
+            { id: "notion-2f0fce77972180beb939df986c143c7d", name: "奶粉分裝罐", phase: "before-home", estCost: 300, note: "外出攜帶配方奶粉方便分裝。" },
+            { id: "notion-2f0fce7797218082870ddc49306815b1", name: "消毒鍋/奶瓶清洗鍋", phase: "before-home", estCost: 2500, note: "奶瓶奶嘴每日消毒必備。" },
+            { id: "notion-2f0fce7797218084ada8fb846be10fe5", name: "熱水器/調乳器", phase: "before-home", estCost: 3000, note: "半夜泡奶方便快速調溫。" },
+            { id: "notion-30ffce779721806b96eec673982b4288", name: "配方奶", phase: "before-home", estCost: 1000, note: "先準備小包裝,依寶寶接受度再決定廠牌。" }
+          ]
+        },
+        {
+          name: "尿布衣物類",
+          items: [
+            { id: "notion-2f0fce7797218080a47efccfa03f7237", name: "包屁衣", phase: "before-home", estCost: 600, note: "新生兒最常穿著的內搭衣物,建議多準備幾件替換。" },
+            { id: "notion-2f0fce77972180f2a64eecd3e8b5f096", name: "包巾", phase: "before-home", estCost: 400, note: "包裹保暖及模擬子宮的安撫效果。" },
+            { id: "notion-2f0fce77972180ad914bef5d14e3f5a5", name: "圍兜 肚圍 口水巾", phase: "before-home", estCost: 300, note: "保護衣物及肚臍傷口,防止溢奶弄濕。" },
+            { id: "notion-2f0fce77972180e28b6fc8565e290bce", name: "嬰兒浴巾", phase: "before-home", estCost: 500, note: "洗澡後包裹保暖使用。" },
+            { id: "notion-2f0fce77972180809a63c6e63aeee12c", name: "尿布", phase: "before-home", estCost: 800, note: "依體重選擇合適尺寸,建議先準備小包裝。" },
+            { id: "notion-2f0fce77972180d384e1ed9545951cd7", name: "紗布巾", phase: "before-home", estCost: 200, note: "擦拭口水、溢奶及日常清潔,多用途使用。" },
+            { id: "notion-30ffce779721804483cdd029ffb7ac84", name: "紗布衣", phase: "before-home", estCost: 500, note: "透氣親膚,適合夏天或坐月子期間穿著。" },
+            { id: "notion-30ffce779721801e8d4bd536d7c800a1", name: "蝴蝶衣", phase: "before-home", estCost: 400, note: "臍帶未脫落前方便穿脫的前開式衣物。" },
+            { id: "notion-30ffce77972180fab4a8ef1a73196143", name: "襪子", phase: "before-home", estCost: 200, note: "保暖使用,依季節調整厚度。" }
+          ]
+        },
+        {
+          name: "嬰兒生活用品",
+          items: [
+            { id: "notion-2f0fce779721800e8f8ecb8e7fc86c9a", name: "嬰兒沐浴用品", phase: "before-home", estCost: 500, note: "選擇溫和無淚配方的洗髮沐浴用品。" },
+            { id: "notion-2f0fce77972180d39dadf37fa7c89cd6", name: "嬰兒洗衣精", phase: "before-home", estCost: 300, note: "寶寶衣物建議與大人分開清洗。" },
+            { id: "notion-2f0fce779721807a87d7e50ca2a0c7cb", name: "安撫玩具", phase: "before-home", estCost: 500, note: "幫助寶寶建立安全感,依月齡調整款式。" },
+            { id: "notion-2f0fce77972180a985f3f98298b80564", name: "尿布墊", phase: "before-home", estCost: 300, note: "換尿布時墊在下方,防止弄髒床單。" },
+            { id: "notion-2f0fce77972180e5a191df6f245b5876", name: "尿布桶", phase: "before-home", estCost: 1500, note: "集中放置使用過的尿布,建議選有除臭功能款式。" },
+            { id: "notion-2f0fce779721803f8372c886ceddf808", name: "屁屁膏", phase: "before-home", estCost: 300, note: "預防及舒緩尿布疹。" },
+            { id: "notion-2f0fce77972180b08898de798efb8e25", name: "濕紙巾", phase: "before-home", estCost: 500, note: "換尿布及清潔隨時可用,建議多準備庫存。" },
+            { id: "notion-2f0fce779721804fb56dc5c28b529005", name: "耳溫槍 棉花棒 指甲刀", phase: "before-home", estCost: 1000, note: "居家照護基本工具,方便測量體溫及清潔保養。" },
+            { id: "notion-2f0fce779721807f959cf56b14729ead", name: "防踢被", phase: "before-home", estCost: 500, note: "睡眠時保暖並避免寶寶踢被著涼。" },
+            { id: "notion-2f0fce77972180efad6aeb76bd0c70b3", name: "揹巾 布/腰凳", phase: "after-full-month", month: 2, estCost: 2000, note: "外出或安撫時使用,建議依寶寶月齡及體重選擇。" }
+          ]
+        }
+      ]
+    }
+  };
+
+  var TAB_ORDER = ["supplies", "bag", "skills"];
+  var STORAGE_KEY = "npchecklist_v1";
+  var COST_KEY = "npchecklist_costs_v1";
+  var NOTES_KEY = "npchecklist_notes_v1";
+  var PHASE_KEY = "npchecklist_phase_v1";
+
+  // ---------------- STATE ----------------
+
+  var state = loadState();
+  var costState = loadCosts();
+  var notesState = loadNotes();
+  var phaseState = loadPhases();
+  var activeTab = TAB_ORDER[0];
+  var activeFilter = {}; // per tab key -> phase filter or "all"
+  TAB_ORDER.forEach(function (k) { activeFilter[k] = "all"; });
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  function getItemStatus(tabDef, item) {
+    if (item && typeof item === "object" && item.linkToTab) {
+      return computeLinkedTabStatusKey(tabDef, DATA[item.linkToTab]);
+    }
+    var itemId = (item && typeof item === "object") ? item.id : item;
+    return state[itemId] || tabDef.states[0].key;
+  }
+
+  function setItemStatus(itemId, statusKey) {
+    state[itemId] = statusKey;
+    saveState();
+  }
+
+  function loadCosts() {
+    try {
+      var raw = localStorage.getItem(COST_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveCosts() {
+    try {
+      localStorage.setItem(COST_KEY, JSON.stringify(costState));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  function getItemCost(itemId) {
+    var v = costState[itemId];
+    return (typeof v === "number" && !isNaN(v)) ? v : null;
+  }
+
+  function setItemCost(itemId, value) {
+    if (value === null) {
+      delete costState[itemId];
+    } else {
+      costState[itemId] = value;
+    }
+    saveCosts();
+  }
+
+  function formatNTD(n) {
+    return "NT$ " + Math.round(n).toLocaleString("zh-TW");
+  }
+
+  function computeCostTotal(tabDef) {
+    var items = allItems(tabDef);
+    var total = 0;
+    items.forEach(function (it) {
+      var v = getItemCost(it.id);
+      if (v !== null) total += v;
+    });
+    return total;
+  }
+
+  function refreshBudgetDisplay(tabDef) {
+    var el = document.getElementById("budgetTotalValue");
+    if (el) el.textContent = formatNTD(computeCostTotal(tabDef));
+  }
+
+  function allItems(tabDef) {
+    var out = [];
+    tabDef.groups.forEach(function (g) {
+      g.items.forEach(function (it) { out.push(it); });
+    });
+    return out;
+  }
+
+  function loadNotes() {
+    try {
+      var raw = localStorage.getItem(NOTES_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveNotes() {
+    try {
+      localStorage.setItem(NOTES_KEY, JSON.stringify(notesState));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  function loadPhases() {
+    try {
+      var raw = localStorage.getItem(PHASE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function savePhases() {
+    try {
+      localStorage.setItem(PHASE_KEY, JSON.stringify(phaseState));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  function getItemPhase(item, group) {
+    return phaseState[item.id] || item.phase || (group && group.defaultPhase) || "unassessed";
+  }
+
+  function setItemPhase(itemId, phaseKey) {
+    phaseState[itemId] = phaseKey;
+    savePhases();
+  }
+
+  function renderPhaseSelect(item, group) {
+    var current = getItemPhase(item, group);
+
+    var wrap = document.createElement("div");
+    wrap.className = "phase-select-wrap";
+    wrap.setAttribute("data-phase", current);
+
+    var select = document.createElement("select");
+    select.className = "phase-select";
+    select.setAttribute("aria-label", item.name + " 的時間標籤");
+    PHASE_SELECT_OPTIONS.forEach(function (opt) {
+      var o = document.createElement("option");
+      o.value = opt.key;
+      o.textContent = opt.label;
+      if (opt.key === current) o.selected = true;
+      select.appendChild(o);
+    });
+    select.addEventListener("change", function () {
+      setItemPhase(item.id, select.value);
+      renderPanel();
+    });
+
+    var arrow = document.createElement("span");
+    arrow.className = "select-arrow-sm";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "▾";
+
+    wrap.appendChild(select);
+    wrap.appendChild(arrow);
+    return wrap;
+  }
+
+  // ---------------- ITEM DETAIL MODAL ----------------
+
+  var modalOverlay = document.getElementById("itemModalOverlay");
+  var modalTitle = document.getElementById("itemModalTitle");
+  var modalExperience = document.getElementById("itemModalExperience");
+  var modalNotes = document.getElementById("itemModalNotes");
+  var modalSaved = document.getElementById("itemModalSaved");
+  var modalCloseBtn = document.getElementById("itemModalClose");
+  var modalBrandBlock = document.getElementById("itemModalBrandBlock");
+  var modalBrandToggle = document.getElementById("itemModalBrandToggle");
+  var modalBrandPanel = document.getElementById("itemModalBrandPanel");
+  var modalCurrentItemId = null;
+  var modalSavedTimer = null;
+
+  function buildExperienceHtml(item, info) {
+    var parts = [];
+    if (item.note) parts.push(item.note);
+    if (info && info.note) parts.push(info.note);
+    if (info && info.notionNote && info.notionNote.length) {
+      parts.push("個人筆記:" + info.notionNote.join("、"));
+    }
+    if (!parts.length) return '<p class="modal-note-text">目前沒有相關經驗分享。</p>';
+    return '<div class="modal-note-text">' + parts.map(escapeHtml).join("<br><br>") + "</div>";
+  }
+
+  function buildBrandListHtml(info) {
+    var top3 = info.brandSuggestions.slice(0, 3);
+    var html = '<ul class="modal-brand-list">';
+    top3.forEach(function (b) {
+      var name = (typeof b === "object" && b) ? b.name : b;
+      var url = (typeof b === "object" && b) ? b.url : null;
+      if (url) {
+        html += '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(name) + " ↗</a></li>";
+      } else {
+        html += "<li>" + escapeHtml(name) + "</li>";
+      }
+    });
+    html += "</ul>";
+    html += '<p class="modal-disclaimer">以上為市面主流品牌參考(前三名),僅供搜尋方向參考,非採購建議或代言,實際請自行比價評估。</p>';
+    return html;
+  }
+
+  function collapseBrandPanel() {
+    modalBrandPanel.hidden = true;
+    modalBrandToggle.setAttribute("aria-expanded", "false");
+  }
+
+  modalBrandToggle.addEventListener("click", function () {
+    var expanded = modalBrandToggle.getAttribute("aria-expanded") === "true";
+    modalBrandPanel.hidden = expanded;
+    modalBrandToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+  });
+
+  function openItemModal(item) {
+    modalCurrentItemId = item.id;
+    modalTitle.textContent = item.name;
+
+    var info = BRAND_INFO[item.id];
+    modalExperience.innerHTML = buildExperienceHtml(item, info);
+
+    if (info && info.brandSuggestions && info.brandSuggestions.length) {
+      modalBrandBlock.hidden = false;
+      modalBrandPanel.innerHTML = buildBrandListHtml(info);
+    } else {
+      modalBrandBlock.hidden = true;
+      modalBrandPanel.innerHTML = "";
+    }
+    collapseBrandPanel();
+
+    modalNotes.value = notesState[item.id] || "";
+    modalSaved.textContent = "";
+    modalOverlay.classList.add("open");
+    document.documentElement.style.overflow = "hidden";
+    window.setTimeout(function () { modalNotes.focus({ preventScroll: true }); }, 50);
+  }
+
+  function closeItemModal() {
+    modalOverlay.classList.remove("open");
+    document.documentElement.style.overflow = "";
+    modalCurrentItemId = null;
+  }
+
+  modalCloseBtn.addEventListener("click", closeItemModal);
+  modalOverlay.addEventListener("click", function (e) {
+    if (e.target === modalOverlay) closeItemModal();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modalOverlay.classList.contains("open")) closeItemModal();
+  });
+  modalNotes.addEventListener("input", function () {
+    if (!modalCurrentItemId) return;
+    var val = modalNotes.value;
+    if (val.trim() === "") {
+      delete notesState[modalCurrentItemId];
+    } else {
+      notesState[modalCurrentItemId] = val;
+    }
+    saveNotes();
+    modalSaved.textContent = "已自動儲存";
+    if (modalSavedTimer) window.clearTimeout(modalSavedTimer);
+    modalSavedTimer = window.setTimeout(function () { modalSaved.textContent = ""; }, 1500);
+  });
+
+  // ---------------- RENDER ----------------
+
+  var tabbarEl = document.getElementById("tabbar");
+  var panelsEl = document.getElementById("tabpanels");
+
+  function render() {
+    renderTabbar();
+    renderPanel();
+  }
+
+  function renderTabbar() {
+    tabbarEl.innerHTML = "";
+    TAB_ORDER.forEach(function (key) {
+      var tabDef = DATA[key];
+      var items = allItems(tabDef);
+      var doneCount = items.filter(function (it) {
+        return getItemStatus(tabDef, it) === tabDef.doneKey;
+      }).length;
+
+      var btn = document.createElement("button");
+      btn.className = "tab-btn";
+      btn.type = "button";
+      btn.role = "tab";
+      btn.setAttribute("aria-selected", key === activeTab ? "true" : "false");
+      btn.innerHTML =
+        '<span class="tab-icon">' + tabDef.icon + '</span>' +
+        '<span>' + tabDef.label + '</span>' +
+        '<span class="tab-count">' + doneCount + '/' + items.length + '</span>';
+      btn.addEventListener("click", function () {
+        activeTab = key;
+        render();
+      });
+      tabbarEl.appendChild(btn);
+    });
+  }
+
+  function renderPanel() {
+    panelsEl.innerHTML = "";
+    var tabDef = DATA[activeTab];
+    var items = allItems(tabDef);
+    var doneCount = items.filter(function (it) {
+      return getItemStatus(tabDef, it) === tabDef.doneKey;
+    }).length;
+    var pct = items.length ? Math.round((doneCount / items.length) * 100) : 0;
+
+    var panel = document.createElement("section");
+    panel.setAttribute("role", "tabpanel");
+
+    // progress block
+    var progressBlock = document.createElement("div");
+    progressBlock.className = "progress-block";
+    progressBlock.innerHTML =
+      '<div class="progress-top">' +
+        '<span class="progress-label">' + tabDef.label + ' 準備進度</span>' +
+        '<span class="progress-stat"><strong>' + pct + '%</strong> · ' + doneCount + ' / ' + items.length + ' 項完成</span>' +
+      '</div>' +
+      '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div>';
+    panel.appendChild(progressBlock);
+
+    // budget block
+    if (tabDef.hasCost) {
+      var budgetBlock = document.createElement("div");
+      budgetBlock.className = "budget-block";
+      budgetBlock.innerHTML =
+        '<span class="budget-label">💰 已填寫花費總額</span>' +
+        '<span class="budget-value" id="budgetTotalValue">' + formatNTD(computeCostTotal(tabDef)) + '</span>' +
+        '<span class="budget-hint">每張卡片欄位裡的灰色數字是市場行情粗估價,僅供參考;實際花費請自行輸入,總額只會計算你有填寫的項目。</span>';
+      panel.appendChild(budgetBlock);
+    }
+
+    // reset button row
+    var actionsRow = document.createElement("div");
+    actionsRow.style.cssText = "display:flex;justify-content:flex-end;padding:10px 4px 0;";
+    var resetBtn = document.createElement("button");
+    resetBtn.className = "reset-btn";
+    resetBtn.type = "button";
+    resetBtn.textContent = "重置本頁進度";
+    resetBtn.addEventListener("click", function () {
+      if (!confirm("確定要重置「" + tabDef.label + "」的所有進度嗎?")) return;
+      items.forEach(function (it) { delete state[it.id]; });
+      saveState();
+      render();
+    });
+    actionsRow.appendChild(resetBtn);
+    panel.appendChild(actionsRow);
+
+    // filter chips
+    if (tabDef.hasFilter) {
+      var phasesPresent = [];
+      items.forEach(function (it) {
+        var ph = tabDef.phaseSelectable ? getItemPhase(it) : it.phase;
+        if (ph && phasesPresent.indexOf(ph) === -1) phasesPresent.push(ph);
+      });
+      phasesPresent.sort(function (a, b) { return PHASE_SORT_ORDER.indexOf(a) - PHASE_SORT_ORDER.indexOf(b); });
+
+      var filterRow = document.createElement("div");
+      filterRow.className = "filter-row";
+
+      var allChip = document.createElement("button");
+      allChip.className = "chip";
+      allChip.type = "button";
+      allChip.textContent = "全部";
+      allChip.setAttribute("aria-pressed", activeFilter[activeTab] === "all" ? "true" : "false");
+      allChip.addEventListener("click", function () { activeFilter[activeTab] = "all"; render(); });
+      filterRow.appendChild(allChip);
+
+      phasesPresent.forEach(function (ph) {
+        var chip = document.createElement("button");
+        chip.className = "chip";
+        chip.type = "button";
+        chip.textContent = PHASE_LABEL[ph] || ph;
+        chip.setAttribute("aria-pressed", activeFilter[activeTab] === ph ? "true" : "false");
+        chip.addEventListener("click", function () { activeFilter[activeTab] = ph; render(); });
+        filterRow.appendChild(chip);
+      });
+
+      panel.appendChild(filterRow);
+    }
+
+    // groups
+    tabDef.groups.forEach(function (group) {
+      var filter = activeFilter[activeTab];
+      var visibleItems = group.items.filter(function (it) {
+        if (filter === "all") return true;
+        var ph = tabDef.phaseSelectable ? getItemPhase(it, group) : it.phase;
+        return ph === filter;
+      });
+      if (!visibleItems.length) return;
+
+      if (tabDef.phaseSelectable) {
+        visibleItems = visibleItems.slice().sort(function (a, b) {
+          var ka = PHASE_SORT_ORDER.indexOf(getItemPhase(a, group));
+          var kb = PHASE_SORT_ORDER.indexOf(getItemPhase(b, group));
+          if (ka === -1) ka = PHASE_SORT_ORDER.length;
+          if (kb === -1) kb = PHASE_SORT_ORDER.length;
+          if (ka !== kb) return ka - kb;
+          var ma = typeof a.month === "number" ? a.month : Infinity;
+          var mb = typeof b.month === "number" ? b.month : Infinity;
+          return ma - mb;
+        });
+      }
+
+      var groupEl = document.createElement("div");
+      groupEl.className = "group";
+
+      var head = document.createElement("div");
+      head.className = "group-head";
+      var headHtml = '<h2 class="group-title">' + group.name + '</h2>';
+      if (group.phase) {
+        headHtml += '<span class="group-phase-badge">' + PHASE_LABEL[group.phase] + '</span>';
+      }
+      headHtml += '<span class="group-count">' + visibleItems.length + ' 項</span>';
+      head.innerHTML = headHtml;
+      groupEl.appendChild(head);
+
+      var grid = document.createElement("div");
+      grid.className = "card-grid";
+
+      visibleItems.forEach(function (item) {
+        grid.appendChild(renderCard(tabDef, item, group));
+      });
+
+      groupEl.appendChild(grid);
+      panel.appendChild(groupEl);
+    });
+
+    panelsEl.appendChild(panel);
+  }
+
+  function computeLinkedTabStatusKey(tabDef, linkedTabDef) {
+    var linkedItems = allItems(linkedTabDef);
+    var doneCount = linkedItems.filter(function (it) {
+      return getItemStatus(linkedTabDef, it) === linkedTabDef.doneKey;
+    }).length;
+    if (!linkedItems.length || doneCount === 0) return tabDef.states[0].key; // not-bought
+    if (doneCount === linkedItems.length) return tabDef.doneKey; // bought
+    return tabDef.states[1].key; // in-progress
+  }
+
+  function renderCard(tabDef, item, group) {
+    if (item.linkToTab) {
+      var linkedTabDef = DATA[item.linkToTab];
+      var computedStatusKey = getItemStatus(tabDef, item);
+
+      var linkCard = document.createElement("article");
+      linkCard.className = "card card-link" + (tabDef.hasPhase ? " has-phase" : "");
+      linkCard.setAttribute("data-state", computedStatusKey === tabDef.doneKey ? "done" : "pending");
+      linkCard.setAttribute("role", "button");
+      linkCard.tabIndex = 0;
+      linkCard.setAttribute("aria-label", item.name + " — 前往「" + linkedTabDef.label + "」分頁");
+
+      var linkName = document.createElement("h3");
+      linkName.className = "card-name";
+      linkName.textContent = item.name;
+      linkCard.appendChild(linkName);
+
+      if (tabDef.hasPhase) {
+        if (tabDef.phaseSelectable) {
+          var phaseSelectEl = renderPhaseSelect(item, group);
+          phaseSelectEl.addEventListener("click", function (e) { e.stopPropagation(); });
+          linkCard.appendChild(phaseSelectEl);
+        } else {
+          var phaseChip = document.createElement("span");
+          phaseChip.className = "phase-chip";
+          if (item.phase) {
+            phaseChip.setAttribute("data-phase", item.phase);
+            phaseChip.textContent = PHASE_LABEL[item.phase];
+          }
+          linkCard.appendChild(phaseChip);
+        }
+      }
+
+      var linkNote = document.createElement("p");
+      linkNote.className = "card-note";
+      linkNote.textContent = item.note || "";
+      if (item.note) linkNote.title = item.note;
+      linkCard.appendChild(linkNote);
+
+      // Status is not user-editable here — it mirrors the linked tab's own
+      // progress (see computeLinkedTabStatusKey), so this select is disabled.
+      var statusWrap = document.createElement("div");
+      statusWrap.className = "status-select-wrap";
+      var slotIndex = tabDef.states.findIndex(function (st) { return st.key === computedStatusKey; });
+      statusWrap.dataset.slot = String(slotIndex === -1 ? 0 : slotIndex);
+
+      var statusSelect = document.createElement("select");
+      statusSelect.className = "status-select";
+      statusSelect.disabled = true;
+      statusSelect.setAttribute("aria-label", item.name + " 的準備狀態(自動依「" + linkedTabDef.label + "」分頁進度同步,無法手動更改)");
+      tabDef.states.forEach(function (st) {
+        var opt = document.createElement("option");
+        opt.value = st.key;
+        opt.textContent = st.label;
+        if (st.key === computedStatusKey) opt.selected = true;
+        statusSelect.appendChild(opt);
+      });
+      statusWrap.appendChild(statusSelect);
+
+      var statusArrow = document.createElement("span");
+      statusArrow.className = "select-arrow";
+      statusArrow.setAttribute("aria-hidden", "true");
+      statusArrow.textContent = "▾";
+      statusWrap.appendChild(statusArrow);
+      linkCard.appendChild(statusWrap);
+
+      var goToLinkedTab = function () {
+        activeTab = item.linkToTab;
+        render();
+      };
+      linkCard.addEventListener("click", goToLinkedTab);
+      linkCard.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          goToLinkedTab();
+        }
+      });
+
+      return linkCard;
+    }
+
+    var status = getItemStatus(tabDef, item);
+    var isDone = status === tabDef.doneKey;
+
+    var card = document.createElement("article");
+    card.className = "card" + (tabDef.hasPhase ? " has-phase" : "") + (tabDef.hasCost ? " has-cost" : "");
+    card.setAttribute("data-state", isDone ? "done" : "pending");
+
+    var name = document.createElement("h3");
+    name.className = "card-name";
+    if (tabDef.hasBrandInfo) {
+      var nameBtn = document.createElement("button");
+      nameBtn.type = "button";
+      nameBtn.className = "card-name-btn";
+      nameBtn.textContent = item.name;
+      nameBtn.setAttribute("aria-label", item.name + " — 查看品牌參考與備註");
+      nameBtn.addEventListener("click", function () { openItemModal(item); });
+      name.appendChild(nameBtn);
+    } else {
+      name.textContent = item.name;
+    }
+    card.appendChild(name);
+
+    if (tabDef.hasPhase) {
+      if (tabDef.phaseSelectable) {
+        card.appendChild(renderPhaseSelect(item, group));
+      } else {
+        var phaseChip = document.createElement("span");
+        phaseChip.className = "phase-chip";
+        if (item.phase) {
+          phaseChip.setAttribute("data-phase", item.phase);
+          phaseChip.textContent = PHASE_LABEL[item.phase];
+        }
+        card.appendChild(phaseChip);
+      }
+    }
+
+    var note = document.createElement("p");
+    note.className = "card-note";
+    note.textContent = item.note || "";
+    if (item.note) note.title = item.note;
+    card.appendChild(note);
+
+    if (tabDef.hasCost) {
+      var costWrap = document.createElement("div");
+      costWrap.className = "cost-input-wrap";
+
+      var costPrefix = document.createElement("span");
+      costPrefix.className = "cost-prefix";
+      costPrefix.setAttribute("aria-hidden", "true");
+      costPrefix.textContent = "NT$";
+
+      var costInput = document.createElement("input");
+      costInput.className = "cost-input";
+      costInput.type = "number";
+      costInput.min = "0";
+      costInput.inputMode = "numeric";
+      costInput.setAttribute("aria-label", item.name + " 的花費金額");
+      if (typeof item.estCost === "number") {
+        costInput.placeholder = item.estCost.toLocaleString("zh-TW");
+      }
+      var savedCost = getItemCost(item.id);
+      if (savedCost !== null) costInput.value = String(savedCost);
+
+      costInput.addEventListener("input", function () {
+        var raw = costInput.value;
+        if (raw === "") {
+          setItemCost(item.id, null);
+        } else {
+          var num = parseFloat(raw);
+          setItemCost(item.id, isNaN(num) ? null : num);
+        }
+        refreshBudgetDisplay(tabDef);
+      });
+
+      costWrap.appendChild(costPrefix);
+      costWrap.appendChild(costInput);
+      card.appendChild(costWrap);
+    }
+
+    var activeSlot = tabDef.states.findIndex(function (st) { return st.key === status; });
+
+    var wrap = document.createElement("div");
+    wrap.className = "status-select-wrap";
+    wrap.dataset.slot = String(activeSlot === -1 ? 0 : activeSlot);
+
+    var select = document.createElement("select");
+    select.className = "status-select";
+    select.setAttribute("aria-label", item.name + " 的準備狀態");
+    tabDef.states.forEach(function (st) {
+      var opt = document.createElement("option");
+      opt.value = st.key;
+      opt.textContent = st.label;
+      if (st.key === status) opt.selected = true;
+      select.appendChild(opt);
+    });
+    select.addEventListener("change", function () {
+      setItemStatus(item.id, select.value);
+      renderTabbar();
+      renderPanel();
+    });
+
+    var arrow = document.createElement("span");
+    arrow.className = "select-arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "▾";
+
+    wrap.appendChild(select);
+    wrap.appendChild(arrow);
+    card.appendChild(wrap);
+
+    return card;
+  }
+
+  // ---------------- CUSTOM ITEMS (orphan preservation) ----------------
+  // When a Notion sync removes a default supplies item that a visitor already
+  // interacted with (checked/costed/noted/phase-overridden), it gets promoted
+  // here instead of silently disappearing. See the npchecklist-notion-sync
+  // skill for the sync side of this; this is the client-side half.
+  var DEFAULT_SNAPSHOT_KEY = "npchecklist_default_snapshot_v1";
+  var CUSTOM_ITEMS_KEY = "npchecklist_custom_items_v1";
+
+  function loadDefaultSnapshot() {
+    try {
+      var raw = localStorage.getItem(DEFAULT_SNAPSHOT_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveDefaultSnapshot(items) {
+    try {
+      localStorage.setItem(DEFAULT_SNAPSHOT_KEY, JSON.stringify(items));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  function loadCustomItems() {
+    try {
+      var raw = localStorage.getItem(CUSTOM_ITEMS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveCustomItems(items) {
+    try {
+      localStorage.setItem(CUSTOM_ITEMS_KEY, JSON.stringify(items));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  function hasUserData(itemId) {
+    return Boolean(state[itemId] || getItemCost(itemId) !== null || notesState[itemId] || phaseState[itemId]);
+  }
+
+  function reconcileOrphanedDefaults() {
+    var currentDefaults = allItems(DATA.supplies);
+    var currentIds = {};
+    currentDefaults.forEach(function (it) { currentIds[it.id] = true; });
+
+    var previousSnapshot = loadDefaultSnapshot();
+    if (previousSnapshot) {
+      var customItems = loadCustomItems();
+      var alreadyPromoted = {};
+      customItems.forEach(function (it) {
+        if (it.promotedFrom) alreadyPromoted[it.promotedFrom] = true;
+      });
+
+      var changed = false;
+      previousSnapshot.forEach(function (prevItem) {
+        if (currentIds[prevItem.id]) return; // still present, nothing to do
+        if (alreadyPromoted[prevItem.id]) return; // already promoted earlier
+        if (!hasUserData(prevItem.id)) return; // no user data, safe to drop
+
+        var clone = {};
+        Object.keys(prevItem).forEach(function (k) { clone[k] = prevItem[k]; });
+        clone.id = "custom-" + prevItem.id;
+        clone.promotedFrom = prevItem.id;
+        customItems.push(clone);
+        changed = true;
+      });
+
+      if (changed) saveCustomItems(customItems);
+    }
+
+    saveDefaultSnapshot(currentDefaults.map(function (it) {
+      return { id: it.id, name: it.name, phase: it.phase, estCost: it.estCost, note: it.note, month: it.month };
+    }));
+  }
+
+  reconcileOrphanedDefaults();
+
+  var customItems = loadCustomItems();
+  if (customItems.length) {
+    DATA.supplies.groups.push({ name: "自訂項目", items: customItems });
+  }
+
+  render();
+})();
+</script>
+
+</body></html>
