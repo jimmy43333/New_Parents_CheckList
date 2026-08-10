@@ -371,15 +371,6 @@
     font-weight: 800;
     margin: 0;
   }
-  .group-phase-badge {
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 999px;
-    background: var(--accent-lavender-soft);
-    color: var(--accent-lavender);
-    white-space: nowrap;
-  }
   .group-count {
     font-size: 0.78rem;
     color: var(--ink-faint);
@@ -467,13 +458,6 @@
   }
   .card[role="button"]:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
   .card-link .card-note { margin: 0; }
-  .card-link-arrow {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent-coral);
-    text-align: right;
-    white-space: nowrap;
-  }
   .phase-chip {
     grid-area: phase;
     justify-self: start;
@@ -839,12 +823,6 @@
     padding: 12px 13px;
     margin: 0;
   }
-  .modal-disclaimer {
-    font-size: 0.74rem;
-    line-height: 1.6;
-    color: var(--ink-faint);
-    margin: 10px 0 0;
-  }
   .modal-brand-block {
     margin-top: 18px;
   }
@@ -916,7 +894,7 @@
 
       <div class="modal-brand-block" id="itemModalBrandBlock" hidden>
         <button type="button" class="modal-brand-toggle" id="itemModalBrandToggle" aria-expanded="false" aria-controls="itemModalBrandPanel">
-          <span>🔎 品牌清單(前三名)</span>
+          <span>🔎 品牌分享</span>
           <span class="modal-brand-toggle-arrow" aria-hidden="true">▾</span>
         </button>
         <div class="modal-brand-panel" id="itemModalBrandPanel" hidden></div>
@@ -995,14 +973,9 @@
 
   var PHASE_SORT_ORDER = ["pregnancy-early", "pregnancy-late", "during-birth", "before-home", "after-full-month", "unassessed"];
 
-  var PHASE_SELECT_OPTIONS = [
-    { key: "pregnancy-early", label: PHASE_LABEL["pregnancy-early"] },
-    { key: "pregnancy-late", label: PHASE_LABEL["pregnancy-late"] },
-    { key: "during-birth", label: PHASE_LABEL["during-birth"] },
-    { key: "before-home", label: PHASE_LABEL["before-home"] },
-    { key: "after-full-month", label: PHASE_LABEL["after-full-month"] },
-    { key: "unassessed", label: PHASE_LABEL.unassessed }
-  ];
+  var PHASE_SELECT_OPTIONS = PHASE_SORT_ORDER.map(function (key) {
+    return { key: key, label: PHASE_LABEL[key] };
+  });
 
   // 準備清單分組小圖示,同一分組共用同一個 icon
   var GROUP_ICON = {
@@ -1015,51 +988,37 @@
   };
 
   // ---------------- BRAND / VENDOR REFERENCE ----------------
-  // notionNote: 你在 Notion 裡原本就寫下的品牌筆記(逐字保留)
-  // brandSuggestions: 沒有 Notion 筆記時,依市場常見品牌整理的參考選項(無連結)
-  // note: 服務類或醫療類項目,不適合列「品牌」時的說明文字
+  // notionNote: 你在 Notion 裡原本就寫下的經驗分享筆記(逐字保留)
+  // brandSuggestions: 從 Notion「品牌分享」區塊同步的品牌清單(可含連結,見 npchecklist-notion-sync skill)
 
   var BRAND_INFO = {
-    "notion-30ffce7797218012a4adff18c2ac5650": { brandSuggestions: ["媽咪小站 Mammy Shop", "Bravado", "Uniqlo 哺乳系列", "麗嬰房"] },
     "notion-301fce77972180ae9e9aed225b192917": { notionNote: ["RSV 媽媽如果沒打，小孩出生打會比較貴", "百日咳 $1750*2", "RSV $7680"] },
+    "notion-30ffce7797218012a4adff18c2ac5650": { notionNote: ["可以等哺乳一段時間後，在依個人情況選購"] },
+    "notion-3b6fce77972180b4b251dc5bee0f1a1c": { notionNote: ["非常困難，可事先討論喜歡的字跟組合", "若要給算命老師算命，可先預約，等小孩出生再給出生時辰，大概需要等 2-3 天"] },
+    "notion-3b6fce77972180b98491f6611f388c57": { notionNote: ["出生證明", "戶口名簿", "父母雙方身分證與印章", "銀行存摺影本 - 生育獎勵金 ＆ 勞保生育給付", "郵局帳戶 - 育兒津貼 5000/month", "子女從姓約定書", "可順便申請寶寶健保卡 - 健保掛媽媽"] },
     "notion-2f0fce77972180249558cc4da1c21da3": { notionNote: ["80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
     "notion-2f0fce779721800cb290d9a4fb815f3d": { notionNote: ["升降圍欄/床板-DIDI", "Swado", "Derma", "CANI", "AGAPEBABY"] },
-    "notion-2f0fce77972180d28ff6df44619945ae": { brandSuggestions: ["Combi", "Aprica", "Cybex", "Maxi-Cosi"] },
-    "notion-33bfce77972180c69bc2dae8d7c8d782": { brandSuggestions: ["Combi", "Aprica", "Cybex", "Britax", "Joie", "Maxi-Cosi"] },
-    "notion-2f0fce77972180459303d935f176b7bf": { brandSuggestions: ["Ingenuity", "Fisher-Price", "4moms", "Combi"], notionNote: ["可租"] },
-    "notion-2f0fce77972180169a9feae25aff76ef": { brandSuggestions: ["Owlet", "Cubo AI", "小米", "Motorola", "Miku"], notionNote: ["寶寶攝影機", "CuboAi 智慧寶寶攝影機 (第3代)"] },
-    "notion-2f0fce7797218005b399e66129563a7b": { brandSuggestions: ["IKEA", "Combi", "Stokke"], notionNote: ["設計師傳承*1☑️"] },
-    "notion-2f0fce7797218004b393c470832e423c": { brandSuggestions: ["Richell 利其爾", "Angelcare", "Skip Hop"] },
-    "notion-2f0fce779721804fb6e1e8ca5baeb64a": { brandSuggestions: ["Purflo", "Nuna", "babybay"], notionNote: ["Maylily", "vanibaby", "男子舍監Amber X LOVON Ruya床中床"] },
-    "notion-2f1fce779721809d9bdac590e828ad1c": { brandSuggestions: ["Stokke Tripp Trapp", "IKEA Antilop", "Combi"], notionNote: ["färska實木陪伴成長椅"] },
-    "notion-33bfce7797218029b1efed528cee911f": { brandSuggestions: ["Combi", "GB", "Joie", "Aprica(輕便型)"] },
-    "notion-2f0fce779721806d8242d1d01c659a89": { brandSuggestions: ["Ingenuity", "Regalo", "IKEA", "KUB 可優比"] },
-    "notion-2f7fce7797218001a907e4181008f056": { brandSuggestions: ["Spectra 貝瑞克", "Medela 美德樂", "貝親 Pigeon", "Elvie"] },
-    "notion-2f0fce7797218099a9bfd85ba0d0d64a": { brandSuggestions: ["Avent", "貝親 Pigeon", "NUK"] },
-    "notion-2f0fce77972180498d97f67dc7002ad0": { brandSuggestions: ["貝親 Pigeon", "Dr. Betta", "NUK", "Avent"], notionNote: ["大奶瓶 270* 6", "小奶瓶 120 * 2", "奶瓶奶嘴* 10"] },
-    "notion-2f0fce77972180beb939df986c143c7d": { brandSuggestions: ["象印 ZOJIRUSHI", "UNIMOM", "一般嬰童用品店分裝罐"] },
+    "notion-2f0fce77972180459303d935f176b7bf": { notionNote: ["可租"] },
+    "notion-2f0fce77972180169a9feae25aff76ef": { notionNote: ["寶寶攝影機", "CuboAi 智慧寶寶攝影機 (第3代)"] },
+    "notion-2f0fce7797218005b399e66129563a7b": { notionNote: ["設計師傳承*1☑️"] },
+    "notion-2f0fce779721804fb6e1e8ca5baeb64a": { notionNote: ["Maylily", "vanibaby", "男子舍監Amber X LOVON Ruya床中床"] },
+    "notion-2f1fce779721809d9bdac590e828ad1c": { notionNote: ["färska實木陪伴成長椅"] },
+    "notion-2f0fce77972180498d97f67dc7002ad0": { notionNote: ["大奶瓶 270* 6", "小奶瓶 120 * 2", "奶瓶奶嘴* 10"] },
     "notion-2f0fce7797218082870ddc49306815b1": { notionNote: ["珈樂堤洗奶瓶機/celinda"] },
     "notion-2f0fce7797218084ada8fb846be10fe5": { notionNote: ["nac nac 智能多用調乳器 NN2046 文☑️😍"] },
     "notion-30ffce779721806b96eec673982b4288": { notionNote: ["試用罐*2", "s26金兒樂", "美強生 水解"] },
-    "notion-2f0fce7797218080a47efccfa03f7237": { brandSuggestions: ["Carter's", "麗嬰房", "Combi", "GAP Baby"], notionNote: ["6 件"] },
-    "notion-2f0fce77972180f2a64eecd3e8b5f096": { brandSuggestions: ["aden+anais", "Miniklein", "Summer Infant"], notionNote: ["3 條"] },
-    "notion-2f0fce77972180ad914bef5d14e3f5a5": { brandSuggestions: ["麗嬰房", "奇哥 Chicco", "Baby City 娃娃城"], notionNote: ["口水巾 * ８"] },
-    "notion-2f0fce77972180e28b6fc8565e290bce": { brandSuggestions: ["奇哥 Chicco", "麗嬰房"], notionNote: ["3 條"] },
-    "notion-2f0fce77972180809a63c6e63aeee12c": { brandSuggestions: ["好奇 Huggies", "幫寶適 Pampers", "滿意寶寶 MamyPoko", "妙而舒 Merries", "大王 GOO.N"] },
-    "notion-2f0fce77972180d384e1ed9545951cd7": { brandSuggestions: ["奇哥 Chicco", "麗嬰房", "西松屋"], notionNote: ["3 條"] },
-    "notion-30ffce779721804483cdd029ffb7ac84": { brandSuggestions: ["奇哥 Chicco", "麗嬰房"], notionNote: ["8 件"] },
-    "notion-30ffce779721801e8d4bd536d7c800a1": { brandSuggestions: ["奇哥 Chicco", "麗嬰房", "Combi"], notionNote: ["6 件"] },
-    "notion-30ffce77972180fab4a8ef1a73196143": { brandSuggestions: ["麗嬰房", "奇哥 Chicco", "GAP Baby"], notionNote: ["2 雙"] },
-    "notion-2f0fce779721800e8f8ecb8e7fc86c9a": { brandSuggestions: ["Aveeno", "Cetaphil 舒特膚", "Mustela 慕之恬廊", "貝親 Pigeon"] },
-    "notion-2f0fce77972180d39dadf37fa7c89cd6": { brandSuggestions: ["藍寶 Runbo", "白因子", "貝親 Pigeon", "Attack 嬰兒專用"] },
+    "notion-2f0fce7797218080a47efccfa03f7237": { notionNote: ["6 件"] },
+    "notion-2f0fce77972180f2a64eecd3e8b5f096": { notionNote: ["剛出生使用大尺寸紗布巾 2-3 件", "睡過夜神器 - 蝴蝶包巾 2-3 件"] },
+    "notion-2f0fce77972180ad914bef5d14e3f5a5": { notionNote: ["口水巾 * ８"] },
+    "notion-2f0fce77972180e28b6fc8565e290bce": { notionNote: ["3 條"] },
+    "notion-2f0fce77972180d384e1ed9545951cd7": { notionNote: ["大尺寸用來當包巾，小尺寸可以當口水巾或洗澡巾"] },
+    "notion-30ffce779721804483cdd029ffb7ac84": { notionNote: ["8 件"] },
+    "notion-30ffce779721801e8d4bd536d7c800a1": { notionNote: ["6 件"] },
+    "notion-30ffce77972180fab4a8ef1a73196143": { notionNote: ["2 雙"] },
     "notion-2f0fce779721807a87d7e50ca2a0c7cb": { notionNote: ["TRIXIE 有機玩偶"] },
-    "notion-2f0fce77972180a985f3f98298b80564": { brandSuggestions: ["奇哥 Chicco", "麗嬰房", "Skip Hop"], notionNote: ["2-3份"] },
+    "notion-2f0fce77972180a985f3f98298b80564": { notionNote: ["2-3份"] },
     "notion-2f0fce77972180e5a191df6f245b5876": { notionNote: ["Umee"] },
-    "notion-2f0fce779721803f8372c886ceddf808": { brandSuggestions: ["Bepanthen 屁屁膏", "Desitin", "Weleda 薇莉達"] },
-    "notion-2f0fce77972180b08898de798efb8e25": { brandSuggestions: ["貝恩 Baan", "幫寶適", "水潤肌"] },
-    "notion-2f0fce779721804fb56dc5c28b529005": { brandSuggestions: ["Braun 百靈", "OMRON 歐姆龍", "Microlife 百略"] },
-    "notion-2f0fce779721807f959cf56b14729ead": { brandSuggestions: ["Miniklein", "Combi", "Halo SleepSack"] },
-    "notion-2f0fce77972180efad6aeb76bd0c70b3": { notionNote: ["設計師傳承☑️", "布款＊２"], brandSuggestions: ["Ergobaby", "Boba", "Pognae", "Bobita"] }
+    "notion-2f0fce77972180efad6aeb76bd0c70b3": { notionNote: ["設計師傳承☑️", "布款＊２"] }
   };
 
   function escapeHtml(str) {
@@ -1186,92 +1145,92 @@
         {
           name: "懷孕生產",
           items: [
-            { id: "notion-30ffce7797218012a4adff18c2ac5650", name: "哺乳衣/哺乳內衣", phase: "pregnancy-late", estCost: 1500, note: "建議懷孕後期開始準備,方便產後哺乳穿脫。" },
-            { id: "notion-2f0fce779721805b9936e9a13d407f55", name: "月嫂", phase: "pregnancy-late", estCost: 60000, note: "建議懷孕中後期開始評估及預約,熱門檔期常需提前安排。" },
-            { id: "notion-2f0fce7797218097bdf2f6d870a3121f", name: "月子中心", phase: "pregnancy-early", estCost: 150000, note: "必須的" },
             { id: "notion-301fce77972180ae9e9aed225b192917", name: "父母疫苗", phase: "pregnancy-early", estCost: 5000, note: "百日咳爸媽都打，RSV 媽媽打" },
             { id: "notion-2f0fce77972180249558cc4da1c21da3", name: "第一次抽血檢測", phase: "pregnancy-early", estCost: 1000, note: "產檢例行項目,依醫囑安排時間進行。" },
+            { id: "notion-2f0fce7797218097bdf2f6d870a3121f", name: "月子中心", phase: "pregnancy-early", estCost: 150000, note: "必須的" },
+            { id: "notion-2f0fce779721805b9936e9a13d407f55", name: "月嫂", phase: "pregnancy-late", estCost: 60000, note: "建議懷孕中後期開始評估及預約,熱門檔期常需提前安排。" },
             { id: "notion-3b6fce779721807a9996d8c8b6fee703", name: "月亮枕", phase: "pregnancy-late", estCost: 1200, note: "懷孕期間側睡及哺乳時可用於支撐身體,舒緩腰部壓力。" },
+            { id: "notion-30ffce7797218012a4adff18c2ac5650", name: "哺乳衣(內衣)", phase: "during-birth", estCost: 1500, note: "方便產後哺乳穿脫。" },
+            { id: "notion-3b6fce77972180b4b251dc5bee0f1a1c", name: "取名字", phase: "during-birth", estCost: 3000, note: "取完名字才能報戶口跟買嬰兒保險" },
+            { id: "notion-3b6fce77972180b98491f6611f388c57", name: "報戶口", phase: "during-birth", estCost: 0, note: "寶寶出生 60 天內需完成戶籍登記" },
             { id: "notion-3b6fce77972180b2a03ac4e78c0728f2", name: "嬰兒保險", phase: "during-birth", estCost: 5000, note: "寶寶出生後盡早投保,保障醫療及意外相關風險。" },
-            { id: "notion-3b6fce77972180b4b251dc5bee0f1a1c", name: "取名字", phase: "during-birth", estCost: 3000, note: "生產前後先準備好命名方向,報戶口時需要正式登記姓名。" },
-            { id: "notion-3b6fce77972180b98491f6611f388c57", name: "報戶口", phase: "during-birth", estCost: 0, note: "寶寶出生 60 天內需完成戶籍登記,請攜帶相關證件辦理。" },
             { id: "notion-2f7fce7797218022870adda06b2ed7ea", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁, 準備狀態會自動與分頁的進度同步。" }
           ]
         },
         {
           name: "嬰兒大型用品",
           items: [
-            { id: "notion-2f0fce779721800cb290d9a4fb815f3d", name: "嬰兒床", phase: "before-home", estCost: 6000, note: "建議提早準備並確認組裝,搭配安全床墊。" },
             { id: "notion-2f0fce77972180d28ff6df44619945ae", name: "提籃", phase: "before-home", estCost: 3000, note: "小孩出院跟回家會用到，可用平躺的推車替代" },
             { id: "notion-33bfce77972180c69bc2dae8d7c8d782", name: "汽座", phase: "before-home", estCost: 5000, note: "小朋友要坐車的必備工具" },
+            { id: "notion-33bfce7797218029b1efed528cee911f", name: "推車", phase: "before-home", estCost: 3000, note: "寶寶較大後外出更輕便,依需求另外準備。" },
             { id: "notion-2f0fce77972180459303d935f176b7bf", name: "安撫搖椅", phase: "before-home", estCost: 4000, note: "新生兒安撫神器,可搖晃或震動助眠。" },
             { id: "notion-2f0fce77972180169a9feae25aff76ef", name: "寶寶攝影機", phase: "before-home", estCost: 2000, note: "夜間或不同房間監看寶寶狀況使用。" },
             { id: "notion-2f0fce7797218005b399e66129563a7b", name: "尿布檯", phase: "before-home", estCost: 2500, note: "換尿布及穿衣服使用,可省去彎腰負擔。" },
             { id: "notion-2f0fce7797218004b393c470832e423c", name: "澡盆", phase: "before-home", estCost: 800, note: "新生兒洗澡使用,建議選附溫度計款式較安心。" },
-            { id: "notion-2f0fce779721804fb6e1e8ca5baeb64a", name: "睡窩/床中床", phase: "after-full-month", estCost: 1500, note: "新生兒睡眠空間,方便與大人同房不同床。" },
-            { id: "notion-2f1fce779721809d9bdac590e828ad1c", name: "嬰兒餐椅", phase: "after-full-month", month: 4, estCost: 2000, note: "寶寶開始坐穩後使用,建議選可調整角度款式。" },
-            { id: "notion-33bfce7797218029b1efed528cee911f", name: "推車", phase: "before-home", estCost: 3000, note: "寶寶較大後外出更輕便,依需求另外準備。" },
+            { id: "notion-2f0fce779721800cb290d9a4fb815f3d", name: "嬰兒床", phase: "before-home", estCost: 6000, note: "建議提早準備並確認組裝,搭配安全床墊。" },
             { id: "notion-2f0fce779721806d8242d1d01c659a89", name: "遊戲圍欄", phase: "after-full-month", month: 6, estCost: 2500, note: "寶寶開始活動後,用來規劃安全活動空間。" },
             { id: "notion-3b6fce7797218055b3e4f1ce5ad254e3", name: "遊戲地墊", phase: "after-full-month", month: 6, estCost: 2500, note: "寶寶開始活動後使用,提供安全防撞的爬行空間。" },
-            { id: "notion-2f0fce7797218041bc7edc43599f3088", name: "嬰兒房單人床架", estCost: 8000, note: "依家中空間規劃,通常寶寶較大後才需要。" },
-            { id: "notion-33bfce77972180b6843ed371bff14f44", name: "大推車", estCost: 6000, note: "外出散步使用,依生活型態選擇單手收或雙向款。" }
+            { id: "notion-2f1fce779721809d9bdac590e828ad1c", name: "嬰兒餐椅", phase: "after-full-month", month: 4, estCost: 2000, note: "寶寶開始坐穩後使用,建議選可調整角度款式。" },
+            { id: "notion-2f0fce779721804fb6e1e8ca5baeb64a", name: "睡窩(床中床）", phase: "after-full-month", estCost: 1500, note: "新生兒睡眠空間,方便與大人同房不同床。" },
+            { id: "notion-33bfce77972180b6843ed371bff14f44", name: "大推車", estCost: 6000, note: "外出散步使用,依生活型態選擇單手收或雙向款。" },
+            { id: "notion-2f0fce7797218041bc7edc43599f3088", name: "嬰兒房單人床架", estCost: 8000, note: "依家中空間規劃,通常寶寶較大後才需要。" }
           ]
         },
         {
           name: "喝奶用品",
           items: [
-            { id: "notion-2f7fce7797218001a907e4181008f056", name: "電動擠乳器 集乳袋", phase: "before-home", estCost: 6000, note: "建議產前先了解及準備,方便產後追奶儲奶。" },
-            { id: "notion-2f0fce7797218099a9bfd85ba0d0d64a", name: "奶嘴 奶嘴鍊", phase: "during-birth", estCost: 300, note: "外出或日常安撫寶寶情緒時使用。" },
-            { id: "notion-2f0fce77972180498d97f67dc7002ad0", name: "奶瓶 奶瓶奶嘴", phase: "before-home", estCost: 1500, note: "依哺餵需求準備數量足夠的奶瓶組。" },
-            { id: "notion-2f0fce77972180beb939df986c143c7d", name: "奶粉分裝罐", phase: "after-full-month", estCost: 300, note: "外出攜帶配方奶粉方便分裝。" },
-            { id: "notion-2f0fce7797218082870ddc49306815b1", name: "消毒鍋/奶瓶清洗鍋", phase: "before-home", estCost: 2500, note: "奶瓶奶嘴每日消毒必備。" },
-            { id: "notion-2f0fce7797218084ada8fb846be10fe5", name: "熱水器/調乳器", phase: "before-home", estCost: 3000, note: "半夜泡奶方便快速調溫。" },
             { id: "notion-30ffce779721806b96eec673982b4288", name: "配方奶", phase: "during-birth", estCost: 1000, note: "先準備小包裝,依寶寶接受度再決定廠牌。" },
-            { id: "notion-3b7fce77972180408a77c4e9a2c13857", name: "奶瓶刷", phase: "before-home", estCost: 150, note: "清潔奶瓶死角專用刷,建議搭配奶瓶架晾乾。" }
+            { id: "notion-2f0fce7797218099a9bfd85ba0d0d64a", name: "奶嘴 奶嘴鍊", phase: "during-birth", estCost: 300, note: "外出或日常安撫寶寶情緒時使用。" },
+            { id: "notion-2f7fce7797218001a907e4181008f056", name: "擠乳器 集乳袋", phase: "before-home", estCost: 6000, note: "建議產前先了解及準備,方便產後追奶儲奶。" },
+            { id: "notion-2f0fce7797218084ada8fb846be10fe5", name: "熱水器(調乳器)", phase: "before-home", estCost: 3000, note: "半夜泡奶方便快速調溫。" },
+            { id: "notion-2f0fce7797218082870ddc49306815b1", name: "奶瓶消毒鍋", phase: "before-home", estCost: 2500, note: "奶瓶奶嘴每日消毒必備。" },
+            { id: "notion-2f0fce77972180498d97f67dc7002ad0", name: "奶瓶 奶瓶奶嘴", phase: "before-home", estCost: 1500, note: "依哺餵需求準備數量足夠的奶瓶組。" },
+            { id: "notion-3b7fce77972180408a77c4e9a2c13857", name: "奶瓶刷", phase: "before-home", estCost: 150, note: "" },
+            { id: "notion-2f0fce77972180beb939df986c143c7d", name: "奶粉分裝罐", phase: "after-full-month", estCost: 300, note: "外出攜帶配方奶粉方便分裝。" }
           ]
         },
         {
           name: "尿布衣物類",
           items: [
+            { id: "notion-30ffce779721804483cdd029ffb7ac84", name: "紗布衣", phase: "before-home", estCost: 500, note: "透氣親膚,適合夏天或坐月子期間穿著。" },
             { id: "notion-2f0fce7797218080a47efccfa03f7237", name: "包屁衣", phase: "before-home", estCost: 600, note: "新生兒最常穿著的內搭衣物,建議多準備幾件替換。" },
-            { id: "notion-2f0fce77972180f2a64eecd3e8b5f096", name: "包巾", phase: "before-home", estCost: 400, note: "包裹保暖及模擬子宮的安撫效果。" },
-            { id: "notion-2f0fce77972180ad914bef5d14e3f5a5", name: "口水巾/ 圍兜", phase: "before-home", estCost: 300, note: "保護衣物及肚臍傷口,防止溢奶弄濕。" },
+            { id: "notion-2f0fce77972180ad914bef5d14e3f5a5", name: "口水巾/圍兜", phase: "before-home", estCost: 300, note: "保護衣物, 防止溢奶弄濕。" },
+            { id: "notion-2f0fce77972180d384e1ed9545951cd7", name: "紗布巾", phase: "before-home", estCost: 200, note: "紗織物製成，輕薄且柔和，可擦汗、臉部或身體，擦拭口水、溢奶及日常清潔,多用途使用。" },
+            { id: "notion-2f0fce77972180f2a64eecd3e8b5f096", name: "包巾", phase: "before-home", estCost: 400, note: "包裹保暖及模擬子宮的安撫效果，睡覺時使用。" },
+            { id: "notion-30ffce779721801e8d4bd536d7c800a1", name: "蝴蝶衣", phase: "before-home", estCost: 400, note: "臍帶未脫落前方便穿脫的前開式衣物。" },
             { id: "notion-2f0fce77972180e28b6fc8565e290bce", name: "嬰兒浴巾", phase: "before-home", estCost: 500, note: "洗澡後包裹保暖使用。" },
             { id: "notion-2f0fce77972180809a63c6e63aeee12c", name: "尿布", phase: "before-home", estCost: 800, note: "依體重選擇合適尺寸,建議先準備小包裝。" },
-            { id: "notion-2f0fce77972180d384e1ed9545951cd7", name: "紗布巾", phase: "before-home", estCost: 200, note: "擦拭口水、溢奶及日常清潔,多用途使用。" },
-            { id: "notion-30ffce779721804483cdd029ffb7ac84", name: "紗布衣", phase: "before-home", estCost: 500, note: "透氣親膚,適合夏天或坐月子期間穿著。" },
-            { id: "notion-30ffce779721801e8d4bd536d7c800a1", name: "蝴蝶衣", phase: "before-home", estCost: 400, note: "臍帶未脫落前方便穿脫的前開式衣物。" },
             { id: "notion-30ffce77972180fab4a8ef1a73196143", name: "襪子", phase: "after-full-month", estCost: 200, note: "保暖使用,依季節調整厚度。" }
           ]
         },
         {
           name: "嬰兒生活用品",
           items: [
-            { id: "notion-2f0fce779721800e8f8ecb8e7fc86c9a", name: "嬰兒沐浴乳", phase: "before-home", estCost: 500, note: "選擇溫和無淚配方的洗髮沐浴用品。" },
-            { id: "notion-3b7fce779721800ba6e3feec2dbd1ee9", name: "乾濕兩用巾", phase: "before-home", estCost: 300, note: "可乾用擦拭或沾濕清潔,居家日常照護方便攜帶。" },
-            { id: "notion-3b7fce779721800d9779ddea1b90cd75", name: "棉花棒", phase: "before-home", estCost: 100, note: "清潔耳朵、肚臍及口鼻分泌物使用,建議選嬰兒專用安全款式。" },
-            { id: "notion-3b7fce7797218095a331c70c248322ba", name: "指甲刀", phase: "before-home", estCost: 200, note: "修剪寶寶指甲避免抓傷,建議選圓頭安全設計。" },
-            { id: "notion-2f0fce77972180d39dadf37fa7c89cd6", name: "嬰兒洗衣精", phase: "before-home", estCost: 300, note: "寶寶衣物建議與大人分開清洗。" },
-            { id: "notion-2f0fce779721807a87d7e50ca2a0c7cb", name: "安撫玩具", phase: "after-full-month", estCost: 500, note: "幫助寶寶建立安全感,依月齡調整款式。" },
-            { id: "notion-2f0fce77972180a985f3f98298b80564", name: "尿布墊", phase: "before-home", estCost: 300, note: "換尿布時墊在下方,防止弄髒床單。" },
-            { id: "notion-2f0fce77972180e5a191df6f245b5876", name: "尿布桶", phase: "before-home", estCost: 1500, note: "集中放置使用過的尿布,建議選有除臭功能款式。" },
             { id: "notion-2f0fce779721803f8372c886ceddf808", name: "屁屁膏", phase: "pregnancy-late", estCost: 300, note: "預防及舒緩尿布疹。" },
+            { id: "notion-2f0fce77972180a985f3f98298b80564", name: "尿布墊", phase: "before-home", estCost: 300, note: "換尿布時墊在下方,防止弄髒床單。" },
+            { id: "notion-2f0fce77972180d39dadf37fa7c89cd6", name: "嬰兒洗衣精", phase: "before-home", estCost: 300, note: "寶寶衣物建議與大人分開清洗。" },
+            { id: "notion-2f0fce77972180e5a191df6f245b5876", name: "尿布桶", phase: "before-home", estCost: 1500, note: "集中放置使用過的尿布,建議選有除臭功能款式。" },
+            { id: "notion-2f0fce779721800e8f8ecb8e7fc86c9a", name: "嬰兒沐浴乳", phase: "before-home", estCost: 500, note: "選擇溫和無淚配方的洗髮沐浴用品。" },
             { id: "notion-2f0fce77972180b08898de798efb8e25", name: "濕紙巾", phase: "before-home", estCost: 500, note: "換尿布及清潔隨時可用,建議多準備庫存。" },
+            { id: "notion-3b7fce779721800ba6e3feec2dbd1ee9", name: "乾濕兩用巾", phase: "before-home", estCost: 300, note: "" },
             { id: "notion-2f0fce779721804fb56dc5c28b529005", name: "溫度計/耳溫槍", phase: "before-home", estCost: 1000, note: "居家照護基本工具,方便測量體溫及清潔保養。" },
-            { id: "notion-2f0fce779721807f959cf56b14729ead", name: "防踢被", phase: "after-full-month", estCost: 500, note: "睡眠時保暖並避免寶寶踢被著涼。" },
+            { id: "notion-3b7fce7797218095a331c70c248322ba", name: "指甲刀", phase: "before-home", estCost: 200, note: "" },
+            { id: "notion-3b7fce779721800d9779ddea1b90cd75", name: "棉花棒", phase: "before-home", estCost: 100, note: "" },
             { id: "notion-2f0fce77972180efad6aeb76bd0c70b3", name: "揹巾", phase: "after-full-month", month: 2, estCost: 2000, note: "外出或安撫時使用,建議依寶寶月齡及體重選擇。" },
-            { id: "notion-3b7fce77972180889724c6e0a515d87d", name: "兒童牙刷", phase: "after-full-month", estCost: 200, note: "長牙後開始使用,選軟毛小頭款式清潔口腔。" },
-            { id: "notion-3b7fce77972180a4b746ce0d535d706c", name: "固齒器", phase: "after-full-month", estCost: 300, note: "長牙期舒緩牙齦不適,建議選食品級材質。" },
-            { id: "notion-3b7fce77972180e3a6a4cb273366ed3b", name: "兒童餐具", phase: "after-full-month", estCost: 500, note: "開始吃副食品後使用,選防滑防摔材質較安心。" }
+            { id: "notion-2f0fce779721807f959cf56b14729ead", name: "防踢被", phase: "after-full-month", estCost: 500, note: "睡眠時保暖並避免寶寶踢被著涼。" },
+            { id: "notion-2f0fce779721807a87d7e50ca2a0c7cb", name: "安撫玩具", phase: "after-full-month", estCost: 500, note: "幫助寶寶建立安全感,依月齡調整款式。" },
+            { id: "notion-3b7fce77972180889724c6e0a515d87d", name: "兒童牙刷", phase: "after-full-month", estCost: 200, note: "" },
+            { id: "notion-3b7fce77972180e3a6a4cb273366ed3b", name: "兒童餐具", phase: "after-full-month", estCost: 500, note: "" },
+            { id: "notion-3b7fce77972180a4b746ce0d535d706c", name: "固齒器", phase: "after-full-month", estCost: 300, note: "" }
           ]
         },
         {
           name: "嬰幼兒發展",
           items: [
-            { id: "notion-3b7fce779721801c8c2be9cdeac38739", name: "床掛玩具", phase: "after-full-month", estCost: 800, note: "促進視覺追蹤及抓握發展,掛於嬰兒床上方使用。" },
-            { id: "notion-3b7fce779721804e8c52ebe22decf9a6", name: "健力架", phase: "after-full-month", estCost: 1500, note: "訓練肢體伸展及手眼協調,趴臥時間可搭配使用。" },
-            { id: "notion-3b7fce77972180ca9078da9843a3a534", name: "布書", phase: "after-full-month", estCost: 400, note: "刺激視覺觸覺發展,材質柔軟耐咬適合寶寶抓握翻閱。" },
-            { id: "notion-3b7fce77972180f0b0ced3a2cb7aae2c", name: "黑白圖卡", phase: "after-full-month", estCost: 200, note: "新生兒視覺發展初期使用,高對比圖案有助視覺刺激。" }
+            { id: "notion-3b7fce77972180f0b0ced3a2cb7aae2c", name: "黑白圖卡", phase: "after-full-month", estCost: 200, note: "" },
+            { id: "notion-3b7fce77972180ca9078da9843a3a534", name: "布書", phase: "after-full-month", estCost: 400, note: "" },
+            { id: "notion-3b7fce779721804e8c52ebe22decf9a6", name: "健力架", phase: "after-full-month", estCost: 1500, note: "" },
+            { id: "notion-3b7fce779721801c8c2be9cdeac38739", name: "床掛玩具", phase: "after-full-month", estCost: 800, note: "" }
           ]
         }
       ]
@@ -1316,11 +1275,10 @@
   }
 
   function getItemStatus(tabDef, item) {
-    if (item && typeof item === "object" && item.linkToTab) {
+    if (item.linkToTab) {
       return computeLinkedTabStatusKey(tabDef, DATA[item.linkToTab]);
     }
-    var itemId = (item && typeof item === "object") ? item.id : item;
-    return state[itemId] || tabDef.states[0].key;
+    return state[item.id] || tabDef.states[0].key;
   }
 
   function setItemStatus(itemId, statusKey) {
@@ -1414,8 +1372,8 @@
     } catch (e) { /* ignore quota errors */ }
   }
 
-  function getItemPhase(item, group) {
-    return phaseState[item.id] || item.phase || (group && group.defaultPhase) || "unassessed";
+  function getItemPhase(item) {
+    return phaseState[item.id] || item.phase || "unassessed";
   }
 
   // 待評估項目不計入進度條/分頁計數,只在「待評估」篩選裡看得到
@@ -1432,8 +1390,8 @@
     savePhases();
   }
 
-  function renderPhaseSelect(item, group) {
-    var current = getItemPhase(item, group);
+  function renderPhaseSelect(item) {
+    var current = getItemPhase(item);
 
     var wrap = document.createElement("div");
     wrap.className = "phase-select-wrap";
@@ -1486,9 +1444,8 @@
   }
 
   function buildBrandListHtml(info) {
-    var top3 = info.brandSuggestions.slice(0, 3);
     var html = '<ul class="modal-brand-list">';
-    top3.forEach(function (b) {
+    info.brandSuggestions.forEach(function (b) {
       var name = (typeof b === "object" && b) ? b.name : b;
       var url = (typeof b === "object" && b) ? b.url : null;
       if (url) {
@@ -1498,7 +1455,6 @@
       }
     });
     html += "</ul>";
-    html += '<p class="modal-disclaimer">以上為市面主流品牌參考(前三名),僅供搜尋方向參考,非採購建議或代言,實際請自行比價評估。</p>';
     return html;
   }
 
@@ -1712,7 +1668,7 @@
     tabDef.groups.forEach(function (group) {
       var filter = activeFilter[activeTab];
       var visibleItems = group.items.filter(function (it) {
-        var ph = tabDef.phaseSelectable ? getItemPhase(it, group) : it.phase;
+        var ph = tabDef.phaseSelectable ? getItemPhase(it) : it.phase;
         if (filter === "all") return ph !== "unassessed";
         if (filter.indexOf(STATUS_FILTER_PREFIX) === 0) {
           return getItemStatus(tabDef, it) === filter.slice(STATUS_FILTER_PREFIX.length);
@@ -1723,8 +1679,8 @@
 
       if (tabDef.phaseSelectable) {
         visibleItems = visibleItems.slice().sort(function (a, b) {
-          var ka = PHASE_SORT_ORDER.indexOf(getItemPhase(a, group));
-          var kb = PHASE_SORT_ORDER.indexOf(getItemPhase(b, group));
+          var ka = PHASE_SORT_ORDER.indexOf(getItemPhase(a));
+          var kb = PHASE_SORT_ORDER.indexOf(getItemPhase(b));
           if (ka === -1) ka = PHASE_SORT_ORDER.length;
           if (kb === -1) kb = PHASE_SORT_ORDER.length;
           if (ka !== kb) return ka - kb;
@@ -1740,9 +1696,6 @@
       var head = document.createElement("div");
       head.className = "group-head";
       var headHtml = '<h2 class="group-title">' + group.name + '</h2>';
-      if (group.phase) {
-        headHtml += '<span class="group-phase-badge">' + PHASE_LABEL[group.phase] + '</span>';
-      }
       headHtml += '<span class="group-count">' + visibleItems.length + ' 項</span>';
       head.innerHTML = headHtml;
       groupEl.appendChild(head);
@@ -1788,100 +1741,107 @@
     return iconSpan;
   }
 
+  // 標題列(圖示+名稱+時間標籤)+ 簡短說明,一般卡片與連結卡片(item.linkToTab)共用同一份排版邏輯
+  function appendCardMain(root, tabDef, item, group) {
+    var main = tabDef.hasPhase ? document.createElement("div") : root;
+    if (tabDef.hasPhase) main.className = "card-main";
+
+    var name = document.createElement("h3");
+    name.className = "card-name";
+    var groupIconEl = makeGroupIconEl(group);
+    if (groupIconEl) name.appendChild(groupIconEl);
+    name.appendChild(document.createTextNode(item.name));
+
+    if (tabDef.hasPhase) {
+      // 時間標籤放在標題列,靠右對齊(見下方 .card-name-row)
+      var phaseEl;
+      if (tabDef.phaseSelectable) {
+        phaseEl = renderPhaseSelect(item);
+        phaseEl.addEventListener("click", function (e) { e.stopPropagation(); });
+      } else {
+        phaseEl = document.createElement("span");
+        phaseEl.className = "phase-chip";
+        if (item.phase) {
+          phaseEl.setAttribute("data-phase", item.phase);
+          phaseEl.textContent = PHASE_LABEL[item.phase];
+        }
+      }
+
+      var nameRow = document.createElement("div");
+      nameRow.className = "card-name-row";
+      nameRow.appendChild(name);
+      nameRow.appendChild(phaseEl);
+      main.appendChild(nameRow);
+    } else {
+      main.appendChild(name);
+    }
+
+    var note = document.createElement("p");
+    note.className = "card-note";
+    note.textContent = item.note || "";
+    if (item.note) note.title = item.note;
+    main.appendChild(note);
+
+    if (tabDef.hasPhase) root.appendChild(main);
+  }
+
+  function buildCostInput(tabDef, item) {
+    var wrap = document.createElement("div");
+    wrap.className = "cost-input-wrap";
+
+    var prefix = document.createElement("span");
+    prefix.className = "cost-prefix";
+    prefix.setAttribute("aria-hidden", "true");
+    prefix.textContent = "NT$";
+
+    var input = document.createElement("input");
+    input.className = "cost-input";
+    input.type = "number";
+    input.min = "0";
+    input.inputMode = "numeric";
+    input.setAttribute("aria-label", item.name + " 的花費金額");
+    if (typeof item.estCost === "number") {
+      input.placeholder = item.estCost.toLocaleString("zh-TW");
+    }
+    var savedCost = getItemCost(item.id);
+    if (savedCost !== null) input.value = String(savedCost);
+
+    input.addEventListener("click", function (e) { e.stopPropagation(); });
+    input.addEventListener("keydown", function (e) { e.stopPropagation(); });
+    input.addEventListener("input", function () {
+      var raw = input.value;
+      if (raw === "") {
+        setItemCost(item.id, null);
+      } else {
+        var num = parseFloat(raw);
+        setItemCost(item.id, isNaN(num) ? null : num);
+      }
+      refreshBudgetDisplay(tabDef);
+    });
+
+    wrap.appendChild(prefix);
+    wrap.appendChild(input);
+    return wrap;
+  }
+
   function renderCard(tabDef, item, group) {
     if (item.linkToTab) {
       var linkedTabDef = DATA[item.linkToTab];
       var computedStatusKey = getItemStatus(tabDef, item);
 
       var linkCard = document.createElement("article");
-      linkCard.className = "card card-link" + (tabDef.hasPhase ? " has-phase" : "") + (tabDef.hasCost ? " has-cost" : "");
+      linkCard.className = "card card-link" + (tabDef.hasPhase ? " has-phase" : "");
       linkCard.setAttribute("data-state", computeCardState(tabDef, computedStatusKey));
       linkCard.setAttribute("role", "button");
       linkCard.tabIndex = 0;
       linkCard.setAttribute("aria-label", item.name + " — 前往「" + linkedTabDef.label + "」分頁");
 
-      var linkMain = tabDef.hasPhase ? document.createElement("div") : linkCard;
-      if (tabDef.hasPhase) linkMain.className = "card-main";
-
-      var linkName = document.createElement("h3");
-      linkName.className = "card-name";
-      var linkGroupIcon = makeGroupIconEl(group);
-      if (linkGroupIcon) linkName.appendChild(linkGroupIcon);
-      linkName.appendChild(document.createTextNode(item.name));
-
-      if (tabDef.hasPhase) {
-        // 時間標籤放在標題列,靠右對齊(見下方 .card-name-row),跟一般卡片一致
-        var linkPhaseEl;
-        if (tabDef.phaseSelectable) {
-          linkPhaseEl = renderPhaseSelect(item, group);
-          linkPhaseEl.addEventListener("click", function (e) { e.stopPropagation(); });
-        } else {
-          linkPhaseEl = document.createElement("span");
-          linkPhaseEl.className = "phase-chip";
-          if (item.phase) {
-            linkPhaseEl.setAttribute("data-phase", item.phase);
-            linkPhaseEl.textContent = PHASE_LABEL[item.phase];
-          }
-        }
-
-        var linkNameRow = document.createElement("div");
-        linkNameRow.className = "card-name-row";
-        linkNameRow.appendChild(linkName);
-        linkNameRow.appendChild(linkPhaseEl);
-        linkMain.appendChild(linkNameRow);
-      } else {
-        linkMain.appendChild(linkName);
-      }
-
-      var linkNote = document.createElement("p");
-      linkNote.className = "card-note";
-      linkNote.textContent = item.note || "";
-      if (item.note) linkNote.title = item.note;
-      linkMain.appendChild(linkNote);
-
-      if (tabDef.hasPhase) linkCard.appendChild(linkMain);
+      appendCardMain(linkCard, tabDef, item, group);
 
       var linkSide = tabDef.hasPhase ? document.createElement("div") : linkCard;
       if (tabDef.hasPhase) linkSide.className = "card-side";
 
-      if (tabDef.hasCost) {
-        var linkCostWrap = document.createElement("div");
-        linkCostWrap.className = "cost-input-wrap";
-
-        var linkCostPrefix = document.createElement("span");
-        linkCostPrefix.className = "cost-prefix";
-        linkCostPrefix.setAttribute("aria-hidden", "true");
-        linkCostPrefix.textContent = "NT$";
-
-        var linkCostInput = document.createElement("input");
-        linkCostInput.className = "cost-input";
-        linkCostInput.type = "number";
-        linkCostInput.min = "0";
-        linkCostInput.inputMode = "numeric";
-        linkCostInput.setAttribute("aria-label", item.name + " 的花費金額");
-        if (typeof item.estCost === "number") {
-          linkCostInput.placeholder = item.estCost.toLocaleString("zh-TW");
-        }
-        var linkSavedCost = getItemCost(item.id);
-        if (linkSavedCost !== null) linkCostInput.value = String(linkSavedCost);
-
-        linkCostInput.addEventListener("click", function (e) { e.stopPropagation(); });
-        linkCostInput.addEventListener("keydown", function (e) { e.stopPropagation(); });
-        linkCostInput.addEventListener("input", function () {
-          var raw = linkCostInput.value;
-          if (raw === "") {
-            setItemCost(item.id, null);
-          } else {
-            var num = parseFloat(raw);
-            setItemCost(item.id, isNaN(num) ? null : num);
-          }
-          refreshBudgetDisplay(tabDef);
-        });
-
-        linkCostWrap.appendChild(linkCostPrefix);
-        linkCostWrap.appendChild(linkCostInput);
-        linkSide.appendChild(linkCostWrap);
-      }
+      if (tabDef.hasCost) linkSide.appendChild(buildCostInput(tabDef, item));
 
       // Status is not user-editable here — it mirrors the linked tab's own
       // progress (see computeLinkedTabStatusKey), so this select is disabled.
@@ -1931,92 +1891,16 @@
     var isDone = status === tabDef.doneKey;
 
     var card = document.createElement("article");
-    card.className = "card" + (tabDef.hasPhase ? " has-phase" : "") + (tabDef.hasCost ? " has-cost" : "");
+    card.className = "card" + (tabDef.hasPhase ? " has-phase" : "");
     card.setAttribute("data-state", computeCardState(tabDef, status));
 
     // 準備清單卡片(hasPhase):左邊 card-main(標題列含時間標籤+簡短說明),右邊 card-side(價格/狀態)
-    var main = tabDef.hasPhase ? document.createElement("div") : card;
-    if (tabDef.hasPhase) main.className = "card-main";
-
-    var name = document.createElement("h3");
-    name.className = "card-name";
-    var groupIconEl = makeGroupIconEl(group);
-    if (groupIconEl) name.appendChild(groupIconEl);
-    name.appendChild(document.createTextNode(item.name));
-
-    if (tabDef.hasPhase) {
-      // 時間標籤放在標題列,靠右對齊(見下方 .card-name-row)
-      var phaseEl;
-      if (tabDef.phaseSelectable) {
-        phaseEl = renderPhaseSelect(item, group);
-        phaseEl.addEventListener("click", function (e) { e.stopPropagation(); });
-      } else {
-        phaseEl = document.createElement("span");
-        phaseEl.className = "phase-chip";
-        if (item.phase) {
-          phaseEl.setAttribute("data-phase", item.phase);
-          phaseEl.textContent = PHASE_LABEL[item.phase];
-        }
-      }
-
-      var nameRow = document.createElement("div");
-      nameRow.className = "card-name-row";
-      nameRow.appendChild(name);
-      nameRow.appendChild(phaseEl);
-      main.appendChild(nameRow);
-    } else {
-      main.appendChild(name);
-    }
-
-    var note = document.createElement("p");
-    note.className = "card-note";
-    note.textContent = item.note || "";
-    if (item.note) note.title = item.note;
-    main.appendChild(note);
-
-    if (tabDef.hasPhase) card.appendChild(main);
+    appendCardMain(card, tabDef, item, group);
 
     var side = tabDef.hasPhase ? document.createElement("div") : card;
     if (tabDef.hasPhase) side.className = "card-side";
 
-    if (tabDef.hasCost) {
-      var costWrap = document.createElement("div");
-      costWrap.className = "cost-input-wrap";
-
-      var costPrefix = document.createElement("span");
-      costPrefix.className = "cost-prefix";
-      costPrefix.setAttribute("aria-hidden", "true");
-      costPrefix.textContent = "NT$";
-
-      var costInput = document.createElement("input");
-      costInput.className = "cost-input";
-      costInput.type = "number";
-      costInput.min = "0";
-      costInput.inputMode = "numeric";
-      costInput.setAttribute("aria-label", item.name + " 的花費金額");
-      if (typeof item.estCost === "number") {
-        costInput.placeholder = item.estCost.toLocaleString("zh-TW");
-      }
-      var savedCost = getItemCost(item.id);
-      if (savedCost !== null) costInput.value = String(savedCost);
-
-      costInput.addEventListener("click", function (e) { e.stopPropagation(); });
-      costInput.addEventListener("keydown", function (e) { e.stopPropagation(); });
-      costInput.addEventListener("input", function () {
-        var raw = costInput.value;
-        if (raw === "") {
-          setItemCost(item.id, null);
-        } else {
-          var num = parseFloat(raw);
-          setItemCost(item.id, isNaN(num) ? null : num);
-        }
-        refreshBudgetDisplay(tabDef);
-      });
-
-      costWrap.appendChild(costPrefix);
-      costWrap.appendChild(costInput);
-      side.appendChild(costWrap);
-    }
+    if (tabDef.hasCost) side.appendChild(buildCostInput(tabDef, item));
 
     var activeSlot = tabDef.states.findIndex(function (st) { return st.key === status; });
 
