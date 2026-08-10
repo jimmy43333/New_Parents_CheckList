@@ -153,15 +153,10 @@
 
   /* ---------- Tabs ---------- */
   .tabbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
     display: flex;
     gap: 6px;
     padding: 12px 4px;
     margin-top: 8px;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
   }
   .tab-btn {
@@ -200,7 +195,13 @@
 
   /* ---------- Progress ---------- */
   .progress-block {
-    padding: 22px 4px 6px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 14px 4px 12px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
   }
   .progress-top {
     display: flex;
@@ -587,7 +588,7 @@
     .tab-btn .tab-icon { font-size: 1.1rem; }
     .tab-count { margin-left: auto; }
 
-    .progress-block { padding: 18px 2px 4px; }
+    .progress-block { padding: 12px 2px 10px; }
     .panel-desc-block { margin: 2px 2px 0; padding: 11px 14px; }
     .budget-block { margin: 14px 2px 0; padding: 12px 14px; }
     .budget-value { font-size: 1rem; }
