@@ -2,7 +2,7 @@
 <title>新手爸媽準備清單</title>
 <style>
   :root {
-    --bg: #EEF2FA;
+    --bg: #aec8fb;
     --surface: #FFFFFF;
     --surface-alt: #F6F8FC;
     --ink: #23262F;
@@ -18,6 +18,7 @@
     --accent-honey-soft: #FFEBC7;
     --accent-lavender: #8B5CF6;
     --accent-lavender-soft: #EAE1FE;
+    --panel-block-bg: #9ed4f6;
     --neutral-soft: #EEF1F7;
     --neutral-ink: #5B6072;
     --phase-mauve: #C026D3;
@@ -50,6 +51,7 @@
     --accent-honey-soft: #453310;
     --accent-lavender: #B18CFF;
     --accent-lavender-soft: #362259;
+    --panel-block-bg: #163446;
     --neutral-soft: #262B38;
     --neutral-ink: #A9AEC2;
     --phase-mauve: #E17FE8;
@@ -83,6 +85,7 @@
       --accent-honey-soft: #453310;
       --accent-lavender: #B18CFF;
       --accent-lavender-soft: #362259;
+      --panel-block-bg: #163446;
       --neutral-soft: #262B38;
       --neutral-ink: #A9AEC2;
       --phase-mauve: #E17FE8;
@@ -254,7 +257,7 @@
     margin: 4px 4px 0;
     padding: 13px 16px;
     border-radius: 12px;
-    background: var(--accent-sage-soft);
+    background: var(--panel-block-bg);
     border: 1px solid var(--border);
   }
   .panel-desc-list {
@@ -276,7 +279,7 @@
     margin: 16px 4px 0;
     padding: 13px 16px;
     border-radius: 12px;
-    background: var(--accent-honey-soft);
+    background: var(--panel-block-bg);
     border: 1px solid var(--border);
   }
   .budget-label {
@@ -953,7 +956,7 @@
   <main id="tabpanels"></main>
 
   <p class="footer">
-    <strong>小提醒:</strong>清單中的「用途說明」與「什麼時候需要」為一般性參考整理,並非醫療或育兒專業建議;每個寶寶與家庭狀況不同,實際準備項目與時機請依自身需求,並在必要時諮詢醫師或專業人員調整。祝每一位新手爸媽都能順利度過育兒的第一哩路 💛
+    <strong>免責聲明:</strong>清單中說明與建議為自身經驗參考整理,並非醫療或育兒專業建議;每個寶寶與家庭狀況不同,實際準備項目與時機請依自身需求,並在必要時諮詢醫師或專業人員調整。祝每一位新手爸媽都能順利度過育兒的第一哩路 💛
   </p>
 </div>
 
@@ -1210,7 +1213,7 @@
             { id: "notion-3b6fce77972180b2a03ac4e78c0728f2", name: "嬰兒保險", phase: "during-birth", estCost: 5000, note: "寶寶出生後盡早投保,保障醫療及意外相關風險。" },
             { id: "notion-3b6fce77972180b4b251dc5bee0f1a1c", name: "取名字", phase: "during-birth", estCost: 3000, note: "生產前後先準備好命名方向,報戶口時需要正式登記姓名。" },
             { id: "notion-3b6fce77972180b98491f6611f388c57", name: "報戶口", phase: "during-birth", estCost: 0, note: "寶寶出生 60 天內需完成戶籍登記,請攜帶相關證件辦理。" },
-            { id: "notion-2f7fce7797218022870adda06b2ed7ea", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁,查看住院與月中的完整打包清單。準備狀態會自動依「待產包」分頁的打包進度同步,無法在此手動更改。" }
+            { id: "notion-2f7fce7797218022870adda06b2ed7ea", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁,查看住院與月中的完整打包清單。準備狀態會自動依「待產包」分頁的打包進度同步。" }
           ]
         },
         {
@@ -1647,7 +1650,7 @@
     progressBlock.className = "progress-block";
     progressBlock.innerHTML =
       '<div class="progress-top">' +
-        '<span class="progress-label">' + tabDef.label + ' 準備進度</span>' +
+        '<span class="progress-label">準備進度</span>' +
         '<span class="progress-stat-wrap">' +
           '<span class="progress-stat"><strong>' + pct + '%</strong> · ' + doneCount + ' / ' + items.length + ' 項完成</span>' +
         '</span>' +
@@ -1660,9 +1663,9 @@
       var budgetBlock = document.createElement("div");
       budgetBlock.className = "budget-block";
       budgetBlock.innerHTML =
-        '<span class="budget-label">💰 已填寫花費總額</span>' +
+        '<span class="budget-label">💰 已填寫預算總額</span>' +
         '<span class="budget-value" id="budgetTotalValue">' + formatNTD(computeCostTotal(tabDef)) + '</span>' +
-        '<span class="budget-hint">每張卡片欄位裡的灰色數字是市場行情粗估價,僅供參考;實際花費請自行輸入,總額只會計算你有填寫的項目。</span>';
+        '<span class="budget-hint">每張卡片灰色數字是市場行情粗估價,僅供參考;請自行輸入預算或實際花費。</span>';
       panel.appendChild(budgetBlock);
     }
 
