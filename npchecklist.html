@@ -457,15 +457,15 @@
     margin: 0;
   }
   .card[data-state="done"] .card-name { color: var(--accent-sage); }
-  .card-link {
+  .card[role="button"] {
     cursor: pointer;
     transition: border-color 0.15s ease, background 0.15s ease;
   }
-  .card-link:hover, .card-link:focus-visible {
+  .card[role="button"]:hover, .card[role="button"]:focus-visible {
     border-color: var(--accent-coral);
     background: color-mix(in srgb, var(--accent-coral-soft) 40%, var(--surface));
   }
-  .card-link:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
+  .card[role="button"]:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
   .card-link .card-note { margin: 0; }
   .card-link-arrow {
     font-size: 0.85rem;
@@ -474,25 +474,6 @@
     text-align: right;
     white-space: nowrap;
   }
-  .card-name-btn {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    color: inherit;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-    cursor: pointer;
-    text-decoration-line: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.15s ease, color 0.15s ease;
-  }
-  .card-name-btn:hover { text-decoration-color: currentColor; color: var(--accent-coral); }
-  .card-name-btn:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; border-radius: 3px; }
   .phase-chip {
     grid-area: phase;
     justify-self: start;
@@ -1214,7 +1195,7 @@
             { id: "notion-3b6fce77972180b2a03ac4e78c0728f2", name: "嬰兒保險", phase: "during-birth", estCost: 5000, note: "寶寶出生後盡早投保,保障醫療及意外相關風險。" },
             { id: "notion-3b6fce77972180b4b251dc5bee0f1a1c", name: "取名字", phase: "during-birth", estCost: 3000, note: "生產前後先準備好命名方向,報戶口時需要正式登記姓名。" },
             { id: "notion-3b6fce77972180b98491f6611f388c57", name: "報戶口", phase: "during-birth", estCost: 0, note: "寶寶出生 60 天內需完成戶籍登記,請攜帶相關證件辦理。" },
-            { id: "notion-2f7fce7797218022870adda06b2ed7ea", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁,查看住院與月中的完整打包清單。準備狀態會自動依「待產包」分頁的打包進度同步。" }
+            { id: "notion-2f7fce7797218022870adda06b2ed7ea", name: "待產包", phase: "pregnancy-late", linkToTab: "bag", note: "點此前往「待產包」分頁, 準備狀態會自動與分頁的進度同步。" }
           ]
         },
         {
@@ -1813,7 +1794,7 @@
       var computedStatusKey = getItemStatus(tabDef, item);
 
       var linkCard = document.createElement("article");
-      linkCard.className = "card card-link" + (tabDef.hasPhase ? " has-phase" : "");
+      linkCard.className = "card card-link" + (tabDef.hasPhase ? " has-phase" : "") + (tabDef.hasCost ? " has-cost" : "");
       linkCard.setAttribute("data-state", computeCardState(tabDef, computedStatusKey));
       linkCard.setAttribute("role", "button");
       linkCard.tabIndex = 0;
@@ -1827,7 +1808,30 @@
       var linkGroupIcon = makeGroupIconEl(group);
       if (linkGroupIcon) linkName.appendChild(linkGroupIcon);
       linkName.appendChild(document.createTextNode(item.name));
-      linkMain.appendChild(linkName);
+
+      if (tabDef.hasPhase) {
+        // 時間標籤放在標題列,靠右對齊(見下方 .card-name-row),跟一般卡片一致
+        var linkPhaseEl;
+        if (tabDef.phaseSelectable) {
+          linkPhaseEl = renderPhaseSelect(item, group);
+          linkPhaseEl.addEventListener("click", function (e) { e.stopPropagation(); });
+        } else {
+          linkPhaseEl = document.createElement("span");
+          linkPhaseEl.className = "phase-chip";
+          if (item.phase) {
+            linkPhaseEl.setAttribute("data-phase", item.phase);
+            linkPhaseEl.textContent = PHASE_LABEL[item.phase];
+          }
+        }
+
+        var linkNameRow = document.createElement("div");
+        linkNameRow.className = "card-name-row";
+        linkNameRow.appendChild(linkName);
+        linkNameRow.appendChild(linkPhaseEl);
+        linkMain.appendChild(linkNameRow);
+      } else {
+        linkMain.appendChild(linkName);
+      }
 
       var linkNote = document.createElement("p");
       linkNote.className = "card-note";
@@ -1840,20 +1844,43 @@
       var linkSide = tabDef.hasPhase ? document.createElement("div") : linkCard;
       if (tabDef.hasPhase) linkSide.className = "card-side";
 
-      if (tabDef.hasPhase) {
-        if (tabDef.phaseSelectable) {
-          var phaseSelectEl = renderPhaseSelect(item, group);
-          phaseSelectEl.addEventListener("click", function (e) { e.stopPropagation(); });
-          linkSide.appendChild(phaseSelectEl);
-        } else {
-          var phaseChip = document.createElement("span");
-          phaseChip.className = "phase-chip";
-          if (item.phase) {
-            phaseChip.setAttribute("data-phase", item.phase);
-            phaseChip.textContent = PHASE_LABEL[item.phase];
-          }
-          linkSide.appendChild(phaseChip);
+      if (tabDef.hasCost) {
+        var linkCostWrap = document.createElement("div");
+        linkCostWrap.className = "cost-input-wrap";
+
+        var linkCostPrefix = document.createElement("span");
+        linkCostPrefix.className = "cost-prefix";
+        linkCostPrefix.setAttribute("aria-hidden", "true");
+        linkCostPrefix.textContent = "NT$";
+
+        var linkCostInput = document.createElement("input");
+        linkCostInput.className = "cost-input";
+        linkCostInput.type = "number";
+        linkCostInput.min = "0";
+        linkCostInput.inputMode = "numeric";
+        linkCostInput.setAttribute("aria-label", item.name + " 的花費金額");
+        if (typeof item.estCost === "number") {
+          linkCostInput.placeholder = item.estCost.toLocaleString("zh-TW");
         }
+        var linkSavedCost = getItemCost(item.id);
+        if (linkSavedCost !== null) linkCostInput.value = String(linkSavedCost);
+
+        linkCostInput.addEventListener("click", function (e) { e.stopPropagation(); });
+        linkCostInput.addEventListener("keydown", function (e) { e.stopPropagation(); });
+        linkCostInput.addEventListener("input", function () {
+          var raw = linkCostInput.value;
+          if (raw === "") {
+            setItemCost(item.id, null);
+          } else {
+            var num = parseFloat(raw);
+            setItemCost(item.id, isNaN(num) ? null : num);
+          }
+          refreshBudgetDisplay(tabDef);
+        });
+
+        linkCostWrap.appendChild(linkCostPrefix);
+        linkCostWrap.appendChild(linkCostInput);
+        linkSide.appendChild(linkCostWrap);
       }
 
       // Status is not user-editable here — it mirrors the linked tab's own
@@ -1915,23 +1942,14 @@
     name.className = "card-name";
     var groupIconEl = makeGroupIconEl(group);
     if (groupIconEl) name.appendChild(groupIconEl);
-    if (tabDef.hasBrandInfo) {
-      var nameBtn = document.createElement("button");
-      nameBtn.type = "button";
-      nameBtn.className = "card-name-btn";
-      nameBtn.textContent = item.name;
-      nameBtn.setAttribute("aria-label", item.name + " — 查看品牌參考與備註");
-      nameBtn.addEventListener("click", function () { openItemModal(item); });
-      name.appendChild(nameBtn);
-    } else {
-      name.appendChild(document.createTextNode(item.name));
-    }
+    name.appendChild(document.createTextNode(item.name));
 
     if (tabDef.hasPhase) {
       // 時間標籤放在標題列,靠右對齊(見下方 .card-name-row)
       var phaseEl;
       if (tabDef.phaseSelectable) {
         phaseEl = renderPhaseSelect(item, group);
+        phaseEl.addEventListener("click", function (e) { e.stopPropagation(); });
       } else {
         phaseEl = document.createElement("span");
         phaseEl.className = "phase-chip";
@@ -1982,6 +2000,8 @@
       var savedCost = getItemCost(item.id);
       if (savedCost !== null) costInput.value = String(savedCost);
 
+      costInput.addEventListener("click", function (e) { e.stopPropagation(); });
+      costInput.addEventListener("keydown", function (e) { e.stopPropagation(); });
       costInput.addEventListener("input", function () {
         var raw = costInput.value;
         if (raw === "") {
@@ -2020,6 +2040,7 @@
       checkText.className = "status-checkbox-text";
       checkText.textContent = isDone ? tabDef.states[tabDef.states.length - 1].label : tabDef.states[0].label;
 
+      checkLabel.addEventListener("click", function (e) { e.stopPropagation(); });
       checkbox.addEventListener("change", function () {
         setItemStatus(item.id, checkbox.checked ? tabDef.doneKey : tabDef.states[0].key);
         renderTabbar();
@@ -2040,6 +2061,7 @@
         if (st.key === status) opt.selected = true;
         select.appendChild(opt);
       });
+      select.addEventListener("click", function (e) { e.stopPropagation(); });
       select.addEventListener("change", function () {
         setItemStatus(item.id, select.value);
         renderTabbar();
@@ -2057,6 +2079,19 @@
 
     side.appendChild(wrap);
     if (tabDef.hasPhase) card.appendChild(side);
+
+    if (tabDef.hasBrandInfo) {
+      card.setAttribute("role", "button");
+      card.tabIndex = 0;
+      card.setAttribute("aria-label", item.name + " — 查看品牌參考與備註");
+      card.addEventListener("click", function () { openItemModal(item); });
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openItemModal(item);
+        }
+      });
+    }
 
     return card;
   }
