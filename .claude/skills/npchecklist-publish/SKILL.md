@@ -28,16 +28,40 @@ artifact you're updating was deleted, or you no longer have write access to
 it". If that ever happens again to the current URL, mint a fresh artifact with
 `Artifact` and no `url` param, then update this file with the new URL.)
 
+## On-page version label
+
+The hero section has a hardcoded line: `<p class="hero-updated">更新日期:... ·
+版本:vN</p>` (search for `hero-updated` / `版本:v`). This is a plain text label the
+page displays about itself — it is not read from anywhere and has no connection to the
+Artifact platform's own internal version counter (the one behind the version picker)
+except by manual bookkeeping.
+
+**The trap:** every `Artifact` publish call bumps the platform's real version counter
+by 1, *including* a publish that only fixes this label. So if you edit `vN` → `vN+1`
+and then publish, that publish itself becomes real version `N+2`, not `N+1` — the label
+is already one behind the moment it goes live. This bit us on 2026-08-10: the label sat
+at v4 through a content-only publish (real version became 5, label still said v4), then
+got hand-edited to "v5" and published (real version became 6, label said v5) — visibly
+wrong ("你再重新發布應該變v6吧").
+
+**The fix:** before *every* publish (content-changing or label-only), set the label to
+(current label number) **+ 1**, unconditionally — never to the number the label
+currently shows. Treat the label as "the version this publish is about to become," not
+"the version that's currently live." Do this even on a publish that only bumps the
+label with no other content change.
+
 ## Workflow
 
 **Only when the user explicitly says to publish** (「發布」, "publish", etc.):
 
 1. Load the `artifact-design` skill first if it hasn't been loaded yet this
    session (required before writing/publishing artifact HTML).
-2. Call the `Artifact` tool with `file_path` set to the working file above,
+2. Find the current `版本:vN` label (see above) and edit it to `vN+1` — always,
+   even if nothing else in this publish changed.
+3. Call the `Artifact` tool with `file_path` set to the working file above,
    `url` set to the existing artifact URL (so it updates in place), the same
    `favicon` (👶), and a short `label` describing what changed in this batch.
-3. After publishing, remind the user that the on-page version picker doesn't
+4. After publishing, remind the user that the on-page version picker doesn't
    auto-select "latest" for a device/browser that has already opened this
    artifact before — they (or whoever they shared it with) may need to
    manually pick the newest version once on that device. There is no tool

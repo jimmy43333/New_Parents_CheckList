@@ -82,6 +82,17 @@ those are the ones this skill owns. Matched `notion-*` items get updated, Notion
 with no existing `notion-*` match get added (new `notion-*` id), and existing
 `notion-*` items with no corresponding Notion row anymore get removed.
 
+**Rows with `時間標籤` = `待評估` or empty are entirely out of scope, including
+already-synced ones.** Treat such a row as if it doesn't exist in Notion at all for
+this sync: never add it as a new item, and if a `notion-*` item already in the HTML
+corresponds to a row that has since become 待評估/empty, remove it on this sync — same
+handling as a Notion row that was deleted outright (client-side orphan-preservation
+still protects any visitor data on it, per the section below). This was confirmed
+explicitly by the user on 2026-08-10 after a sync had left two 待評估 rows (大推車,
+嬰兒房單人床架) in place with no `phase` field — that was wrong; 待評估 must not appear
+in the HTML at all, not even phase-less. Once the user sets a real 時間標籤 on the row
+in Notion, the next sync adds it back in as a normal item.
+
 **Never touch items whose id does not start with `notion-`** (e.g. `custom-*` items,
 visitor-added or promoted orphans — see the orphan-preservation section below). Leave
 them exactly where they are on every sync.
@@ -113,7 +124,7 @@ syncs in as an entirely new item.
 |---|---|---|
 | `Name` | `name` | direct copy |
 | `種類` | which group the item is in | exact match to the 6 existing group names (incl. 嬰幼兒發展) |
-| `時間標籤` | `phase` | 懷孕前期→`pregnancy-early`, 懷孕後期→`pregnancy-late`, 生產期間→`during-birth`, 寶寶回家前→`before-home`, 寶寶滿月後→`after-full-month`. If one of those 5, set/update `phase` accordingly. If `待評估` **or** empty: for a **brand-new** item being added, omit `phase` entirely — the existing fallback (`... || "unassessed"` in the phase lookup) already buckets it under "待評估", no code change needed. For an **already-matched existing item**, `待評估`/empty means Notion has nothing definite to say about phase — leave that item's current `phase` value untouched rather than overwriting it to unassessed. |
+| `時間標籤` | `phase` | 懷孕前期→`pregnancy-early`, 懷孕後期→`pregnancy-late`, 生產期間→`during-birth`, 寶寶回家前→`before-home`, 寶寶滿月後→`after-full-month`. Set/update `phase` accordingly. Rows with `待評估` or empty never reach this mapping step at all — they're excluded upstream, see "Scope & matching" above. |
 | `Status` | — | **ignored completely.** The webpage's own 已準備/未準備 checkbox state (localStorage) is the only source of truth for that; never overwritten. |
 | `Price` / `Cost` | — | **not synced.** `estCost` is a locally-authored placeholder value (shown as the cost-input's placeholder), independent of the user's personal Notion price/spend data. Existing items keep their current `estCost`. Brand-new items get a reasonable Taiwan market-average estimate, written in the same style as existing values — do not derive it from `Price`/`Cost`. |
 | `簡短說明` (page body) | `note` | Copy verbatim, exactly as written in Notion — no paraphrasing. If empty in Notion, `note` is empty too (`""`) — do **not** auto-generate a description. Applies to both already-matched and brand-new items. |
