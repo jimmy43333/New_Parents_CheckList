@@ -1,6 +1,6 @@
 ---
 name: npchecklist-dev
-description: Local-first dev loop for the 新手爸媽準備清單 checklist — edit the local HTML file with live-reload in the browser. Publishing to the Claude Artifact and syncing from Notion are separate skills (npchecklist-publish, npchecklist-notion-sync); this one only covers routine local edits.
+description: Local-first dev loop for the 新手爸媽準備清單 checklist — edit the local HTML file with live-reload in the browser. Publishing to the Claude Artifact (production or test) and syncing from Notion are separate skills (npchecklist-publish, npchecklist-publish-test, npchecklist-notion-sync); this one only covers routine local edits.
 ---
 
 # npchecklist dev workflow
