@@ -257,6 +257,11 @@
     transition: color 0.15s ease, border-color 0.15s ease;
   }
   .reset-btn:hover { color: var(--accent-coral); border-color: var(--accent-coral); }
+  .reset-btn.confirming {
+    color: #fff;
+    background: var(--accent-coral);
+    border-color: var(--accent-coral);
+  }
 
   /* ---------- Panel description ---------- */
   .panel-desc-block {
@@ -922,7 +927,7 @@
       可點擊卡片紀錄個人備註，選擇狀態即可記錄自己的準備進度, 資料只存在你的瀏覽器裡, 不會被其他人看到或互相覆蓋。
     </p>
     <p class="hero-updated">製作日期:2026-07-29</p>
-    <p class="hero-updated">更新日期:2026-08-11 · 版本:v3</p>
+    <p class="hero-updated">更新日期:2026-08-11 · 版本:v4</p>
   </header>
 
   <nav class="tabbar" role="tablist" aria-label="清單分類" id="tabbar"></nav>
@@ -1025,18 +1030,18 @@
   // brandSuggestions: 從 Notion「品牌分享」區塊同步的品牌清單(可含連結,見 npchecklist-notion-sync skill)
 
   var BRAND_INFO = {
-    "notion-301fce77972180ae9e9aed225b192917": { notionNote: ["RSV 媽媽如果沒打，小孩出生打會比較貴", "百日咳 $1750*2", "RSV $7680"] },
+    "notion-301fce77972180ae9e9aed225b192917": { notionNote: ["RSV 媽媽如果沒打，小孩出生打會比較貴", "百日咳 $1750*2", "RSV $7680", "有些縣市會有補助"] },
     "notion-30ffce7797218012a4adff18c2ac5650": { notionNote: ["可以等哺乳一段時間後，在依個人情況選購"] },
     "notion-3b6fce77972180b4b251dc5bee0f1a1c": { notionNote: ["非常困難，可事先討論喜歡的字跟組合", "若要給算命老師算命，可先預約，等小孩出生再給出生時辰，大概需要等 2-3 天"] },
     "notion-3b6fce77972180b98491f6611f388c57": { notionNote: ["出生證明", "戶口名簿", "父母雙方身分證與印章", "銀行存摺影本 - 生育獎勵金 ＆ 勞保生育給付", "郵局帳戶 - 育兒津貼 5000/month", "子女從姓約定書", "可順便申請寶寶健保卡 - 健保掛媽媽"] },
-    "notion-2f0fce7797218097bdf2f6d870a3121f": { notionNote: ["21 + 3 天，推薦離家近的", "每天晚上 5 點到 10 點母嬰同室"] },
-    "notion-2f0fce779721805b9936e9a13d407f55": { notionNote: ["15 天"] },
-    "notion-2f0fce77972180249558cc4da1c21da3": { notionNote: ["80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
+    "notion-2f0fce7797218097bdf2f6d870a3121f": { notionNote: ["建議21 -30天，推薦離家近的", "每天晚上 5 點到 10 點母嬰同室", "熟悉餵奶和換尿布等等"] },
+    "notion-2f0fce779721805b9936e9a13d407f55": { notionNote: ["15 天", "月中和月嫂缺一不可！"] },
+    "notion-2f0fce77972180249558cc4da1c21da3": { notionNote: ["項目/價格參考", "80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
     "notion-3b6fce779721807a9996d8c8b6fee703": { brandSuggestions: [{ name: "敷料親膚棉月亮枕/孕婦枕(枕心x1+枕套x1)，孕婦安心睡眠首選 - mamaway", url: "https://www.mamaway.com.tw/activities5-detail/moonpillowbest/A509180401YYF/" }] },
     "notion-2f0fce779721800cb290d9a4fb815f3d": { brandSuggestions: [{ name: "DIDI｜多功能櫸木嬰兒床(Crib25A-7M)", url: "https://www.taiwandidi.com.tw/products/%E5%A4%9A%E5%8A%9F%E8%83%BD%E6%AB%B8%E6%9C%A8%E5%AC%B0%E5%85%92%E5%BA%8Acrib25a-7m-1" }, "Swado", "Derma", "CANI", "AGAPEBABY"] },
     "notion-2f0fce77972180459303d935f176b7bf": { notionNote: ["可租"] },
     "notion-2f0fce77972180169a9feae25aff76ef": { brandSuggestions: [{ name: "寶寶攝影機", url: "https://store.spotcam.com/collections/%E5%AF%B6%E5%AF%B6%E6%94%9D%E5%BD%B1%E6%A9%9F/%E5%AF%B6%E5%AF%B6%E6%94%9D%E5%BD%B1%E6%A9%9F" }, { name: "CuboAi 智慧寶寶攝影機 (第3代)", url: "https://tw.getcubo.com/products/cuboai-smart-baby-monitor" }] },
-    "notion-2f0fce77972180498d97f67dc7002ad0": { notionNote: ["小獅王玻璃瓶：", "大奶瓶 270 6支", "小奶瓶 120 2支", "奶瓶奶嘴 S 號圓孔約 10 個"] },
+    "notion-2f0fce77972180498d97f67dc7002ad0": { notionNote: ["小獅王玻璃瓶：", "大奶瓶 270ml 3支", "小奶瓶 180ml 4支", "奶瓶奶嘴 S 號圓孔約 10 個"] },
     "notion-2f0fce7797218082870ddc49306815b1": { notionNote: ["一次可洗 4 組奶瓶，方便", "需要安裝在水槽附近，位置要比水槽高", "自己買洗碗粉"], brandSuggestions: [{ name: "【義大利Giaretti珈樂堤】CLOUD-2 全自動奶瓶清洗機(GT-WBR828)", url: "https://www.giaretti.com.tw/products/%E3%80%90%E7%BE%A9%E5%A4%A7%E5%88%A9giaretti%E7%8F%88%E6%A8%82%E5%A0%A4%E3%80%91cloud-2-%E5%85%A8%E8%87%AA%E5%8B%95%E5%A5%B6%E7%93%B6%E6%B8%85%E6%B4%97%E6%A9%9Fgt-wbr828" }] },
     "notion-2f0fce7797218084ada8fb846be10fe5": { notionNote: ["外出可使用加熱型保溫瓶，一次充飽電大約可用 2~3 次"], brandSuggestions: [{ name: "智能多用調乳器NN2046", url: "https://www.nacnac.com.tw/zh-TW/products/2540400100172" }, { name: "BEBE' AMICO 不鏽鋼智能溫控恆溫保溫瓶350ml", url: "https://www.angelbaby.com.tw/products/2710030400075" }] },
     "notion-30ffce779721806b96eec673982b4288": { notionNote: ["可先申請試用罐，拿去月中試", "美強生水解：一罐大罐大約喝 8-10 天"] },
@@ -1046,13 +1051,15 @@
     "notion-2f0fce77972180ad914bef5d14e3f5a5": { notionNote: ["口水巾 8 條以上，平時在家用", "圍兜 8 條以上，外出使用，平時用不到那麼多，但可愛就買了"] },
     "notion-2f0fce77972180e28b6fc8565e290bce": { notionNote: ["2 條交替使用"] },
     "notion-2f0fce77972180d384e1ed9545951cd7": { notionNote: ["大尺寸用來當包巾 2~3 條，小尺寸可以當口水巾或洗澡巾"] },
-    "notion-30ffce779721804483cdd029ffb7ac84": { notionNote: ["沒什麼在穿"] },
-    "notion-2f0fce77972180809a63c6e63aeee12c": { notionNote: ["一天約使用 8~10 片", "看體重, 腿部勒痕, 會不會漏決定要不要換尺寸", "NB: 用到約 7 週"] },
-    "notion-2f0fce779721807a87d7e50ca2a0c7cb": { notionNote: ["TRIXIE 有機玩偶"] },
+    "notion-30ffce779721804483cdd029ffb7ac84": { notionNote: ["出月中後沒什麼在穿", "換尿布蠻方便的"] },
+    "notion-2f0fce77972180809a63c6e63aeee12c": { notionNote: ["一天約使用 8~10 片", "看體重, 腿部勒痕, 會不會漏決定要不要換尺寸", "NB看寶寶體型，我們穿到快兩個月", "但有些寶寶在月中就換S了", "水凝尿布過夜神奇 讚讚"], brandSuggestions: [{ name: "Parasol 美國 Clear + Dry™ 新科技水凝尿布-進化版 囤貨箱購組 (箱) -多款任選", url: "https://www.yodee.com.tw/products/parasol-%E7%BE%8E%E5%9C%8B-clear--dry%E2%84%A2-%E6%96%B0%E7%A7%91%E6%8A%80%E6%B0%B4%E5%87%9D%E5%B0%BF%E5%B8%83-%E9%80%B2%E5%8C%96%E7%89%88-%E5%9B%A4%E8%B2%A8%E7%AE%B1%E8%B3%BC%E7%B5%84-%E7%AE%B1-%E5%A4%9A%E6%AC%BE%E4%BB%BB%E9%81%B8-lt%E9%BB%8F%E8%B2%BC%E5%9E%8Bgt" }, { name: "【麗貝樂】Comfort黏貼型紙尿褲 2 號(34片x6包/ 3-6kg適用)_箱購 - momo購物網 - 好評推薦 -2026年8月", url: "https://www.momoshop.com.tw/product/14709542?osm=Ad07&utm_source=googleshop&utm_medium=googleshop-pla-daily" }, { name: "日本製滿意寶寶極上の呵護，新生兒NB~XL尺寸嬰兒尿布，柔貼超防漏", url: "https://www.mamypoko.com.tw/tkopen.php?utm_source=google&utm_medium=pmax&utm_campaign=tkopen-symptom-leak" }, { name: "【幫寶適】新客獨享 奢寵黑金幫 黏貼型 NB/S/M/L 嬰兒紙尿褲/尿布 1箱(首款添加真蠶絲) - momo購物網 - 好評推薦 -2026年8月", url: "https://www.momoshop.com.tw/product/14729717?categoryCode=2700400728" }] },
+    "notion-2f0fce779721807a87d7e50ca2a0c7cb": { notionNote: ["響紙 安撫巾娃娃 豆豆毯", "私心推薦：TRIXIE 有機玩偶"], brandSuggestions: [{ name: "比利時Trixie 有機棉安撫玩偶(大)(多款可選)", url: "https://www.tomali.com.tw/products/trixie-plush-toy-large" }] },
     "notion-2f0fce77972180a985f3f98298b80564": { notionNote: ["2~3 條"] },
     "notion-2f0fce77972180e5a191df6f245b5876": { brandSuggestions: [{ name: "荷蘭 Umee 除臭尿布桶/除臭垃圾桶/密封廚餘桶(8色可選)｜安琪兒婦嬰百貨", url: "https://www.angelbaby.com.tw/products/5230030600001-6-1" }] },
     "notion-3b7fce779721800ba6e3feec2dbd1ee9": { brandSuggestions: ["妙妙熊特厚護理巾"] },
-    "notion-2f0fce77972180efad6aeb76bd0c70b3": { notionNote: ["設計師傳承☑️", "布款＊２"] }
+    "notion-2f0fce77972180efad6aeb76bd0c70b3": { notionNote: ["設計師傳承☑️", "布款＊２"] },
+    "notion-3b7fce7797218095a331c70c248322ba": { notionNote: ["2-3天要剪一次手指甲", "新生兒用剪刀款或磨甲器", "指甲剪要6m+"] },
+    "notion-2f0fce779721804fb6e1e8ca5baeb64a": { notionNote: ["前期可用毛巾捲起來做成一個床中床"] }
   };
 
   function escapeHtml(str) {
@@ -1115,8 +1122,7 @@
       icon: "🧳",
       description: [
         "約 32 週開始打包, 可分兩邊打包，江湖傳說關起來就是要出發",
-        "去醫院以好拿為主,在產房應該只會用到證件、充電線、衛生紙、產褥墊、便盆",
-        "產房較冷,爸爸可依自身狀況準備保暖衣物跟枕頭棉被",
+        "去醫院以好拿為主,在產房應該只會用到證件、充電線、衛生紙、產褥墊、便盆,產房較冷,爸爸可依自身狀況準備保暖衣物跟枕頭棉被",
         "去月中可用行李箱裝，如果月中離家很近也可以有需要再回家拿"
       ],
       states: [
@@ -1226,7 +1232,7 @@
             { id: "notion-2f0fce779721806d8242d1d01c659a89", name: "遊戲圍欄", phase: "after-full-month", month: 6, estCost: 2500, note: "寶寶開始活動後,用來規劃安全活動空間。" },
             { id: "notion-3b6fce7797218055b3e4f1ce5ad254e3", name: "遊戲地墊", phase: "after-full-month", month: 6, estCost: 2500, note: "寶寶開始活動後使用,提供安全防撞的爬行空間。" },
             { id: "notion-2f1fce779721809d9bdac590e828ad1c", name: "嬰兒餐椅", phase: "after-full-month", month: 4, estCost: 2000, note: "寶寶開始坐穩後使用,建議選可調整角度款式。" },
-            { id: "notion-2f0fce779721804fb6e1e8ca5baeb64a", name: "睡窩(床中床）", phase: "after-full-month", estCost: 1500, note: "新生兒睡眠空間,方便與大人同房不同床。" }
+            { id: "notion-2f0fce779721804fb6e1e8ca5baeb64a", name: "睡窩(床中床）", phase: "after-full-month", estCost: 1500, note: "新生兒睡眠空間,方便外出使用。" }
           ]
         },
         {
@@ -1664,8 +1670,18 @@
     resetBtn.className = "reset-btn";
     resetBtn.type = "button";
     resetBtn.textContent = "重置本頁進度";
+    var resetConfirmTimer = null;
     resetBtn.addEventListener("click", function () {
-      if (!confirm("確定要重置「" + tabDef.label + "」的所有進度嗎?")) return;
+      if (!resetBtn.classList.contains("confirming")) {
+        resetBtn.classList.add("confirming");
+        resetBtn.textContent = "再按一次確認重置";
+        resetConfirmTimer = setTimeout(function () {
+          resetBtn.classList.remove("confirming");
+          resetBtn.textContent = "重置本頁進度";
+        }, 3000);
+        return;
+      }
+      clearTimeout(resetConfirmTimer);
       allTabItems.forEach(function (it) { delete state[it.id]; });
       saveState();
       render();
