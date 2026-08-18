@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Placeholder: deny all reads/writes until Phase 2 designs the real
+    // access model (shared-list documents keyed by an unguessable share code).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
