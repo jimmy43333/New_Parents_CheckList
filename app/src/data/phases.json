@@ -1,0 +1,11 @@
+{
+  "PHASE_LABEL": {
+    "pregnancy-early": "懷孕前期",
+    "pregnancy-late": "懷孕後期",
+    "during-birth": "生產期間",
+    "before-home": "寶寶回家前",
+    "after-full-month": "寶寶滿月後",
+    "unassessed": "待評估"
+  },
+  "PHASE_SORT_ORDER": ["pregnancy-early", "pregnancy-late", "during-birth", "before-home", "after-full-month", "unassessed"]
+}

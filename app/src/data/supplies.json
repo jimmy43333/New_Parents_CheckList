@@ -1,0 +1,112 @@
+{
+  "key": "supplies",
+  "label": "準備清單",
+  "icon": "📋",
+  "states": [
+    { "key": "not-bought", "label": "未準備" },
+    { "key": "in-progress", "label": "準備中" },
+    { "key": "bought", "label": "已準備" }
+  ],
+  "doneKey": "bought",
+  "hasPhase": true,
+  "phaseSelectable": true,
+  "hasFilter": true,
+  "hasCost": true,
+  "hasBrandInfo": true,
+  "groups": [
+    {
+      "name": "懷孕生產",
+      "groupIcon": "🤰",
+      "items": [
+        { "id": "notion-301fce77972180ae9e9aed225b192917", "name": "父母疫苗", "phase": "pregnancy-early", "estCost": 5000, "note": "百日咳爸媽都打，RSV 媽媽打", "notionNote": ["RSV 媽媽如果沒打，小孩出生打會比較貴", "百日咳 $1750*2", "RSV $7680", "有些縣市會有補助"] },
+        { "id": "notion-2f0fce77972180249558cc4da1c21da3", "name": "第一次抽血檢測", "phase": "pregnancy-early", "estCost": 1000, "note": "產檢例行項目,依醫囑安排時間進行。", "notionNote": ["項目/價格參考", "80種過敏原 4000", "SMA 脊髓性肌肉萎縮症基因檢測 2000", "FXS X染色體脆折症基因篩檢 4000", "子癲前症風險評估 2200", "NIPT 非侵入性產前染色體檢測 14000", "高層次超音波 2500", "4D 超音波 1200"] },
+        { "id": "notion-2f0fce7797218097bdf2f6d870a3121f", "name": "月子中心", "phase": "pregnancy-early", "estCost": 150000, "note": "能減輕照顧壓力，讓媽媽安心恢復身體，也能更專注於建立親子關係", "notionNote": ["建議21 -30天，推薦離家近的", "每天晚上 5 點到 10 點母嬰同室", "熟悉餵奶和換尿布等等"] },
+        { "id": "notion-2f0fce779721805b9936e9a13d407f55", "name": "月嫂", "phase": "pregnancy-late", "estCost": 60000, "note": "建議懷孕後期開始評估及預約, 可以協助照顧寶寶，準備月子餐及處理日常鎖事，協助適應剛回家初期的混亂。", "notionNote": ["15 天", "月中和月嫂缺一不可！"] },
+        { "id": "notion-3b6fce779721807a9996d8c8b6fee703", "name": "月亮枕", "phase": "pregnancy-late", "estCost": 1200, "note": "懷孕期間側睡及哺乳時可用於支撐身體,舒緩腰部壓力。", "brandSuggestions": [{ "name": "敷料親膚棉月亮枕/孕婦枕(枕心x1+枕套x1)，孕婦安心睡眠首選 - mamaway", "url": "https://www.mamaway.com.tw/activities5-detail/moonpillowbest/A509180401YYF/" }] },
+        { "id": "notion-30ffce7797218012a4adff18c2ac5650", "name": "哺乳衣(內衣)", "phase": "during-birth", "estCost": 1500, "note": "方便產後哺乳穿脫。", "notionNote": ["可以等哺乳一段時間後，在依個人情況選購"] },
+        { "id": "notion-3b6fce77972180b4b251dc5bee0f1a1c", "name": "取名字", "phase": "during-birth", "estCost": 3000, "note": "取完名字才能報戶口跟買嬰兒保險", "notionNote": ["非常困難，可事先討論喜歡的字跟組合", "若要給算命老師算命，可先預約，等小孩出生再給出生時辰，大概需要等 2-3 天"] },
+        { "id": "notion-3b6fce77972180b98491f6611f388c57", "name": "報戶口", "phase": "during-birth", "estCost": 0, "note": "寶寶出生 60 天內需完成戶籍登記", "notionNote": ["出生證明", "戶口名簿", "父母雙方身分證與印章", "銀行存摺影本 - 生育獎勵金 ＆ 勞保生育給付", "郵局帳戶 - 育兒津貼 5000/month", "子女從姓約定書", "可順便申請寶寶健保卡 - 健保掛媽媽"] },
+        { "id": "notion-3b6fce77972180b2a03ac4e78c0728f2", "name": "嬰兒保險", "phase": "during-birth", "estCost": 5000, "note": "寶寶出生後盡早投保,保障醫療及意外相關風險。" },
+        { "id": "notion-2f7fce7797218022870adda06b2ed7ea", "name": "待產包", "phase": "pregnancy-late", "linkToTab": "bag", "note": "點此前往「待產包」分頁, 準備狀態會自動與分頁的進度同步。" }
+      ]
+    },
+    {
+      "name": "嬰兒大型用品",
+      "groupIcon": "💸",
+      "items": [
+        { "id": "notion-2f0fce77972180d28ff6df44619945ae", "name": "提籃", "phase": "before-home", "estCost": 3000, "note": "小孩出院跟回家會用到，可用平躺的推車替代" },
+        { "id": "notion-33bfce77972180c69bc2dae8d7c8d782", "name": "汽座", "phase": "before-home", "estCost": 5000, "note": "小朋友要坐車的必備工具" },
+        { "id": "notion-33bfce7797218029b1efed528cee911f", "name": "推車", "phase": "before-home", "estCost": 3000, "note": "寶寶較大後外出更輕便,依需求另外準備。" },
+        { "id": "notion-2f0fce77972180459303d935f176b7bf", "name": "安撫搖椅", "phase": "before-home", "estCost": 4000, "note": "新生兒安撫神器,可搖晃或震動助眠。", "notionNote": ["可租"] },
+        { "id": "notion-2f0fce77972180169a9feae25aff76ef", "name": "寶寶攝影機", "phase": "before-home", "estCost": 2000, "note": "夜間或不同房間監看寶寶狀況使用。", "brandSuggestions": [{ "name": "寶寶攝影機", "url": "https://store.spotcam.com/collections/%E5%AF%B6%E5%AF%B6%E6%94%9D%E5%BD%B1%E6%A9%9F/%E5%AF%B6%E5%AF%B6%E6%94%9D%E5%BD%B1%E6%A9%9F" }, { "name": "CuboAi 智慧寶寶攝影機 (第3代)", "url": "https://tw.getcubo.com/products/cuboai-smart-baby-monitor" }] },
+        { "id": "notion-2f0fce7797218005b399e66129563a7b", "name": "尿布檯", "phase": "before-home", "estCost": 2500, "note": "換尿布及穿衣服使用,可省去彎腰負擔。" },
+        { "id": "notion-2f0fce7797218004b393c470832e423c", "name": "澡盆", "phase": "before-home", "estCost": 800, "note": "新生兒洗澡使用,建議選附溫度計款式較安心。" },
+        { "id": "notion-2f0fce779721800cb290d9a4fb815f3d", "name": "嬰兒床", "phase": "before-home", "estCost": 6000, "note": "建議提早準備並確認組裝,搭配安全床墊。", "brandSuggestions": [{ "name": "DIDI｜多功能櫸木嬰兒床(Crib25A-7M)", "url": "https://www.taiwandidi.com.tw/products/%E5%A4%9A%E5%8A%9F%E8%83%BD%E6%AB%B8%E6%9C%A8%E5%AC%B0%E5%85%92%E5%BA%8Acrib25a-7m-1" }, "Swado", "Derma", "CANI", "AGAPEBABY"] },
+        { "id": "notion-2f0fce779721806d8242d1d01c659a89", "name": "遊戲圍欄", "phase": "after-full-month", "month": 6, "estCost": 2500, "note": "寶寶開始活動後,用來規劃安全活動空間。" },
+        { "id": "notion-3b6fce7797218055b3e4f1ce5ad254e3", "name": "遊戲地墊", "phase": "after-full-month", "month": 6, "estCost": 2500, "note": "寶寶開始活動後使用,提供安全防撞的爬行空間。" },
+        { "id": "notion-2f1fce779721809d9bdac590e828ad1c", "name": "嬰兒餐椅", "phase": "after-full-month", "month": 4, "estCost": 2000, "note": "寶寶開始坐穩後使用,建議選可調整角度款式。" },
+        { "id": "notion-2f0fce779721804fb6e1e8ca5baeb64a", "name": "睡窩(床中床）", "phase": "after-full-month", "estCost": 1500, "note": "新生兒睡眠空間,方便外出使用。", "notionNote": ["前期可用毛巾捲起來做成一個床中床"] }
+      ]
+    },
+    {
+      "name": "喝奶用品",
+      "groupIcon": "🍼",
+      "items": [
+        { "id": "notion-30ffce779721806b96eec673982b4288", "name": "配方奶", "phase": "during-birth", "estCost": 1000, "note": "先準備小包裝,依寶寶接受度再決定廠牌。", "notionNote": ["可先申請試用罐，拿去月中試", "美強生水解：一罐大罐大約喝 8-10 天"] },
+        { "id": "notion-2f0fce7797218099a9bfd85ba0d0d64a", "name": "奶嘴 奶嘴鍊", "phase": "during-birth", "estCost": 300, "note": "外出或日常安撫寶寶情緒時使用。", "notionNote": ["推薦有盒子裝的，使用很方便", "1-3m 的款式先準備兩個"], "brandSuggestions": [{ "name": "MOYUUM 韓國 全矽膠微笑奶嘴收納盒組-多入優惠", "url": "https://www.yodee.com.tw/products/moyuum-%E9%9F%93%E5%9C%8B-%E5%85%A8%E7%9F%BD%E8%86%A0%E5%BE%AE%E7%AC%91%E5%A5%B6%E5%98%B4%E6%94%B6%E7%B4%8D%E7%9B%92%E7%B5%84-%E5%A4%9A%E6%AC%BE%E5%8F%AF%E9%81%B8" }] },
+        { "id": "notion-2f7fce7797218001a907e4181008f056", "name": "擠乳器 集乳袋", "phase": "before-home", "estCost": 6000, "note": "建議產前先了解及準備,方便產後追奶儲奶。" },
+        { "id": "notion-2f0fce7797218084ada8fb846be10fe5", "name": "熱水器(調乳器)", "phase": "before-home", "estCost": 3000, "note": "半夜泡奶方便快速調溫。", "notionNote": ["外出可使用加熱型保溫瓶，一次充飽電大約可用 2~3 次"], "brandSuggestions": [{ "name": "智能多用調乳器NN2046", "url": "https://www.nacnac.com.tw/zh-TW/products/2540400100172" }, { "name": "BEBE' AMICO 不鏽鋼智能溫控恆溫保溫瓶350ml", "url": "https://www.angelbaby.com.tw/products/2710030400075" }] },
+        { "id": "notion-2f0fce7797218082870ddc49306815b1", "name": "奶瓶消毒鍋", "phase": "before-home", "estCost": 2500, "note": "奶瓶奶嘴每日消毒必備。", "notionNote": ["一次可洗 4 組奶瓶，方便", "需要安裝在水槽附近，位置要比水槽高", "自己買洗碗粉"], "brandSuggestions": [{ "name": "【義大利Giaretti珈樂堤】CLOUD-2 全自動奶瓶清洗機(GT-WBR828)", "url": "https://www.giaretti.com.tw/products/%E3%80%90%E7%BE%A9%E5%A4%A7%E5%88%A9giaretti%E7%8F%88%E6%A8%82%E5%A0%A4%E3%80%91cloud-2-%E5%85%A8%E8%87%AA%E5%8B%95%E5%A5%B6%E7%93%B6%E6%B8%85%E6%B4%97%E6%A9%9Fgt-wbr828" }] },
+        { "id": "notion-2f0fce77972180498d97f67dc7002ad0", "name": "奶瓶 奶瓶奶嘴", "phase": "before-home", "estCost": 1500, "note": "依哺餵需求準備數量足夠的奶瓶組。", "notionNote": ["小獅王玻璃瓶：", "大奶瓶 270ml 3支", "小奶瓶 180ml 4支", "奶瓶奶嘴 S 號圓孔約 10 個"] },
+        { "id": "notion-3b7fce77972180408a77c4e9a2c13857", "name": "奶瓶刷", "phase": "before-home", "estCost": 150, "note": "" },
+        { "id": "notion-2f0fce77972180beb939df986c143c7d", "name": "奶粉分裝罐", "phase": "after-full-month", "estCost": 300, "note": "外出攜帶配方奶粉方便分裝。" }
+      ]
+    },
+    {
+      "name": "尿布衣物類",
+      "groupIcon": "👕",
+      "items": [
+        { "id": "notion-30ffce779721804483cdd029ffb7ac84", "name": "紗布衣", "phase": "before-home", "estCost": 500, "note": "透氣親膚,適合夏天或坐月子期間穿著。", "notionNote": ["出月中後沒什麼在穿", "換尿布蠻方便的"] },
+        { "id": "notion-2f0fce7797218080a47efccfa03f7237", "name": "包屁衣", "phase": "before-home", "estCost": 600, "note": "新生兒最常穿著的內搭衣物,建議多準備幾件替換。", "notionNote": ["平常幾乎都穿包屁衣，側開款比套頭款方便一點", "60 公分大約 10 件"] },
+        { "id": "notion-2f0fce77972180ad914bef5d14e3f5a5", "name": "口水巾/圍兜", "phase": "before-home", "estCost": 300, "note": "保護衣物, 防止溢奶弄濕。", "notionNote": ["口水巾 8 條以上，平時在家用", "圍兜 8 條以上，外出使用，平時用不到那麼多，但可愛就買了"] },
+        { "id": "notion-2f0fce77972180d384e1ed9545951cd7", "name": "紗布巾", "phase": "before-home", "estCost": 200, "note": "紗織物製成，輕薄且柔和，可擦汗、臉部或身體，擦拭口水、溢奶及日常清潔,多用途使用。", "notionNote": ["大尺寸用來當包巾 2~3 條，小尺寸可以當口水巾或洗澡巾"] },
+        { "id": "notion-2f0fce77972180f2a64eecd3e8b5f096", "name": "包巾", "phase": "before-home", "estCost": 400, "note": "包裹保暖及模擬子宮的安撫效果，睡覺時使用。", "notionNote": ["剛出生使用大尺寸紗布巾 2~3 條", "睡過夜神器 - 蝴蝶包巾 2~3 件"] },
+        { "id": "notion-2f0fce77972180e28b6fc8565e290bce", "name": "嬰兒浴巾", "phase": "before-home", "estCost": 500, "note": "洗澡後包裹保暖使用。", "notionNote": ["2 條交替使用"] },
+        { "id": "notion-2f0fce77972180809a63c6e63aeee12c", "name": "尿布", "phase": "before-home", "estCost": 800, "note": "依體重選擇合適尺寸,建議先準備小包裝。", "notionNote": ["一天約使用 8~10 片", "看體重, 腿部勒痕, 會不會漏決定要不要換尺寸", "NB看寶寶體型，我們穿到快兩個月", "但有些寶寶在月中就換S了", "水凝尿布過夜神奇 讚讚"], "brandSuggestions": [{ "name": "Parasol 美國 Clear + Dry™ 新科技水凝尿布-進化版 囤貨箱購組 (箱) -多款任選", "url": "https://www.yodee.com.tw/products/parasol-%E7%BE%8E%E5%9C%8B-clear--dry%E2%84%A2-%E6%96%B0%E7%A7%91%E6%8A%80%E6%B0%B4%E5%87%9D%E5%B0%BF%E5%B8%83-%E9%80%B2%E5%8C%96%E7%89%88-%E5%9B%A4%E8%B2%A8%E7%AE%B1%E8%B3%BC%E7%B5%84-%E7%AE%B1-%E5%A4%9A%E6%AC%BE%E4%BB%BB%E9%81%B8-lt%E9%BB%8F%E8%B2%BC%E5%9E%8Bgt" }, { "name": "【麗貝樂】Comfort黏貼型紙尿褲 2 號(34片x6包/ 3-6kg適用)_箱購 - momo購物網 - 好評推薦 -2026年8月", "url": "https://www.momoshop.com.tw/product/14709542?osm=Ad07&utm_source=googleshop&utm_medium=googleshop-pla-daily" }, { "name": "日本製滿意寶寶極上の呵護，新生兒NB~XL尺寸嬰兒尿布，柔貼超防漏", "url": "https://www.mamypoko.com.tw/tkopen.php?utm_source=google&utm_medium=pmax&utm_campaign=tkopen-symptom-leak" }, { "name": "【幫寶適】新客獨享 奢寵黑金幫 黏貼型 NB/S/M/L 嬰兒紙尿褲/尿布 1箱(首款添加真蠶絲) - momo購物網 - 好評推薦 -2026年8月", "url": "https://www.momoshop.com.tw/product/14729717?categoryCode=2700400728" }] },
+        { "id": "notion-30ffce77972180fab4a8ef1a73196143", "name": "襪子", "phase": "after-full-month", "estCost": 200, "note": "保暖使用,依季節調整厚度。" }
+      ]
+    },
+    {
+      "name": "嬰兒生活用品",
+      "groupIcon": "🚼",
+      "items": [
+        { "id": "notion-2f0fce779721803f8372c886ceddf808", "name": "屁屁膏", "phase": "pregnancy-late", "estCost": 300, "note": "預防及舒緩尿布疹。" },
+        { "id": "notion-2f0fce77972180a985f3f98298b80564", "name": "尿布墊", "phase": "before-home", "estCost": 300, "note": "換尿布時墊在下方,防止弄髒床單。", "notionNote": ["2~3 條"] },
+        { "id": "notion-2f0fce77972180d39dadf37fa7c89cd6", "name": "嬰兒洗衣精", "phase": "before-home", "estCost": 300, "note": "寶寶衣物建議與大人分開清洗。" },
+        { "id": "notion-2f0fce77972180e5a191df6f245b5876", "name": "尿布桶", "phase": "before-home", "estCost": 1500, "note": "集中放置使用過的尿布，較不會有臭味。", "brandSuggestions": [{ "name": "荷蘭 Umee 除臭尿布桶/除臭垃圾桶/密封廚餘桶(8色可選)｜安琪兒婦嬰百貨", "url": "https://www.angelbaby.com.tw/products/5230030600001-6-1" }] },
+        { "id": "notion-2f0fce779721800e8f8ecb8e7fc86c9a", "name": "嬰兒沐浴乳", "phase": "before-home", "estCost": 500, "note": "選擇溫和無淚配方的洗髮沐浴用品。" },
+        { "id": "notion-2f0fce77972180b08898de798efb8e25", "name": "濕紙巾", "phase": "before-home", "estCost": 500, "note": "換尿布及清潔隨時可用,建議多準備庫存。" },
+        { "id": "notion-3b7fce779721800ba6e3feec2dbd1ee9", "name": "乾濕兩用巾", "phase": "before-home", "estCost": 300, "note": "多用途,大尺寸可以清潔溢奶,洗澡,洗屁股;小尺寸的可以清潔口腔。", "brandSuggestions": ["妙妙熊特厚護理巾"] },
+        { "id": "notion-2f0fce779721804fb56dc5c28b529005", "name": "溫度計/耳溫槍", "phase": "before-home", "estCost": 1000, "note": "居家照護基本工具,方便測量體溫及清潔保養。" },
+        { "id": "notion-3b7fce7797218095a331c70c248322ba", "name": "指甲刀", "phase": "before-home", "estCost": 200, "note": "", "notionNote": ["2-3天要剪一次手指甲", "新生兒用剪刀款或磨甲器", "指甲剪要6m+"] },
+        { "id": "notion-3b7fce779721800d9779ddea1b90cd75", "name": "棉花棒", "phase": "before-home", "estCost": 100, "note": "清潔鼻孔" },
+        { "id": "notion-2f0fce77972180efad6aeb76bd0c70b3", "name": "揹巾", "phase": "after-full-month", "month": 2, "estCost": 2000, "note": "外出或安撫時使用,建議依寶寶月齡及體重選擇。", "notionNote": ["設計師傳承☑️", "布款＊２"] },
+        { "id": "notion-2f0fce779721807f959cf56b14729ead", "name": "防踢被", "phase": "after-full-month", "estCost": 500, "note": "睡眠時保暖並避免寶寶踢被著涼。" },
+        { "id": "notion-2f0fce779721807a87d7e50ca2a0c7cb", "name": "安撫玩具", "phase": "after-full-month", "estCost": 500, "note": "幫助寶寶建立安全感,依月齡調整款式。", "notionNote": ["響紙 安撫巾娃娃 豆豆毯", "私心推薦：TRIXIE 有機玩偶"], "brandSuggestions": [{ "name": "比利時Trixie 有機棉安撫玩偶(大)(多款可選)", "url": "https://www.tomali.com.tw/products/trixie-plush-toy-large" }] },
+        { "id": "notion-3b7fce77972180889724c6e0a515d87d", "name": "兒童牙刷", "phase": "after-full-month", "estCost": 200, "note": "" },
+        { "id": "notion-3b7fce77972180e3a6a4cb273366ed3b", "name": "兒童餐具", "phase": "after-full-month", "estCost": 500, "note": "" },
+        { "id": "notion-3b7fce77972180a4b746ce0d535d706c", "name": "固齒器", "phase": "after-full-month", "estCost": 300, "note": "" }
+      ]
+    },
+    {
+      "name": "嬰幼兒發展",
+      "groupIcon": "🧩",
+      "items": [
+        { "id": "notion-3b7fce77972180f0b0ced3a2cb7aae2c", "name": "黑白圖卡", "phase": "after-full-month", "estCost": 200, "note": "" },
+        { "id": "notion-3b7fce77972180ca9078da9843a3a534", "name": "布書", "phase": "after-full-month", "estCost": 400, "note": "" },
+        { "id": "notion-3b7fce779721804e8c52ebe22decf9a6", "name": "健力架", "phase": "after-full-month", "estCost": 1500, "note": "" },
+        { "id": "notion-3b7fce779721801c8c2be9cdeac38739", "name": "床掛玩具", "phase": "after-full-month", "estCost": 800, "note": "" }
+      ]
+    }
+  ]
+}
