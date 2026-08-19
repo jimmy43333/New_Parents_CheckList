@@ -8,6 +8,7 @@ const STORAGE_KEY = 'npchecklist_v1'
 const COST_KEY = 'npchecklist_costs_v1'
 const NOTES_KEY = 'npchecklist_notes_v1'
 const PHASE_KEY = 'npchecklist_phase_v1'
+const PERSON_KEY = 'npchecklist_person_v1'
 export const THEME_KEY = 'npchecklist_theme'
 const DEFAULT_SNAPSHOT_KEY = 'npchecklist_default_snapshot_v1'
 const CUSTOM_ITEMS_KEY = 'npchecklist_custom_items_v1'
@@ -20,6 +21,8 @@ export const STATUS_FILTERS = [
   { key: 'not-bought', label: '未準備' },
   { key: 'in-progress', label: '準備中' },
 ]
+export const PERSONS = ['dad', 'mom']
+export const PERSON_LABEL = { dad: '爸爸', mom: '媽媽' }
 
 function loadJSON(key, fallback) {
   try {
@@ -51,11 +54,13 @@ export const state = reactive(loadJSON(STORAGE_KEY, {}))
 export const costState = reactive(loadJSON(COST_KEY, {}))
 export const notesState = reactive(loadJSON(NOTES_KEY, {}))
 export const phaseState = reactive(loadJSON(PHASE_KEY, {}))
+export const personState = reactive(loadJSON(PERSON_KEY, {}))
 
 function saveState() { saveJSON(STORAGE_KEY, state) }
 function saveCosts() { saveJSON(COST_KEY, costState) }
 function saveNotes() { saveJSON(NOTES_KEY, notesState) }
 function savePhases() { saveJSON(PHASE_KEY, phaseState) }
+function savePersonState() { saveJSON(PERSON_KEY, personState) }
 
 export function allItems(tabDef) {
   return tabDef.groups.flatMap((g) => g.items)
@@ -96,6 +101,35 @@ export function setItemStatus(itemId, statusKey) {
   saveState()
 }
 
+export function getPersonStatus(tabDef, item, person) {
+  const rec = personState[item.id]
+  if (rec && rec[person]) return rec[person]
+  return tabDef.states[0].key
+}
+export function setPersonStatus(itemId, person, statusKey) {
+  if (!personState[itemId]) personState[itemId] = {}
+  personState[itemId][person] = statusKey
+  savePersonState()
+}
+export function countPersonDone(tabDef, person) {
+  return allItems(tabDef).filter((it) => getPersonStatus(tabDef, it, person) === tabDef.doneKey).length
+}
+export function computePersonBadge(tabDef, item) {
+  const dadDone = getPersonStatus(tabDef, item, 'dad') === tabDef.doneKey
+  const momDone = getPersonStatus(tabDef, item, 'mom') === tabDef.doneKey
+  if (dadDone && momDone) return { label: tabDef.states[1].label, slot: 2 }
+  if (dadDone) return { label: PERSON_LABEL.dad + tabDef.states[1].label, slot: 1 }
+  if (momDone) return { label: PERSON_LABEL.mom + tabDef.states[1].label, slot: 1 }
+  return { label: tabDef.states[0].label, slot: 0 }
+}
+export function computePersonCardState(tabDef, item) {
+  const dadDone = getPersonStatus(tabDef, item, 'dad') === tabDef.doneKey
+  const momDone = getPersonStatus(tabDef, item, 'mom') === tabDef.doneKey
+  if (dadDone && momDone) return 'done'
+  if (dadDone || momDone) return 'in-progress'
+  return 'pending'
+}
+
 export function getItemCost(itemId) {
   const v = costState[itemId]
   return typeof v === 'number' && !isNaN(v) ? v : null
@@ -133,8 +167,10 @@ export function computeCardState(tabDef, status) {
 export function resetTab(tabDef) {
   allItems(tabDef).forEach((it) => {
     delete state[it.id]
+    if (tabDef.perPersonStatus) delete personState[it.id]
   })
   saveState()
+  if (tabDef.perPersonStatus) savePersonState()
 }
 
 // ---------------- custom item orphan preservation ----------------

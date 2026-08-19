@@ -15,7 +15,7 @@ const tabs = computed(() => {
     const doneCount = items.filter((it) => getItemStatus(tabDef, it) === tabDef.doneKey).length
     return { key, icon: tabDef.icon, label: tabDef.label, doneCount, total: items.length, isMenu: false }
   })
-  return [...dataTabs, { key: 'menu', icon: 'menu', label: '選單', isMenu: true }]
+  return [{ key: 'menu', icon: 'menu', label: '主選單', isMenu: true }, ...dataTabs]
 })
 
 const activeIndex = computed(() => Math.max(tabs.value.findIndex((t) => t.key === props.activeTab), 0))

@@ -14,6 +14,8 @@ import {
   computeCostTotal,
   formatNTD,
   resetTab,
+  countPersonDone,
+  PERSON_LABEL,
 } from '../composables/useChecklist'
 import ItemCard from './ItemCard.vue'
 import Icon from './Icon.vue'
@@ -33,6 +35,11 @@ const doneCount = computed(
 )
 const pct = computed(() => (countable.value.length ? Math.round((doneCount.value / countable.value.length) * 100) : 0))
 const budgetTotal = computed(() => formatNTD(computeCostTotal(tabDef.value)))
+
+const dadDoneCount = computed(() => (tabDef.value.perPersonStatus ? countPersonDone(tabDef.value, 'dad') : 0))
+const momDoneCount = computed(() => (tabDef.value.perPersonStatus ? countPersonDone(tabDef.value, 'mom') : 0))
+const dadPct = computed(() => (countable.value.length ? Math.round((dadDoneCount.value / countable.value.length) * 100) : 0))
+const momPct = computed(() => (countable.value.length ? Math.round((momDoneCount.value / countable.value.length) * 100) : 0))
 
 const phasesPresent = computed(() => {
   if (!tabDef.value.hasFilter) return []
@@ -108,7 +115,26 @@ watch(
   <section role="tabpanel">
     <h2 class="panel-title">{{ tabDef.label }}</h2>
 
-    <div class="progress-block">
+    <div v-if="tabDef.perPersonStatus" class="progress-block person-progress-block">
+      <div class="progress-top">
+        <span class="progress-label">學習進度</span>
+        <button class="reset-btn" :class="{ confirming: resetConfirming }" type="button" @click="onReset">
+          {{ resetConfirming ? '再按一次確認重置' : '重置本頁進度' }}
+        </button>
+      </div>
+      <div class="person-progress-row">
+        <span class="person-progress-label">{{ PERSON_LABEL.dad }}</span>
+        <div class="progress-track"><div class="progress-fill" :style="{ width: dadPct + '%' }"></div></div>
+        <span class="person-progress-stat">{{ dadPct }}% · {{ dadDoneCount }}/{{ countable.length }}</span>
+      </div>
+      <div class="person-progress-row">
+        <span class="person-progress-label">{{ PERSON_LABEL.mom }}</span>
+        <div class="progress-track"><div class="progress-fill" :style="{ width: momPct + '%' }"></div></div>
+        <span class="person-progress-stat">{{ momPct }}% · {{ momDoneCount }}/{{ countable.length }}</span>
+      </div>
+    </div>
+
+    <div v-else class="progress-block">
       <div class="progress-top">
         <span class="progress-label">準備進度</span>
         <span class="progress-stat-wrap">

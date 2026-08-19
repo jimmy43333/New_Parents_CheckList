@@ -15,6 +15,8 @@ const paths = {
   close: '<path d="M18 6 6 18"/><path d="M6 6l12 12"/>',
   wallet: '<path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v3"/><path d="M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-4"/><rect x="14" y="11" width="7" height="5" rx="1.5"/>',
   menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  play: '<circle cx="12" cy="12" r="9"/><path d="M10.5 8.5v7l6-3.5-6-3.5Z"/>',
 }
 </script>
 

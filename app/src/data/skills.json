@@ -7,37 +7,354 @@
     { "key": "learned", "label": "已學習" }
   ],
   "doneKey": "learned",
-  "simpleCheckbox": true,
   "hasPhase": false,
   "hasFilter": false,
+  "badgeOnly": true,
+  "hasBrandInfo": true,
+  "perPersonStatus": true,
+  "modalStatusToggle": true,
+  "modalPersonalNotes": false,
+  "modalLinksCollapsible": false,
+  "modalNoteLabel": "教學重點與注意事項",
+  "modalLinksLabel": "示範影片與參考連結",
+  "modalAriaLabel": "查看照顧教學與注意事項",
   "groups": [
     {
       "name": "照顧能力項目",
       "items": [
-        { "id": "sk-1", "name": "正確抱姿", "note": "支撐好頭頸,依情境切換橫抱、直抱姿勢,動作放輕柔穩定。" },
-        { "id": "sk-2", "name": "換尿布", "note": "動作熟練並注意清潔方向,預防泌尿道感染。" },
-        { "id": "sk-3", "name": "穿衣服", "note": "熟悉新生兒穿脫衣物的技巧,動作放輕柔。" },
-        { "id": "sk-4", "name": "溫母奶", "note": "隔水加熱退冰母奶,避免直接用微波爐加熱以免破壞營養。" },
-        { "id": "sk-5", "name": "泡配方奶", "note": "依比例調配,先加水再加奶粉,注意調乳溫度。" },
-        { "id": "sk-6", "name": "餵奶", "note": "觀察寶寶的飢餓訊號,熟悉親餵或瓶餵的姿勢。" },
-        { "id": "sk-7", "name": "拍嗝", "note": "餵奶後協助排出空氣,減少溢吐奶的機率。" },
-        { "id": "sk-8", "name": "消毒奶瓶", "note": "每次使用後徹底清潔,並定期蒸煮或用消毒鍋消毒。" },
-        { "id": "sk-9", "name": "洗澡", "note": "注意水溫約 37–38 度,並支撐好寶寶的頭頸部。" },
-        { "id": "sk-10", "name": "洗屁股", "note": "換尿布時徹底清潔,由前往後擦拭,避免尿布疹與感染。" },
-        { "id": "sk-11", "name": "口腔清潔", "note": "使用紗布巾或指套牙刷清潔口腔,長牙後養成習慣。" },
-        { "id": "sk-12", "name": "哄睡 安撫", "note": "建立固定的睡前儀式,協助寶寶穩定情緒入睡。" },
-        { "id": "sk-13", "name": "安全睡眠環境佈置", "note": "採仰睡,嬰兒床避免放置枕頭、棉被等鬆軟物品,降低猝死風險。" },
-        { "id": "sk-14", "name": "臍帶護理", "note": "保持臍帶根部乾燥清潔,可用棉花棒沾酒精消毒至自然脫落。" },
-        { "id": "sk-15", "name": "異物哽塞急救(嬰兒版哈姆立克/CPR)", "note": "熟悉異物哽塞時的拍背壓胸手法及基礎心肺復甦步驟,以備緊急狀況。" },
-        { "id": "sk-16", "name": "辨識大便異常徵兆", "note": "觀察大便顏色、質地變化,留意血便、白便等異常狀況並及時就醫。" },
-        { "id": "sk-17", "name": "剪指甲", "note": "選擇寶寶專用指甲剪,趁寶寶熟睡時修剪,避免抓傷臉部。" },
-        { "id": "sk-18", "name": "清潔鼻涕/使用吸鼻器", "note": "寶寶鼻塞時使用吸鼻器清除鼻涕,舒緩呼吸不順。" },
-        { "id": "sk-19", "name": "量體溫", "note": "熟悉耳溫槍或額溫槍的量測方式及正常體溫範圍。" },
-        { "id": "sk-20", "name": "按摩", "note": "促進血液循環與親子互動,適合洗澡後進行。" },
-        { "id": "sk-21", "name": "使用背巾", "note": "確認寶寶呈 M 型腿姿勢,且背巾支撐位置正確。" },
-        { "id": "sk-22", "name": "餵藥", "note": "熟悉餵藥器使用方式,注意藥物劑量與時間。" },
-        { "id": "sk-23", "name": "製作副食品", "note": "依月齡調整食物質地,從單一食材開始嘗試。" },
-        { "id": "sk-24", "name": "餵副食品", "note": "觀察接受度及過敏反應,循序漸進增加種類。" }
+        {
+          "id": "sk-1",
+          "name": "正確抱姿",
+          "note": "支撐好頭頸,依情境切換橫抱、直抱姿勢,動作放輕柔穩定。",
+          "notionNote": [
+            "一手托住頭頸、一手托住臀部,慢慢把頭托起,避免頭後仰。",
+            "1-2 個月盡量橫抱,3 個月後可豎抱,動作要輕柔。",
+            "抱時貼近左胸讓寶寶聽到心跳聲有安全感,並與寶寶眼神交流、說話。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：如何安全抱起寶寶（衛福部國民健康署）", "url": "https://www.youtube.com/watch?v=QgYYMym50RY" },
+            { "name": "抱寶寶的正確姿勢（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1882&type=01" }
+          ]
+        },
+        {
+          "id": "sk-2",
+          "name": "換尿布",
+          "note": "動作熟練並注意清潔方向,預防泌尿道感染。",
+          "notionNote": [
+            "先洗屁屁：女寶寶由前往後擦拭,男寶寶包皮往後推清潔皺褶處。",
+            "雙腳舉高放入乾淨尿布,黏好魔鬼氈並檢查腰部鬆緊。",
+            "如有輕微紅屁屁,先詢問醫師是否需要氧化鋅藥膏。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：輕鬆幫寶寶換尿布及包包巾（童綜合醫院）", "url": "https://www.youtube.com/watch?v=qO1iFcpNn4o" },
+            { "name": "照顧新生兒必備 5 技巧（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=2403&type=01" }
+          ]
+        },
+        {
+          "id": "sk-10",
+          "name": "洗屁股",
+          "note": "換尿布時徹底清潔,由前往後擦拭,避免尿布疹與感染。",
+          "notionNote": [
+            "與換尿布清潔步驟相同：由前往後擦拭,避免糞便細菌帶到尿道口。",
+            "每次沐浴時也要特別清潔皺褶處,保持乾爽降低尿布疹風險。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：寶寶的屁屁到底怎麼洗才對（慈心產後護理之家）", "url": "https://www.youtube.com/watch?v=Stc2CeQ3eX4" },
+            { "name": "照顧新生兒必備 5 技巧（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=2403&type=01" },
+            { "name": "新生兒沐浴與清潔重點（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1859&type=01" }
+          ]
+        },
+        {
+          "id": "sk-14",
+          "name": "臍帶護理",
+          "note": "保持臍帶根部乾燥清潔,可用棉花棒沾酒精消毒至自然脫落。",
+          "notionNote": [
+            "以 75% 酒精由臍帶根部向外環狀消毒一次,再以 95% 酒精重複一次。",
+            "每日沐浴後至少護理一次,平均 7-10 天自然脫落,最長可達 1 個月。",
+            "若出現紅腫、出血、滲液惡臭應就醫;勿塗抹萬金油、麻油、紫藥水等刺激物。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：新生兒臍帶護理（國健署孕產兒關懷網站，東元綜合醫院授權）", "url": "https://www.youtube.com/watch?v=r-WWmkUwxgE" },
+            { "name": "臍帶護理圖文說明（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1886&type=01" }
+          ]
+        },
+        {
+          "id": "sk-13",
+          "name": "安全睡眠環境佈置",
+          "note": "採仰睡,嬰兒床避免放置枕頭、棉被等鬆軟物品,降低猝死風險。",
+          "notionNote": [
+            "國健署「五招安心睡」：不趴睡（正確為仰睡）、不用枕、不同床（同室不同床）。",
+            "不悶熱：可用睡袋式睡衣或包巾,但須露出手臂。",
+            "不鬆軟：床墊平坦堅實,不放棉被、玩偶、防撞護墊等鬆軟物品。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：嬰兒安全睡眠環境宣導（國健署）", "url": "https://www.youtube.com/watch?v=N41Z1T-MD-o" },
+            { "name": "動畫版：正確預防寶寶猝死意外（國健署）", "url": "https://www.youtube.com/watch?v=5yCozYUdCuk" },
+            { "name": "五招安心睡圖文說明（國健署官網）", "url": "https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4576&pid=15161" }
+          ]
+        },
+        {
+          "id": "sk-11",
+          "name": "口腔清潔",
+          "note": "使用紗布巾或指套牙刷清潔口腔,長牙後養成習慣。",
+          "notionNote": [
+            "0-6 個月未長牙前,喝奶後、早起、睡前用溫開水浸濕紗布巾擦拭牙床、舌頭、口腔周圍。",
+            "6 個月到 1 歲乳門齒長出後,可用含氟 1000ppm 以上牙膏,量約米粒大小。",
+            "建議一人扶住孩子、一人清潔會較順利。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：一次就學會寶寶口腔清潔（如意產後護理之家）", "url": "https://www.youtube.com/watch?v=Z9U-QOgP2io" },
+            { "name": "寶寶口腔清潔重點（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1552&type=01" },
+            { "name": "口腔保健知多常識（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=3632&type=01" }
+          ]
+        },
+        {
+          "id": "sk-6",
+          "name": "餵奶",
+          "note": "觀察寶寶的飢餓訊號,熟悉親餵或瓶餵的姿勢。",
+          "notionNote": [
+            "找到舒適姿勢（坐姿有靠背或側躺）,寶寶肚子貼媽媽肚子、乳頭對鼻子。",
+            "讓寶寶嘴巴張大如打哈欠再貼近乳房,含住大部分乳暈。",
+            "瓶餵時奶瓶傾斜使奶水充滿奶嘴避免吞入空氣,奶嘴孔洞以「1 秒 1 滴」最適合新生兒。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：哺餵姿勢及寶寶含乳技巧（童綜合醫院）", "url": "https://www.youtube.com/watch?v=BD5Xhv8RMBk" },
+            { "name": "母乳哺育相關指引（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1913&type=01" },
+            { "name": "照顧新生兒必備 5 技巧（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=2403&type=01" }
+          ]
+        },
+        {
+          "id": "sk-7",
+          "name": "拍嗝",
+          "note": "餵奶後協助排出空氣,減少溢吐奶的機率。",
+          "notionNote": [
+            "讓寶寶側身坐在大人腿上,一手托下巴頸肩,另一手呈空掌輕拍背部。",
+            "新生兒飲奶量有限,不想喝時先拍嗝再確認是否續喝,勿強迫喝完。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：2 種幫寶寶拍嗝的方法與要點（禾馨醫療）", "url": "https://www.youtube.com/watch?v=FpMi2ee-qvs" },
+            { "name": "照顧新生兒必備 5 技巧（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=2403&type=01" }
+          ]
+        },
+        {
+          "id": "sk-4",
+          "name": "溫母奶",
+          "note": "隔水加熱退冰母奶,避免直接用微波爐加熱以免破壞營養。",
+          "notionNote": [
+            "冷藏退冰約需 12 小時最安全,或密封袋沖冷水加速。",
+            "回溫以 60°C 以下溫水隔水加溫或溫奶器,禁用微波爐或直接熱水加熱,以免破壞免疫因子與蛋白質。",
+            "「333 原則」：室溫 3 小時、冷藏 3 天、冷凍 3 個月;回溫後 1 小時內用畢,不可重複加熱。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：母乳加熱與保存須知（禾馨醫療）", "url": "https://www.youtube.com/watch?v=86YioQ42ktI" },
+            { "name": "母乳保存與加熱原則（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=3609&type=01" }
+          ]
+        },
+        {
+          "id": "sk-5",
+          "name": "泡配方奶",
+          "note": "依比例調配,先加水再加奶粉,注意調乳溫度。",
+          "notionNote": [
+            "先洗手,器具需徹底清潔消毒;開水溫度不得低於 70℃,煮開後不可放置超過 30 分鐘。",
+            "依包裝比例調配,分量過多過少都可能致病;調好後迅速冷卻並滴於手腕內側測溫。",
+            "兩小時內未喝完應丟棄,切勿用微波爐沖泡或加熱,會產生不均勻「熱點」燙傷口腔。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：必學！沖泡配方奶（協和婦女醫院附設產後護理之家）", "url": "https://www.youtube.com/watch?v=8il12lOueqs" },
+            { "name": "安全沖泡配方奶原則（國健署，引用 WHO 指引）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1867&type=01" }
+          ]
+        },
+        {
+          "id": "sk-8",
+          "name": "消毒奶瓶",
+          "note": "每次使用後徹底清潔,並定期蒸煮或用消毒鍋消毒。",
+          "notionNote": [
+            "使用市售消毒器依廠商說明,或以沸水滾煮消毒。",
+            "煮沸步驟：注水→器具完全沒入水中無氣泡→蓋鍋煮沸→需要時再開蓋取用。",
+            "安撫奶嘴／人工奶嘴建議每天煮沸消毒 5 分鐘一次。"
+          ],
+          "brandSuggestions": [
+            { "name": "奶瓶奶嘴消毒原則（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1867&type=01" }
+          ]
+        },
+        {
+          "id": "sk-9",
+          "name": "洗澡",
+          "note": "注意水溫約 37–38 度,並支撐好寶寶的頭頸部。",
+          "notionNote": [
+            "浴室室溫 25-28℃,先放冷水再放熱水,水溫 37-38℃（可用溫度計測）。",
+            "由內眼角擦向外眼角,洗頭時手指壓住耳朵防進水;注意脖子、腋下、大腿、股溝等皺褶處。",
+            "避免太餓太飽時洗澡,水再淺也不可留寶寶獨自在澡盆。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：新手爸媽如何幫寶寶洗澡（國健署）", "url": "https://www.youtube.com/watch?v=GeCo9J8AKM8" },
+            { "name": "新生兒沐浴重點（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1859&type=01" }
+          ]
+        },
+        {
+          "id": "sk-12",
+          "name": "哄睡 安撫",
+          "note": "建立固定的睡前儀式,協助寶寶穩定情緒入睡,並認識腸絞痛的安撫方式。",
+          "notionNote": [
+            "寶寶哭泣是需求發聲,擁抱不會寵壞孩子,可輕聲說話、撫摸背部安撫。",
+            "腸絞痛好發 10 天至 3 個月大,高峰約 6 週,可用 Wessel 氏 333 準則判斷（一天哭≥3 小時、一週≥3 天、持續≥3 週）。",
+            "5S 安撫法：包裹（Swaddling）、側/趴臥於手臂（Side/Stomach）、吸吮（Sucking）、搖晃（Swing）、白噪音（Shushing）。",
+            "建立固定睡前儀式（洗澡→睡衣→刷牙→故事→關燈）,6 個月後可漸進式訓練自行入睡。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：嬰兒腸絞痛怎麼辦？5S 安撫技巧（澄清醫院中港院區）", "url": "https://www.youtube.com/watch?v=HGX5jtjEWII" },
+            { "name": "寶寶哭鬧與安撫（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=2295&type=01" },
+            { "name": "腸絞痛判斷與照護（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=3659&type=01" }
+          ]
+        },
+        {
+          "id": "sk-16",
+          "name": "辨識大便異常徵兆與黃疸觀察",
+          "note": "觀察大便顏色、質地變化與黃疸消退情形,留意血便、白便等異常狀況並及時就醫。",
+          "notionNote": [
+            "大便可能呈黃、綠甚至墨綠色屬正常;生理性黃疸出生 2-3 天出現、4-5 天達高峰、2 週內消退。",
+            "搭配《兒童健康手冊》「嬰兒黃金九色卡」比對大便顏色,若持續黃疸超過 2 週（喝母乳延長至 1 個月）且大便呈灰白或淡黃色,可能為膽道閉鎖。",
+            "膽道閉鎖須在 60 天內確診手術,延誤將使肝移植機率大增,滿月健檢務必攜帶尿布或照片供醫師確認。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：認識新生兒黃疸（國健署）", "url": "https://www.youtube.com/watch?v=DZvSMTOb3lk" },
+            { "name": "大便卡與黃疸觀察說明（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=3649&type=01" },
+            { "name": "新生兒大便異常徵兆（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1880&type=01" }
+          ]
+        },
+        {
+          "id": "sk-19",
+          "name": "量體溫",
+          "note": "熟悉耳溫槍或額溫槍的量測方式及正常體溫範圍。",
+          "notionNote": [
+            "中心體溫 ≧38℃為發燒;3 個月以下嬰兒耳溫不準,建議量肛溫或腋溫。",
+            "腋溫平均低於中心體溫約 0.8℃,大於 37.2℃即為發燒。",
+            "3 個月以下嬰兒一發燒就須儘速就醫做詳細檢查,不用先跑診所。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：漫談兒童發燒（國健署）", "url": "https://www.youtube.com/watch?v=uc9WarmaNA4" },
+            { "name": "量體溫方式與發燒定義（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1986&type=01" }
+          ]
+        },
+        {
+          "id": "sk-17",
+          "name": "剪指甲",
+          "note": "選擇寶寶專用指甲剪,趁寶寶熟睡時修剪,避免抓傷臉部。",
+          "notionNote": [
+            "政府網站目前沒有專屬教學文章,僅在其他衛教內容中提及應定期修剪、清潔寶寶指甲以養成正確衛生習慣。",
+            "幫寶寶按摩或照顧前,照顧者本身也不宜留長指甲,避免刮傷寶寶肌膚。",
+            "建議趁寶寶熟睡、放鬆時修剪,使用寶寶專用圓頭指甲剪較安全。"
+          ]
+        },
+        {
+          "id": "sk-18",
+          "name": "清潔鼻涕/使用吸鼻器",
+          "note": "寶寶鼻塞時使用吸鼻器清除鼻涕,舒緩呼吸不順。",
+          "notionNote": [
+            "政府網站目前查無「吸鼻器」操作專屬教學文章,以下為相關聯內容整理。",
+            "沐浴時可用溫濕紗布巾沾濕清潔鼻孔周圍。",
+            "鼻塞為常見感冒症狀之一,清潔之外仍需觀察寶寶活動力與呼吸狀況,異常應就醫。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：吸鼻球使用方法（如意產後護理之家）", "url": "https://www.youtube.com/watch?v=dzBI0pzhaZQ" }
+          ]
+        },
+        {
+          "id": "sk-3",
+          "name": "穿衣服",
+          "note": "熟悉新生兒穿脫衣物的技巧,依氣溫調整衣物厚薄,動作放輕柔。",
+          "notionNote": [
+            "建議「洋蔥式穿搭法」,件數與大人差不多即可,以摸後頸判斷冷熱,並觀察是否流汗。",
+            "睡覺保暖可用睡袋型睡衣或包巾,需露出手臂,避免蓋住臉部。",
+            "居家環境建議維持 24-26℃,夏季衣物應輕薄吸汗。"
+          ],
+          "brandSuggestions": [
+            { "name": "照顧新生兒必備 5 技巧（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=2403&type=01" }
+          ]
+        },
+        {
+          "id": "sk-22",
+          "name": "餵藥",
+          "note": "熟悉餵藥器使用方式,注意藥物劑量與時間。",
+          "notionNote": [
+            "依醫師處方按時給藥,不可自行增減藥量或停藥。",
+            "藥物應在餵奶前後給予,不可加入母乳/配方奶中,以免影響劑量吸收。",
+            "可利用奶嘴、滴管、小湯匙、空針餵藥；鐵劑通常餵食前 30 分鐘服用,服用後大便偏黑或深綠屬正常。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：守護寶貝的用藥安全（國健署）", "url": "https://www.youtube.com/watch?v=incqUXc_kg8" },
+            { "name": "早產兒用藥與居家照護原則（國健署）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1873&type=01" }
+          ]
+        },
+        {
+          "id": "sk-20",
+          "name": "按摩",
+          "note": "促進血液循環與親子互動,適合洗澡後進行。",
+          "notionNote": [
+            "按摩前照顧者需修剪指甲、溫暖雙手,基本原則為「從頭按到腳」。",
+            "步驟：額頭眉毛臉頰耳朵→從上手臂按到小手指（換手）→手掌放胸前由中間往外畫圈→大腿按到腳掌腳趾→背部由上往下按至屁股。",
+            "常搭配洗澡後進行,有助情緒身體放鬆並增進親子感情。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：嬰幼兒按摩 5 技巧（愛林家庭整合醫學）", "url": "https://www.youtube.com/watch?v=GcilbnvIaCI" },
+            { "name": "寶寶按摩步驟教學（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1552&type=01" }
+          ]
+        },
+        {
+          "id": "sk-21",
+          "name": "使用背巾",
+          "note": "確認寶寶呈 M 型腿姿勢,且背巾支撐位置正確。",
+          "notionNote": [
+            "依建議體重使用背巾,體重不足不可使用;背好後需確認寶寶口鼻暢通無遮蔽。",
+            "揹寶寶時不要彎腰、應彎腿,避免閃到腰或壓迫寶寶。",
+            "步驟：背巾套上自己→橫抱寶寶靠近→讓寶寶橫躺背巾中央（一手仍在巾內）→調整垂布長度→緩緩抽出手。"
+          ],
+          "brandSuggestions": [
+            { "name": "背巾使用方式與注意事項（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=1561&type=01" }
+          ]
+        },
+        {
+          "id": "sk-15",
+          "name": "異物哽塞急救(嬰兒版哈姆立克/CPR)",
+          "note": "熟悉異物哽塞時的拍背壓胸手法及基礎心肺復甦步驟,以備緊急狀況,建議越早學會越好。",
+          "notionNote": [
+            "1 歲以下嬰兒噎到採「拍背壓胸法」而非成人哈姆立克法：臉朝下橫抱於前臂、頭低於身體,掌根在兩肩胛骨間用力拍 5 下。",
+            "翻正後兩指於兩乳頭連線下方快速按壓 5 次,交替直到異物排出或送醫。",
+            "CPR 按壓深度約 4 公分（胸廓 1/3 深）,速率 100-120 次/分,可用兩指按壓於兩乳連線下方。",
+            "1 歲以上或體型較大兒童則可比照成人哈姆立克法（立於身後,拳眼抵上腹正中線向後上方快速推擠）。"
+          ],
+          "brandSuggestions": [
+            { "name": "示範影片：嬰兒異物梗塞（拍背壓胸）全民急救E起來（衛生福利部）", "url": "https://www.youtube.com/watch?v=HOl2AWdb71g" },
+            { "name": "延伸參考：異物梗塞急救操作，成人/兒童版（臺北市政府消防局防災教育雲）", "url": "https://www.disasterlearning.gov.taipei/tw/Knowledge/ugC_Knowledge_Detail.aspx?ID=123&TID=6" }
+          ]
+        },
+        {
+          "id": "sk-23",
+          "name": "製作副食品",
+          "note": "依月齡調整食物質地,從單一食材開始嘗試。",
+          "notionNote": [
+            "純母乳哺育滿 6 個月後必須添加副食品,4 個月內不建議添加。",
+            "添加順序：先不易過敏的米精/米粉→麥精/麥粉→蔬菜→水果→肉類,由稀到稠、由液到泥到固體。",
+            "每次只加一種新食物,觀察 3-5 天無紅疹腹瀉再繼續。",
+            "1 歲以下不可餵蜂蜜（肉毒桿菌風險）,避免堅果葡萄等硬圓食物防噎到,不加人工調味料。"
+          ],
+          "brandSuggestions": [
+            { "name": "副食品添加原則（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=3628&type=01" }
+          ]
+        },
+        {
+          "id": "sk-24",
+          "name": "餵副食品",
+          "note": "觀察接受度及過敏反應,循序漸進增加種類。",
+          "notionNote": [
+            "6-9 個月一天 2-3 次,每次 2-3 湯匙漸增；9-12 個月一天 3-4 次,每次半杯至一杯。",
+            "應使用湯匙餵食,勿加入奶瓶與奶混餵;選寶寶較餓時餵（如喝奶前 1 小時）,拒食勿強迫,暫停 1-2 週再試。",
+            "高致敏食物（蛋、豆、麥、花生醬、堅果醬、魚貝類）待其他副食品耐受良好後再嘗試,並優先在家中謹慎少量餵食。"
+          ],
+          "brandSuggestions": [
+            { "name": "副食品餵食頻率與過敏觀察（國健署孕產兒關懷網站）", "url": "https://mammy.hpa.gov.tw/Home/NewsKBContent?id=3617&type=01" }
+          ]
+        }
       ]
     }
   ]

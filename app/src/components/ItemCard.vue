@@ -11,6 +11,8 @@ import {
   getItemCost,
   setItemCost,
   computeCardState,
+  computePersonBadge,
+  computePersonCardState,
 } from '../composables/useChecklist'
 import Icon from './Icon.vue'
 
@@ -26,7 +28,10 @@ const linkedTabDef = computed(() => (isLink.value ? DATA[props.item.linkToTab] :
 
 const status = computed(() => getItemStatus(props.tabDef, props.item))
 const isDone = computed(() => status.value === props.tabDef.doneKey)
-const cardState = computed(() => computeCardState(props.tabDef, status.value))
+const personBadge = computed(() => (props.tabDef.perPersonStatus ? computePersonBadge(props.tabDef, props.item) : null))
+const cardState = computed(() =>
+  props.tabDef.perPersonStatus ? computePersonCardState(props.tabDef, props.item) : computeCardState(props.tabDef, status.value),
+)
 const activeSlot = computed(() => {
   const idx = props.tabDef.states.findIndex((st) => st.key === status.value)
   return idx === -1 ? 0 : idx
@@ -80,11 +85,11 @@ function handleKeydown(e) {
 <template>
   <article
     class="card"
-    :class="{ 'has-phase': tabDef.hasPhase, 'card-link': isLink }"
+    :class="{ 'has-phase': tabDef.hasPhase, 'card-link': isLink, 'card-badge-only': tabDef.badgeOnly }"
     :data-state="cardState"
     :role="isLink || tabDef.hasBrandInfo ? 'button' : null"
     :tabindex="isLink || tabDef.hasBrandInfo ? 0 : null"
-    :aria-label="isLink ? `${item.name} — 前往「${linkedTabDef.label}」分頁` : (tabDef.hasBrandInfo ? `${item.name} — 查看品牌參考與備註` : null)"
+    :aria-label="isLink ? `${item.name} — 前往「${linkedTabDef.label}」分頁` : (tabDef.hasBrandInfo ? `${item.name} — ${tabDef.modalAriaLabel || '查看品牌參考與備註'}` : null)"
     @click="handleClick"
     @keydown="handleKeydown"
   >
@@ -138,6 +143,17 @@ function handleKeydown(e) {
           <span class="select-arrow" aria-hidden="true">▾</span>
         </div>
       </div>
+    </template>
+
+    <template v-else-if="tabDef.badgeOnly">
+      <h3 class="card-name">
+        <Icon v-if="group.groupIcon" class="card-group-icon" :name="group.groupIcon" />
+        {{ item.name }}
+      </h3>
+      <span
+        class="status-badge"
+        :data-slot="tabDef.perPersonStatus ? personBadge.slot : activeSlot"
+      >{{ tabDef.perPersonStatus ? personBadge.label : (status === tabDef.doneKey ? tabDef.states[1].label : tabDef.states[0].label) }}</span>
     </template>
 
     <template v-else>

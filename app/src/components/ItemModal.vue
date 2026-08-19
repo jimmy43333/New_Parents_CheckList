@@ -1,12 +1,36 @@
 <script setup>
-import { ref, watch } from 'vue'
-import { getItemNote, setItemNote } from '../composables/useChecklist'
+import { ref, computed, watch } from 'vue'
+import { getItemNote, setItemNote, getItemStatus, setItemStatus, getPersonStatus, setPersonStatus, PERSON_LABEL } from '../composables/useChecklist'
 import Icon from './Icon.vue'
 
 const props = defineProps({
   item: { type: Object, default: null },
+  tabDef: { type: Object, default: null },
 })
 const emit = defineEmits(['close'])
+
+const noteLabel = computed(() => props.tabDef?.modalNoteLabel || '經驗分享')
+const linksLabel = computed(() => props.tabDef?.modalLinksLabel || '品牌分享')
+const linksCollapsible = computed(() => props.tabDef?.modalLinksCollapsible !== false)
+const isDone = computed(
+  () => !!props.item && !!props.tabDef && getItemStatus(props.tabDef, props.item) === props.tabDef.doneKey,
+)
+function toggleStatus() {
+  if (!props.item || !props.tabDef) return
+  setItemStatus(props.item.id, isDone.value ? props.tabDef.states[0].key : props.tabDef.doneKey)
+}
+
+const dadDone = computed(
+  () => !!props.item && !!props.tabDef && getPersonStatus(props.tabDef, props.item, 'dad') === props.tabDef.doneKey,
+)
+const momDone = computed(
+  () => !!props.item && !!props.tabDef && getPersonStatus(props.tabDef, props.item, 'mom') === props.tabDef.doneKey,
+)
+function togglePerson(person) {
+  if (!props.item || !props.tabDef) return
+  const done = person === 'dad' ? dadDone.value : momDone.value
+  setPersonStatus(props.item.id, person, done ? props.tabDef.states[0].key : props.tabDef.doneKey)
+}
 
 const notesValue = ref('')
 const savedMessage = ref('')
@@ -94,35 +118,48 @@ function onDragEnd() {
         </div>
 
         <div class="modal-body">
-          <p class="modal-section-label"><Icon name="chat" /> 經驗分享</p>
+          <p class="modal-section-label"><Icon name="chat" /> {{ noteLabel }}</p>
           <div>
-            <div v-if="item.notionNote && item.notionNote.length" class="modal-note-text">
-              <template v-for="(line, i) in item.notionNote" :key="i">{{ line }}<br v-if="i < item.notionNote.length - 1" /></template>
-            </div>
-            <p v-else class="modal-note-text">目前沒有相關經驗分享。</p>
+            <ul v-if="item.notionNote && item.notionNote.length" class="modal-note-list">
+              <li v-for="(line, i) in item.notionNote" :key="i">{{ line }}</li>
+            </ul>
+            <p v-else class="modal-note-text">目前沒有相關內容。</p>
           </div>
 
           <div class="modal-brand-block" v-if="item.brandSuggestions && item.brandSuggestions.length">
-            <button
-              type="button"
-              class="modal-brand-toggle"
-              :aria-expanded="brandPanelOpen ? 'true' : 'false'"
-              @click="brandPanelOpen = !brandPanelOpen"
-            >
-              <span><Icon name="search" /> 品牌分享</span>
-              <span class="modal-brand-toggle-arrow" aria-hidden="true">▾</span>
-            </button>
-            <div class="modal-brand-panel" v-show="brandPanelOpen">
-              <ul class="modal-brand-list">
-                <li v-for="(b, i) in item.brandSuggestions" :key="i">
-                  <a v-if="brandUrl(b)" :href="brandUrl(b)" target="_blank" rel="noopener noreferrer">{{ brandName(b) }} ↗</a>
-                  <template v-else>{{ brandName(b) }}</template>
-                </li>
-              </ul>
-            </div>
+            <template v-if="linksCollapsible">
+              <button
+                type="button"
+                class="modal-brand-toggle"
+                :aria-expanded="brandPanelOpen ? 'true' : 'false'"
+                @click="brandPanelOpen = !brandPanelOpen"
+              >
+                <span><Icon name="search" /> {{ linksLabel }}</span>
+                <span class="modal-brand-toggle-arrow" aria-hidden="true">▾</span>
+              </button>
+              <div class="modal-brand-panel" v-show="brandPanelOpen">
+                <ul class="modal-brand-list">
+                  <li v-for="(b, i) in item.brandSuggestions" :key="i">
+                    <a v-if="brandUrl(b)" :href="brandUrl(b)" target="_blank" rel="noopener noreferrer">{{ brandName(b) }} ↗</a>
+                    <template v-else>{{ brandName(b) }}</template>
+                  </li>
+                </ul>
+              </div>
+            </template>
+            <template v-else>
+              <p class="modal-section-label"><Icon name="search" /> {{ linksLabel }}</p>
+              <div class="modal-brand-panel is-static">
+                <ul class="modal-brand-list">
+                  <li v-for="(b, i) in item.brandSuggestions" :key="i">
+                    <a v-if="brandUrl(b)" :href="brandUrl(b)" target="_blank" rel="noopener noreferrer">{{ brandName(b) }} ↗</a>
+                    <template v-else>{{ brandName(b) }}</template>
+                  </li>
+                </ul>
+              </div>
+            </template>
           </div>
 
-          <div class="modal-notes-block">
+          <div v-if="tabDef && tabDef.modalPersonalNotes !== false" class="modal-notes-block">
             <p class="modal-section-label"><Icon name="note" /> 我的備註</p>
             <textarea
               class="modal-notes-textarea"
@@ -131,6 +168,40 @@ function onDragEnd() {
               @input="onNotesInput"
             ></textarea>
             <p class="modal-notes-saved" aria-live="polite">{{ savedMessage }}</p>
+          </div>
+
+          <div v-if="tabDef && tabDef.modalStatusToggle" class="modal-status-toggle-block">
+            <div v-if="tabDef.perPersonStatus" class="modal-status-toggle-row">
+              <button
+                type="button"
+                class="modal-status-toggle"
+                :data-done="dadDone ? 'true' : 'false'"
+                @click="togglePerson('dad')"
+              >
+                <Icon :name="dadDone ? 'check' : 'baby'" />
+                <span>{{ PERSON_LABEL.dad }}{{ dadDone ? tabDef.states[1].label : tabDef.states[0].label }}</span>
+              </button>
+              <button
+                type="button"
+                class="modal-status-toggle"
+                :data-done="momDone ? 'true' : 'false'"
+                @click="togglePerson('mom')"
+              >
+                <Icon :name="momDone ? 'check' : 'baby'" />
+                <span>{{ PERSON_LABEL.mom }}{{ momDone ? tabDef.states[1].label : tabDef.states[0].label }}</span>
+              </button>
+            </div>
+            <button
+              v-else
+              type="button"
+              class="modal-status-toggle"
+              :data-done="isDone ? 'true' : 'false'"
+              @click="toggleStatus"
+            >
+              <Icon :name="isDone ? 'check' : 'baby'" />
+              <span>{{ isDone ? tabDef.states[1].label : tabDef.states[0].label }}</span>
+              <span class="modal-status-toggle-hint">{{ isDone ? '點擊改回未學習' : '點擊標記為已學習' }}</span>
+            </button>
           </div>
         </div>
       </div>
