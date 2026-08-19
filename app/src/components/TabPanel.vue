@@ -106,6 +106,8 @@ watch(
 
 <template>
   <section role="tabpanel">
+    <h2 class="panel-title">{{ tabDef.label }}</h2>
+
     <div class="progress-block">
       <div class="progress-top">
         <span class="progress-label">準備進度</span>

@@ -36,6 +36,7 @@ function selectTab(key) {
       v-for="tab in tabs"
       :key="tab.key"
       class="tab-btn"
+      :class="{ 'menu-tab': tab.isMenu }"
       type="button"
       role="tab"
       :aria-selected="tab.key === activeTab ? 'true' : 'false'"
