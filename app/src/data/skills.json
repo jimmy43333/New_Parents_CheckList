@@ -1,7 +1,7 @@
 {
   "key": "skills",
   "label": "照顧能力表",
-  "icon": "👶",
+  "icon": "baby",
   "states": [
     { "key": "not-learned", "label": "未學習" },
     { "key": "learned", "label": "已學習" }

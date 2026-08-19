@@ -1,7 +1,7 @@
 {
   "key": "supplies",
   "label": "準備清單",
-  "icon": "📋",
+  "icon": "clipboard",
   "states": [
     { "key": "not-bought", "label": "未準備" },
     { "key": "in-progress", "label": "準備中" },

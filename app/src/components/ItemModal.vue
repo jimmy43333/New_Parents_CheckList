@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { getItemNote, setItemNote } from '../composables/useChecklist'
+import Icon from './Icon.vue'
 
 const props = defineProps({
   item: { type: Object, default: null },
@@ -52,10 +53,10 @@ function onOverlayClick(e) {
     <div v-if="item" class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="itemModalTitle" @click="onOverlayClick">
       <div class="modal-header">
         <h2 class="modal-title" id="itemModalTitle">{{ item.name }}</h2>
-        <button class="modal-close" type="button" aria-label="關閉" @click="close">✕</button>
+        <button class="modal-close" type="button" aria-label="關閉" @click="close"><Icon name="close" /></button>
       </div>
       <div class="modal-body">
-        <p class="modal-section-label">📝 我的備註</p>
+        <p class="modal-section-label"><Icon name="note" /> 我的備註</p>
         <textarea
           class="modal-notes-textarea"
           v-model="notesValue"
@@ -64,7 +65,7 @@ function onOverlayClick(e) {
         ></textarea>
         <p class="modal-notes-saved" aria-live="polite">{{ savedMessage }}</p>
 
-        <p class="modal-section-label">💬 經驗分享</p>
+        <p class="modal-section-label"><Icon name="chat" /> 經驗分享</p>
         <div>
           <div v-if="item.notionNote && item.notionNote.length" class="modal-note-text">
             <template v-for="(line, i) in item.notionNote" :key="i">{{ line }}<br v-if="i < item.notionNote.length - 1" /></template>
@@ -79,7 +80,7 @@ function onOverlayClick(e) {
             :aria-expanded="brandPanelOpen ? 'true' : 'false'"
             @click="brandPanelOpen = !brandPanelOpen"
           >
-            <span>🔎 品牌分享</span>
+            <span><Icon name="search" /> 品牌分享</span>
             <span class="modal-brand-toggle-arrow" aria-hidden="true">▾</span>
           </button>
           <div class="modal-brand-panel" v-show="brandPanelOpen">

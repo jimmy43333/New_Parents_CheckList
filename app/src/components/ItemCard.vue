@@ -12,6 +12,7 @@ import {
   setItemCost,
   computeCardState,
 } from '../composables/useChecklist'
+import Icon from './Icon.vue'
 
 const props = defineProps({
   tabDef: { type: Object, required: true },
@@ -91,7 +92,7 @@ function handleKeydown(e) {
       <div class="card-main">
         <div class="card-name-row">
           <h3 class="card-name">
-            <span v-if="group.groupIcon" class="card-group-icon" aria-hidden="true">{{ group.groupIcon }}</span>
+            <Icon v-if="group.groupIcon" class="card-group-icon" :name="group.groupIcon" />
             {{ item.name }}
           </h3>
           <div v-if="tabDef.phaseSelectable" class="phase-select-wrap" :data-phase="phaseValue" @click.stop>
@@ -141,7 +142,7 @@ function handleKeydown(e) {
 
     <template v-else>
       <h3 class="card-name">
-        <span v-if="group.groupIcon" class="card-group-icon" aria-hidden="true">{{ group.groupIcon }}</span>
+        <Icon v-if="group.groupIcon" class="card-group-icon" :name="group.groupIcon" />
         {{ item.name }}
       </h3>
       <p class="card-note" :title="item.note || null">{{ item.note || '' }}</p>

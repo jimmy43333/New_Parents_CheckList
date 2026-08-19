@@ -3,11 +3,13 @@ import { ref, onMounted } from 'vue'
 import { TAB_ORDER, THEME_KEY } from './composables/useChecklist'
 import TabBar from './components/TabBar.vue'
 import TabPanel from './components/TabPanel.vue'
+import MenuPanel from './components/MenuPanel.vue'
 import ItemModal from './components/ItemModal.vue'
+import Icon from './components/Icon.vue'
 
 const activeTab = ref(TAB_ORDER[0])
 const modalItem = ref(null)
-const themeIcon = ref('🌙')
+const themeIcon = ref('moon')
 
 function currentEffectiveTheme() {
   const attr = document.documentElement.getAttribute('data-theme')
@@ -15,7 +17,7 @@ function currentEffectiveTheme() {
   return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 function updateThemeIcon() {
-  themeIcon.value = currentEffectiveTheme() === 'dark' ? '☀️' : '🌙'
+  themeIcon.value = currentEffectiveTheme() === 'dark' ? 'sun' : 'moon'
 }
 function toggleTheme() {
   const next = currentEffectiveTheme() === 'dark' ? 'light' : 'dark'
@@ -75,7 +77,7 @@ onMounted(() => {
 
   <div class="page">
     <header class="hero">
-      <button class="theme-toggle" type="button" aria-label="切換深色/淺色模式" @click="toggleTheme">{{ themeIcon }}</button>
+      <button class="theme-toggle" type="button" aria-label="切換深色/淺色模式" @click="toggleTheme"><Icon :name="themeIcon" /></button>
       <h1>新手爸媽準備清單</h1>
       <p class="hero-sub">
         整理自一對真實爸媽的育兒筆記, 依準備時間排序, 可自行調整，選擇待評估可將其從清單移除。<br />
@@ -88,7 +90,8 @@ onMounted(() => {
     <TabBar :active-tab="activeTab" @select="selectTab" />
 
     <main>
-      <TabPanel :active-tab="activeTab" @navigate-tab="selectTab" @open-modal="openModal" />
+      <TabPanel v-if="activeTab !== 'menu'" :active-tab="activeTab" @navigate-tab="selectTab" @open-modal="openModal" />
+      <MenuPanel v-else />
     </main>
 
     <p class="footer">
