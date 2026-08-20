@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { getItemNote, setItemNote, getItemStatus, setItemStatus, getPersonStatus, setPersonStatus, PERSON_LABEL } from '../composables/useChecklist'
 import Icon from './Icon.vue'
 
@@ -37,8 +37,10 @@ const savedMessage = ref('')
 const brandPanelOpen = ref(false)
 const dragDeltaY = ref(0)
 const isDragging = ref(false)
+const modalBodyRef = ref(null)
 let savedTimer = null
 let dragStartY = 0
+let dragEligible = false
 
 watch(
   () => props.item,
@@ -75,18 +77,28 @@ function close() {
 function onOverlayClick(e) {
   if (e.target === e.currentTarget) close()
 }
+function onKeydown(e) {
+  if (e.key === 'Escape' && props.item) close()
+}
+onMounted(() => document.addEventListener('keydown', onKeydown))
+onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 
 function onDragStart(e) {
   if (e.touches.length !== 1) return
   dragStartY = e.touches[0].clientY
   isDragging.value = true
+  // Only allow a drag-to-close gesture when the scrollable body is already
+  // at its top — otherwise the touch should scroll the body's content.
+  dragEligible = !modalBodyRef.value || modalBodyRef.value.scrollTop <= 0
 }
 function onDragMove(e) {
   if (!isDragging.value) return
   const delta = e.touches[0].clientY - dragStartY
-  if (delta > 0) {
+  if (delta > 0 && dragEligible) {
     dragDeltaY.value = delta
     e.preventDefault()
+  } else {
+    dragDeltaY.value = 0
   }
 }
 function onDragEnd() {
@@ -108,16 +120,18 @@ function onDragEnd() {
         aria-modal="true"
         aria-labelledby="itemModalTitle"
         :style="isDragging && dragDeltaY > 0 ? { transform: `translateY(${dragDeltaY}px)`, transition: 'none' } : null"
+        @touchstart="onDragStart"
+        @touchmove="onDragMove"
+        @touchend="onDragEnd"
       >
-        <div class="modal-drag-zone" @touchstart="onDragStart" @touchmove="onDragMove" @touchend="onDragEnd">
+        <div class="modal-drag-zone">
           <div class="modal-drag-handle" aria-hidden="true"></div>
           <div class="modal-header">
             <h2 class="modal-title" id="itemModalTitle">{{ item.name }}</h2>
-            <button class="modal-close" type="button" aria-label="關閉" @click="close"><Icon name="close" /></button>
           </div>
         </div>
 
-        <div class="modal-body">
+        <div class="modal-body" ref="modalBodyRef">
           <p class="modal-section-label"><Icon name="chat" /> {{ noteLabel }}</p>
           <div>
             <ul v-if="item.notionNote && item.notionNote.length" class="modal-note-list">

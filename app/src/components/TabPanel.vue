@@ -85,6 +85,11 @@ const visibleGroups = computed(() => {
     .filter((g) => g.visibleItems.length)
 })
 
+const infoPanelOpen = ref(false)
+function onInfoOverlayClick(e) {
+  if (e.target === e.currentTarget) infoPanelOpen.value = false
+}
+
 const resetConfirming = ref(false)
 let resetConfirmTimer = null
 
@@ -107,13 +112,43 @@ watch(
   () => {
     if (resetConfirmTimer) clearTimeout(resetConfirmTimer)
     resetConfirming.value = false
+    infoPanelOpen.value = false
   },
 )
 </script>
 
 <template>
+  <Transition name="info-drop">
+    <div v-if="infoPanelOpen" class="info-overlay" @click="onInfoOverlayClick">
+      <div class="info-panel" role="dialog" aria-modal="true" aria-labelledby="infoPanelTitle">
+        <div class="info-panel-header">
+          <h2 class="info-panel-title" id="infoPanelTitle">{{ tabDef.label }} 說明</h2>
+          <button class="modal-close" type="button" aria-label="關閉" @click="infoPanelOpen = false">
+            <Icon name="close" />
+          </button>
+        </div>
+        <div class="info-panel-body">
+          <ul class="panel-desc-list">
+            <li v-for="(line, i) in tabDef.description" :key="i">{{ line }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Transition>
+
   <section role="tabpanel">
-    <h2 class="panel-title">{{ tabDef.label }}</h2>
+    <div class="panel-title-row">
+      <h2 class="panel-title">{{ tabDef.label }}</h2>
+      <button
+        v-if="tabDef.description && tabDef.description.length"
+        class="panel-info-btn"
+        type="button"
+        :aria-label="tabDef.label + ' 說明'"
+        @click="infoPanelOpen = true"
+      >
+        <Icon name="info" />
+      </button>
+    </div>
 
     <div v-if="tabDef.perPersonStatus" class="progress-block person-progress-block">
       <div class="progress-top">
@@ -145,12 +180,6 @@ watch(
         </span>
       </div>
       <div class="progress-track"><div class="progress-fill" :style="{ width: pct + '%' }"></div></div>
-    </div>
-
-    <div v-if="tabDef.description && tabDef.description.length" class="panel-desc-block">
-      <ul class="panel-desc-list">
-        <li v-for="(line, i) in tabDef.description" :key="i">{{ line }}</li>
-      </ul>
     </div>
 
     <div v-if="tabDef.hasCost" class="budget-block">

@@ -11,7 +11,7 @@ onMounted(initTheme)
   <section role="tabpanel" class="menu-panel">
     <div class="menu-about">
       <div class="menu-about-head">
-        <h1>{{ APP_TITLE }}</h1>
+        <h1 class="panel-title">{{ APP_TITLE }}</h1>
         <button class="theme-toggle theme-toggle-inline" type="button" aria-label="切換深色/淺色模式" @click="toggleTheme">
           <Icon :name="themeIcon" />
         </button>
@@ -23,8 +23,10 @@ onMounted(initTheme)
     </div>
 
     <div class="footer">
-      <p class="footer-text"><strong>免責聲明:</strong>{{ DISCLAIMER }}</p>
-      <p class="footer-meta">製作日期:{{ BUILD_DATE }} · 更新日期:{{ UPDATED_DATE }} · 版本:{{ APP_VERSION }}</p>
+      <p class="footer-text"><strong>免責聲明 : </strong>{{ DISCLAIMER }}</p>
+      <p class="footer-meta">
+        製作:{{ BUILD_DATE }} · 更新:{{ UPDATED_DATE }} · 版本:{{ APP_VERSION }}
+      </p>
     </div>
   </section>
 </template>

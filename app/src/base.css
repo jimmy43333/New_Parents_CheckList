@@ -127,13 +127,6 @@
   }
 
   /* ---------- Header ---------- */
-  h1 {
-    font-size: clamp(1.7rem, 4vw, 2.35rem);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin: 0 0 10px;
-    text-wrap: balance;
-  }
   .hero-sub {
     font-size: 0.98rem;
     line-height: 1.65;
@@ -302,7 +295,7 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-    padding: 14px 4px 2px;
+    padding: 0 4px 2px;
   }
   .menu-about-head {
     display: flex;
@@ -310,7 +303,6 @@
     justify-content: space-between;
     gap: 12px;
   }
-  .menu-about h1 { margin-top: 0; }
   .theme-toggle.theme-toggle-inline {
     position: static;
     flex-shrink: 0;
@@ -318,12 +310,37 @@
   .menu-panel .footer { margin-top: auto; }
 
   /* ---------- Panel title ---------- */
-  .panel-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--ink);
+  .panel-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin: 4px 4px 14px;
   }
+  .panel-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .panel-info-btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    color: var(--ink-faint);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .panel-info-btn:hover { color: var(--ink-soft); }
+  .panel-info-btn:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 2px; }
 
   /* ---------- Budget ---------- */
   .budget-block {
@@ -613,19 +630,17 @@
     /* bottom navigation bar: floating rounded island above the viewport bottom, 3 tabs evenly spaced, icon over label */
     .tabbar {
       position: fixed;
-      left: 14px;
-      right: 14px;
-      bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      left: 10px;
+      right: 10px;
+      bottom: calc(0px + env(safe-area-inset-bottom, 0px));
       z-index: 20;
       flex-direction: row;
       gap: 0;
       margin-top: 0;
       padding: 7px 4px;
-      border-radius: 50px;
-      background: color-mix(in srgb, var(--surface) 75%, transparent);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--ink) 45%, var(--surface) 55%);
+      border: 1px solid var(--border-strong);
     }
     .tab-indicator {
       display: block;
@@ -634,8 +649,8 @@
       bottom: 7px;
       left: 4px;
       width: calc((100% - 8px) / 4);
-      border-radius: 50px;
-      background: var(--accent-honey-soft);
+      border-radius: 24px;
+      background: var(--surface);
       transition: transform 0.25s cubic-bezier(.4, 0, .2, 1);
       z-index: 0;
       pointer-events: none;
@@ -645,7 +660,7 @@
       justify-content: center;
       gap: 3px;
       padding: 6px 4px;
-      border-radius: 50px;
+      border-radius: 24px;
       border-color: transparent;
       font-size: 0.68rem;
     }
@@ -718,7 +733,7 @@
     .cost-prefix { left: 8px; font-size: 0.66rem; }
 
     .modal-title { font-size: 1.02rem; }
-    .modal-panel { height: 98vh; max-height: 98vh; }
+    .modal-panel { max-height: 98vh; }
   }
 
   .status-select-wrap {
@@ -816,7 +831,7 @@
   /* ---------- Footer ---------- */
   .footer {
     margin-top: 50px;
-    padding: 22px 18px 2px;
+    padding: 5px 10px;
     border-radius: var(--radius-md);
     background: var(--surface-alt);
     border: 1px solid var(--border);
@@ -869,6 +884,7 @@
     align-items: flex-end;
     justify-content: center;
     padding: 0;
+    overscroll-behavior: contain;
   }
   @media (min-width: 640px) {
     .modal-overlay {
@@ -966,6 +982,7 @@
     flex-direction: column;
     padding: 16px 18px 3px;
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .modal-section-label {
     font-size: 0.78rem;
@@ -977,7 +994,7 @@
   .modal-status-toggle-block {
     margin-top: auto;
     padding-top: 18px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
   }
   .modal-status-toggle-row {
     display: flex;
@@ -1093,15 +1110,15 @@
   .modal-notes-block {
     display: flex;
     flex-direction: column;
-    min-height: 40vh;
-    margin-top: auto;
+    height: 40vh;
+    flex-shrink: 0;
     padding-top: 18px;
   }
   .modal-notes-block .modal-section-label { margin-top: 0; }
   .modal-notes-textarea {
     width: 100%;
     flex: 1;
-    min-height: 88px;
+    min-height: 0;
     font-family: inherit;
     font-size: 0.88rem;
     line-height: 1.6;
@@ -1122,4 +1139,71 @@
     color: var(--accent-sage);
     margin: 6px 0 0;
     min-height: 1em;
+  }
+
+  /* ---------- Page info panel (slides down from top) ---------- */
+  .info-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(20, 12, 8, 0.5);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+  }
+  @media (min-width: 640px) {
+    .info-overlay { padding: 24px; }
+  }
+  .info-panel {
+    width: 100%;
+    max-width: 480px;
+    max-height: 80vh;
+    background: var(--surface);
+    border: var(--border-width) solid var(--border-strong);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  @media (min-width: 640px) {
+    .info-panel { border-radius: var(--radius-md); }
+  }
+
+  /* enter/leave animation (Vue <Transition name="info-drop">) */
+  .info-drop-enter-active,
+  .info-drop-leave-active {
+    transition: opacity 0.2s ease;
+  }
+  .info-drop-enter-active .info-panel,
+  .info-drop-leave-active .info-panel {
+    transition: transform 0.24s cubic-bezier(.4, 0, .2, 1);
+  }
+  .info-drop-enter-from,
+  .info-drop-leave-to {
+    opacity: 0;
+  }
+  .info-drop-enter-from .info-panel,
+  .info-drop-leave-to .info-panel {
+    transform: translateY(-100%);
+  }
+
+  .info-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .info-panel-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .info-panel-body {
+    padding: 14px 18px 18px;
+    overflow-y: auto;
   }

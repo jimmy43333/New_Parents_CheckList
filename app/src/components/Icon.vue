@@ -17,6 +17,7 @@ const paths = {
   menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
   play: '<circle cx="12" cy="12" r="9"/><path d="M10.5 8.5v7l6-3.5-6-3.5Z"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5v.01"/>',
 }
 </script>
 
