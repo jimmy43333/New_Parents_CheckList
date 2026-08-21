@@ -9,6 +9,7 @@ const COST_KEY = 'npchecklist_costs_v1'
 const NOTES_KEY = 'npchecklist_notes_v1'
 const PHASE_KEY = 'npchecklist_phase_v1'
 const PERSON_KEY = 'npchecklist_person_v1'
+const BABY_KEY = 'npchecklist_baby_v1'
 export const THEME_KEY = 'npchecklist_theme'
 const DEFAULT_SNAPSHOT_KEY = 'npchecklist_default_snapshot_v1'
 const CUSTOM_ITEMS_KEY = 'npchecklist_custom_items_v1'
@@ -55,12 +56,14 @@ export const costState = reactive(loadJSON(COST_KEY, {}))
 export const notesState = reactive(loadJSON(NOTES_KEY, {}))
 export const phaseState = reactive(loadJSON(PHASE_KEY, {}))
 export const personState = reactive(loadJSON(PERSON_KEY, {}))
+export const babyState = reactive(loadJSON(BABY_KEY, { name: '', dueDate: '' }))
 
 function saveState() { saveJSON(STORAGE_KEY, state) }
 function saveCosts() { saveJSON(COST_KEY, costState) }
 function saveNotes() { saveJSON(NOTES_KEY, notesState) }
 function savePhases() { saveJSON(PHASE_KEY, phaseState) }
 function savePersonState() { saveJSON(PERSON_KEY, personState) }
+function saveBaby() { saveJSON(BABY_KEY, babyState) }
 
 export function allItems(tabDef) {
   return tabDef.groups.flatMap((g) => g.items)
@@ -156,6 +159,15 @@ export function setItemNote(itemId, value) {
   if (value.trim() === '') delete notesState[itemId]
   else notesState[itemId] = value
   saveNotes()
+}
+
+export function setBabyName(value) {
+  babyState.name = value
+  saveBaby()
+}
+export function setBabyDueDate(value) {
+  babyState.dueDate = value
+  saveBaby()
 }
 
 export function computeCardState(tabDef, status) {

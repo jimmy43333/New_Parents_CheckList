@@ -13,8 +13,9 @@
     --accent-sage-soft: #DEEAE3;
     --accent-honey: #C98A1F;
     --accent-honey-soft: #F3E4C4;
+    --accent-coral-orange: #E15B3B;
     --btn-primary-ink: #1E1D1A;
-    --panel-block-bg: #DEEAE3;
+    --panel-block-bg: #FBDED2;
     --neutral-soft: #EAE7DD;
     --neutral-ink: #5C594F;
     --phase-mauve: #9B5B9E;
@@ -48,8 +49,9 @@
     --accent-sage-soft: #22301F;
     --accent-honey: #E0A83C;
     --accent-honey-soft: #3D2F14;
+    --accent-coral-orange: #FF8F6B;
     --btn-primary-ink: #17160F;
-    --panel-block-bg: #22301F;
+    --panel-block-bg: #2F261A;
     --neutral-soft: #262419;
     --neutral-ink: #A7A392;
     --phase-mauve: #C48BC6;
@@ -80,8 +82,9 @@
       --accent-sage-soft: #22301F;
       --accent-honey: #E0A83C;
       --accent-honey-soft: #3D2F14;
+      --accent-coral-orange: #FF8F6B;
       --btn-primary-ink: #17160F;
-      --panel-block-bg: #22301F;
+      --panel-block-bg: #2F261A;
       --neutral-soft: #262419;
       --neutral-ink: #A7A392;
       --phase-mauve: #C48BC6;
@@ -101,6 +104,7 @@
 
   html, body {
     touch-action: pan-x pan-y;
+    overflow-x: hidden;
   }
 
   body {
@@ -109,7 +113,6 @@
     color: var(--ink);
     font-family: "PingFang TC", "Hiragino Sans TC", "Noto Sans TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -309,6 +312,52 @@
   }
   .menu-panel .footer { margin-top: auto; }
 
+  .baby-info-block {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 14px;
+    padding: 10px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .baby-info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .baby-info-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-coral-orange);
+  }
+  .baby-info-input {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .baby-info-input::placeholder { color: var(--ink-faint); font-weight: 500; }
+  .baby-info-input:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 1px; }
+  @media (max-width: 700px) {
+    /* native <input type="date"> doesn't reliably stretch to fill a grid
+       track's full width on mobile the way a text input does, so on phones
+       it ends up visibly shorter than the name field next to it — stack
+       instead of pairing them side by side */
+    .baby-info-block { grid-template-columns: 1fr; }
+    .baby-info-input { min-height: 42px; }
+    .baby-info-input[type="date"] { transform: scaleX(0.8); transform-origin: left; }
+  }
+
   /* ---------- Panel title ---------- */
   .panel-title-row {
     display: flex;
@@ -359,6 +408,10 @@
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--ink-soft);
+  }
+  .budget-label .icon {
+    font-size: 1.5em;
+    vertical-align: -0.35em;
   }
   .budget-value {
     font-family: var(--font-mono);
@@ -531,11 +584,12 @@
     cursor: pointer;
     transition: border-color 0.15s ease, background 0.15s ease;
   }
-  .card[role="button"]:hover, .card[role="button"]:focus-visible {
+  .card[role="button"]:focus-visible {
     border-color: var(--border-strong);
     background: var(--surface-alt);
+    outline: 2px solid var(--border-strong);
+    outline-offset: 2px;
   }
-  .card[role="button"]:focus-visible { outline: 2px solid var(--border-strong); outline-offset: 2px; }
   .card-link .card-note { margin: 0; }
   .phase-chip {
     grid-area: phase;

@@ -14,26 +14,26 @@ description: 新手爸媽準備清單 PWA 的視覺設計規範——涵蓋色�
 ```css
 :root {
   /* Color */
-  --color-primary: #C98A1F;        /* 蜂蜜金黃 — 主要按鈕、重點強調、選中狀態 */
-  --color-primary-soft: #F3E4C4;   /* 主色的淺底色，用於「進行中」卡片背景 */
-  --color-secondary: #4C7A63;      /* 深松綠 — 完成狀態、成功提示 */
-  --color-secondary-soft: #DEEAE3; /* 輔色的淺底色，用於「已完成」卡片背景 */
-  --color-bg: #F2F1EC;             /* 頁面背景，米灰調 */
-  --color-surface: #FFFFFF;        /* 卡片/面板背景 */
-  --color-ink: #1E1D1A;            /* 主要文字 */
-  --color-ink-soft: #5C594F;       /* 次要文字/說明文字 */
-  --color-ink-faint: #8D8A7E;      /* 最淡文字，如時間戳 */
-  --color-border: rgba(30,29,26,0.22);
-  --color-border-strong: rgba(30,29,26,0.38);
-  --btn-primary-ink: #1E1D1A;      /* 主色按鈕上的文字色（金黃底用深色字，避免用白字對比不足） */
+  --color-primary: #c98a1f; /* 蜂蜜金黃 — 主要按鈕、重點強調、選中狀態 */
+  --color-primary-soft: #f3e4c4; /* 主色的淺底色，用於「進行中」卡片背景 */
+  --color-secondary: #4c7a63; /* 深松綠 — 完成狀態、成功提示 */
+  --color-secondary-soft: #deeae3; /* 輔色的淺底色，用於「已完成」卡片背景 */
+  --color-bg: #f2f1ec; /* 頁面背景，米灰調 */
+  --color-surface: #ffffff; /* 卡片/面板背景 */
+  --color-ink: #1e1d1a; /* 主要文字 */
+  --color-ink-soft: #5c594f; /* 次要文字/說明文字 */
+  --color-ink-faint: #8d8a7e; /* 最淡文字，如時間戳 */
+  --color-border: rgba(30, 29, 26, 0.22);
+  --color-border-strong: rgba(30, 29, 26, 0.38);
+  --btn-primary-ink: #1e1d1a; /* 主色按鈕上的文字色（金黃底用深色字，避免用白字對比不足） */
 
   /* Type scale */
-  --text-xs: 0.72rem;   /* 標籤、註記（一律大寫 + letter-spacing） */
-  --text-sm: 0.82rem;   /* 次要說明 */
-  --text-base: 0.9rem;  /* 內文 */
-  --text-md: 1rem;      /* 卡片標題 */
-  --text-lg: 1.05rem;   /* 區塊標題 */
-  --text-xl: clamp(1.5rem, 3.6vw, 1.9rem);  /* 頁面副標題 */
+  --text-xs: 0.72rem; /* 標籤、註記（一律大寫 + letter-spacing） */
+  --text-sm: 0.82rem; /* 次要說明 */
+  --text-base: 0.9rem; /* 內文 */
+  --text-md: 1rem; /* 卡片標題 */
+  --text-lg: 1.05rem; /* 區塊標題 */
+  --text-xl: clamp(1.5rem, 3.6vw, 1.9rem); /* 頁面副標題 */
   --text-2xl: clamp(1.8rem, 4.4vw, 2.3rem); /* 頁面主標 */
 
   /* Spacing（4px 基礎單位，工具感偏緊湊，比一般設計略小一階） */
@@ -45,40 +45,49 @@ description: 新手爸媽準備清單 PWA 的視覺設計規範——涵蓋色�
   --space-6: 28px;
 
   /* Radius — 銳利、接近表單/工具的直角感，不用大圓角 */
-  --radius-sm: 5px;     /* 卡片、按鈕、輸入框 */
-  --radius-md: 7px;     /* Modal */
+  --radius-sm: 5px; /* 卡片、按鈕、輸入框 */
+  --radius-md: 7px; /* Modal */
   --radius-full: 999px; /* 標籤、Pill */
 
   /* 不用陰影，用實邊框表現層級 */
   --border-width: 1.5px;
 
   /* Motion */
-  --ease: cubic-bezier(.4,0,.2,1);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 0.15s;
 }
 
 [data-theme="dark"] {
-  --color-primary: #E0A83C;
-  --color-primary-soft: #3D2F14;
-  --color-secondary: #6FA98C;
-  --color-secondary-soft: #22301F;
-  --color-bg: #16150F;              /* 暖炭黑 */
-  --color-surface: #201F18;
-  --color-ink: #ECE9DD;
-  --color-ink-soft: #A7A392;
-  --color-ink-faint: #6E6B5D;
-  --color-border: rgba(236,233,221,0.20);
-  --color-border-strong: rgba(236,233,221,0.34);
-  --btn-primary-ink: #17160F;
+  --color-primary: #e0a83c;
+  --color-primary-soft: #3d2f14;
+  --color-secondary: #6fa98c;
+  --color-secondary-soft: #22301f;
+  --color-bg: #16150f; /* 暖炭黑 */
+  --color-surface: #201f18;
+  --color-ink: #ece9dd;
+  --color-ink-soft: #a7a392;
+  --color-ink-faint: #6e6b5d;
+  --color-border: rgba(236, 233, 221, 0.2);
+  --color-border-strong: rgba(236, 233, 221, 0.34);
+  --btn-primary-ink: #17160f;
 }
 ```
 
 字體家族沿用系統預設中文黑體，不引入外部字體：
+
 ```css
-font-family: "PingFang TC", "Hiragino Sans TC", "Noto Sans TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+font-family:
+  "PingFang TC",
+  "Hiragino Sans TC",
+  "Noto Sans TC",
+  "Microsoft JhengHei",
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
 ```
 
 **數字專用等寬字體**（金額、百分比、花費輸入框等）：
+
 ```css
 font-family: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
 ```

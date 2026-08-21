@@ -183,7 +183,7 @@ watch(
     </div>
 
     <div v-if="tabDef.hasCost" class="budget-block">
-      <span class="budget-label"><Icon name="wallet" /> 已填寫預算總額</span>
+      <span class="budget-label"><Icon name="cash" /> 已填寫預算總額</span>
       <span class="budget-value">{{ budgetTotal }}</span>
       <span class="budget-hint">每張卡片灰色數字是市場行情粗估價,僅供參考;請自行輸入預算或實際花費。</span>
     </div>

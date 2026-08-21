@@ -11,7 +11,7 @@ export default defineConfig({
       includeAssets: ['apple-touch-icon.png'],
       manifest: {
         name: '新手爸媽準備清單',
-        short_name: '準備清單',
+        short_name: '新手爸媽參考',
         description: '新手爸媽準備清單 - 準備清單、待產包、照顧能力表',
         lang: 'zh-TW',
         theme_color: '#F2F1EC',
